@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="acos">acos</string>
+  <string name="advanced">Rozšířený panel</string>
+  <string name="app_name">Kalkulačka</string>
+  <string name="asin">asin</string>
+  <string name="atan">atan</string>
+  <string name="basic">Základní panel</string>
+  <string name="clear">VYMAZAT</string>
+  <string name="clear_history">Vymazat historii</string>
+  <string name="cos">cos</string>
+  <string name="del">ODSTRANIT</string>
+  <string name="digit0">0</string>
+  <string name="digit1">1</string>
+  <string name="digit2">2</string>
+  <string name="digit3">3</string>
+  <string name="digit4">4</string>
+  <string name="digit5">5</string>
+  <string name="digit6">6</string>
+  <string name="digit7">7</string>
+  <string name="digit8">8</string>
+  <string name="digit9">9</string>
+  <string name="div">\u00f7</string>
+  <string name="dot">.</string>
+  <string name="e">e</string>
+  <string name="enter">\u2193</string>
+  <string name="equal">=</string>
+  <string name="error">Chyba</string>
+  <string name="factorial">!</string>
+  <string name="leftParen">(</string>
+  <string name="lg">log</string>
+  <string name="ln">ln</string>
+  <string name="minus">\u2212</string>
+  <string name="mul">\u00d7</string>
+  <string name="ok">OK</string>
+  <string name="pi">\u03c0</string>
+  <string name="plus">+</string>
+  <string name="power">^</string>
+  <string name="rightParen">)</string>
+  <string name="sin">sin</string>
+  <string name="sqrt">\u221a</string>
+  <string name="syntax_error">Chyba syntaxe</string>
+  <string name="tan">tan</string>
+  <string name="version_mismatch">Neplatná verze</string>
+</resources>

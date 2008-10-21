@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Application name -->
+    <string name="app_name">Calculator</string>
+    <!-- Error dialog title -->
+    <string name="error">Error</string>
+    <!-- Error dialog message -->
+    <string name="syntax_error">Syntax error.</string>
+    <!-- Error dialog button -->
+    <string name="ok">OK</string>
+    <!-- Displayed numbers -->
+    <string name="digit0">0</string>
+    <string name="digit1">1</string>
+    <string name="digit2">2</string>
+    <string name="digit3">3</string>
+    <string name="digit4">4</string>
+    <string name="digit5">5</string>
+    <string name="digit6">6</string>
+    <string name="digit7">7</string>
+    <string name="digit8">8</string>
+    <string name="digit9">9</string>
+    <!-- Button name on screen -->
+    <string name="del">DELETE</string>
+    <!-- Button name on screen -->
+    <string name="clear">CLEAR</string>
+    <!-- Unicode division sign; don't translate. Displayed as button on screen. -->
+    <string name="div">\u00f7</string>
+    <!-- Unicode multiplication sign; don't translate. Displayed as button on screen. -->
+    <string name="mul">\u00d7</string>
+    <!-- Plus sign, displayed as button on screen -->
+    <string name="plus">+</string>
+    <!-- Unicode minus sign; don't translate. Displayed as button on screen. -->
+    <string name="minus">\u2212</string>
+    <!-- Decimal point; don't translate. Displayed as button on screen. -->
+    <string name="dot">.</string>
+    <!-- Equal sign; don't translate. Displayed as button on screen. -->
+    <string name="equal">=</string>
+    <!-- Down arrow; don't translate. Displayed as button on screen. -->
+    <string name="enter">\u2193</string>
+    <!-- Displayed on buttons on screen. -->
+    <string name="sin">sin</string>
+    <string name="cos">cos</string>
+    <string name="tan">tan</string>
+    <string name="asin">asin</string>
+    <string name="acos">acos</string>
+    <string name="atan">atan</string> 
+       
+    <!-- Unicode pi sign; don't translate. Displayed as button on screen. -->
+    <string name="pi">\u03c0</string>
+    <!-- Displayed on buttons on screen. -->
+    <string name="e">e</string>
+    <string name="ln">ln</string>
+    <string name="lg">log</string>
+    <string name="leftParen">(</string>
+    <string name="rightParen">)</string>
+    <!-- Unicode square root sign; don't translate. Displayed on button on screen. -->
+    <string name="sqrt">\u221a</string>
+    <!-- Displayed on buttons on screen. -->
+    <string name="power">^</string>
+    <string name="factorial">!</string>
+    <!-- Menu items -->
+    <string name="basic">Basic panel</string>
+    <string name="advanced">Advanced panel</string>
+    <string name="clear_history">Clear history</string>
+    <string name="version_mismatch">Invalid version</string>
+</resources>
