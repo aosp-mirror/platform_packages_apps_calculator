@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">"Calculadora"</string>
-    <string name="error">"Error"</string>
-    <string name="syntax_error">"Error de sintaxis"</string>
-    <string name="ok">"Aceptar"</string>
+    <string name="app_name">"Rechner"</string>
+    <string name="error">"Fehler"</string>
+    <string name="syntax_error">"Syntaxfehler"</string>
+    <string name="ok">"OK"</string>
     <string name="digit0">"0"</string>
     <string name="digit1">"1"</string>
     <string name="digit2">"2"</string>
@@ -15,8 +15,8 @@
     <string name="digit7">"7"</string>
     <string name="digit8">"8"</string>
     <string name="digit9">"9"</string>
-    <string name="del">"ELIMINAR"</string>
-    <string name="clear">"BORRAR"</string>
+    <string name="del">"C"</string>
+    <string name="clear">"AC"</string>
     <string name="sin">"sin"</string>
     <string name="cos">"cos"</string>
     <string name="tan">"tan"</string>
@@ -24,12 +24,12 @@
     <string name="acos">"acos"</string>
     <string name="atan">"atan"</string>
     <string name="e">"e"</string>
-    <string name="ln">"En"</string>
+    <string name="ln">"ln"</string>
     <string name="lg">"log"</string>
     <string name="leftParen">"("</string>
     <string name="rightParen">")"</string>
-    <string name="basic">"Panel básico"</string>
-    <string name="advanced">"Panel avanzado"</string>
-    <string name="clear_history">"Borrar historial"</string>
-    <string name="version_mismatch">"Versión no válida"</string>
+    <string name="basic">"Grundfunktionen"</string>
+    <string name="advanced">"Erweiterte Funktionen"</string>
+    <string name="clear_history">"Verlauf löschen"</string>
+    <string name="version_mismatch">"Ungültige Version"</string>
 </resources>

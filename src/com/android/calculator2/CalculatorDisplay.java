@@ -23,6 +23,7 @@ import android.text.method.NumberKeyListener;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.animation.TranslateAnimation;
+import android.text.InputType;
 import android.widget.EditText;
 import android.widget.ViewSwitcher;
 import android.graphics.Rect;
@@ -52,6 +53,11 @@ class CalculatorDisplay extends ViewSwitcher {
     protected void setLogic(Logic logic) {
         NumberKeyListener calculatorKeyListener =
             new NumberKeyListener() {
+                public int getInputType() {
+                    // Don't display soft keyboard.
+                    return InputType.TYPE_NULL;
+                }
+            
                 protected char[] getAcceptedChars() {
                     return ACCEPTED_CHARS;
                 }

@@ -25,5 +25,10 @@
         android:targetPackage="com.android.calculator2"
         android:label="Calculator Launch Performance">
     </instrumentation>
+    
+    <instrumentation android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.android.calculator2"
+        android:label="Calculator Functional Testset">
+    </instrumentation>
 
 </manifest> 
