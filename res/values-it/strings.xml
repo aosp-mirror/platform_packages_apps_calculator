@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">"Calcolatrice"</string>
+    <string name="error">"Errore"</string>
+    <string name="digit0">"0"</string>
+    <string name="digit1">"1"</string>
+    <string name="digit2">"2"</string>
+    <string name="digit3">"3"</string>
+    <string name="digit4">"4"</string>
+    <string name="digit5">"5"</string>
+    <string name="digit6">"6"</string>
+    <string name="digit7">"7"</string>
+    <string name="digit8">"8"</string>
+    <string name="digit9">"9"</string>
+    <string name="del">"ELIMINA"</string>
+    <string name="clear">"CANCELLA"</string>
+    <string name="sin">"sin"</string>
+    <string name="cos">"cos"</string>
+    <string name="tan">"tan"</string>
+    <string name="e">"e"</string>
+    <string name="ln">"ln"</string>
+    <string name="lg">"log"</string>
+    <string name="leftParen">"("</string>
+    <string name="rightParen">")"</string>
+    <string name="basic">"Pannello base"</string>
+    <string name="advanced">"Pannello avanzato"</string>
+    <string name="clear_history">"Cancella cronologia"</string>
+</resources>
