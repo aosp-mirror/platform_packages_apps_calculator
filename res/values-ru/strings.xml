@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">"Kalkulačka"</string>
-    <string name="error">"Chyba"</string>
+    <string name="app_name">"Калькулятор"</string>
+    <string name="error">"Ошибка"</string>
     <string name="digit0">"0"</string>
     <string name="digit1">"1"</string>
     <string name="digit2">"2"</string>
@@ -13,8 +13,8 @@
     <string name="digit7">"7"</string>
     <string name="digit8">"8"</string>
     <string name="digit9">"9"</string>
-    <string name="del">"ODSTRANIT"</string>
-    <string name="clear">"VYMAZAT"</string>
+    <string name="del">"УДАЛИТЬ"</string>
+    <string name="clear">"СБРОС"</string>
     <string name="sin">"sin"</string>
     <string name="cos">"cos"</string>
     <string name="tan">"tan"</string>
@@ -23,7 +23,7 @@
     <string name="lg">"log"</string>
     <string name="leftParen">"("</string>
     <string name="rightParen">")"</string>
-    <string name="basic">"Základní funkce"</string>
-    <string name="advanced">"Pokročilé funkce"</string>
-    <string name="clear_history">"Vymazat historii"</string>
+    <string name="basic">"Основная панель"</string>
+    <string name="advanced">"Расширенная панель"</string>
+    <string name="clear_history">"Очистить историю"</string>
 </resources>
