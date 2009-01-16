@@ -3,8 +3,6 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">"電卓"</string>
     <string name="error">"エラー"</string>
-    <string name="syntax_error">"シンタックスエラー。"</string>
-    <string name="ok">"OK"</string>
     <string name="digit0">"0"</string>
     <string name="digit1">"1"</string>
     <string name="digit2">"2"</string>
@@ -20,9 +18,6 @@
     <string name="sin">"sin"</string>
     <string name="cos">"cos"</string>
     <string name="tan">"tan"</string>
-    <string name="asin">"asin"</string>
-    <string name="acos">"acos"</string>
-    <string name="atan">"atan"</string>
     <string name="e">"e"</string>
     <string name="ln">"ln"</string>
     <string name="lg">"log"</string>
@@ -31,5 +26,4 @@
     <string name="basic">"普通の電卓"</string>
     <string name="advanced">"関数電卓"</string>
     <string name="clear_history">"履歴をクリア"</string>
-    <string name="version_mismatch">"無効なバージョンです"</string>
 </resources>
