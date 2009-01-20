@@ -3,8 +3,6 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">"Calculator"</string>
     <string name="error">"Error"</string>
-    <string name="syntax_error">"Syntax error"</string>
-    <string name="ok">"OK"</string>
     <string name="digit0">"0"</string>
     <string name="digit1">"1"</string>
     <string name="digit2">"2"</string>
@@ -20,9 +18,6 @@
     <string name="sin">"sin"</string>
     <string name="cos">"cos"</string>
     <string name="tan">"tan"</string>
-    <string name="asin">"asin"</string>
-    <string name="acos">"acos"</string>
-    <string name="atan">"atan"</string>
     <string name="e">"e"</string>
     <string name="ln">"ln"</string>
     <string name="lg">"log"</string>
@@ -31,5 +26,4 @@
     <string name="basic">"Basic panel"</string>
     <string name="advanced">"Advanced panel"</string>
     <string name="clear_history">"Clear history"</string>
-    <string name="version_mismatch">"Invalid version"</string>
 </resources>
