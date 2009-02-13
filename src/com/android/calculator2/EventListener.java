@@ -88,6 +88,11 @@ class EventListener implements View.OnKeyListener,
             return eat;
         }
 
+        //Work-around for spurious key event from IME, bug #1639445
+        if (action == KeyEvent.ACTION_MULTIPLE && keyCode == KeyEvent.KEYCODE_UNKNOWN) {
+            return true; // eat it
+        }
+
         //Calculator.log("KEY " + keyCode + "; " + action);
         if (keyCode != KeyEvent.KEYCODE_DPAD_CENTER &&
             keyCode != KeyEvent.KEYCODE_DPAD_UP &&
