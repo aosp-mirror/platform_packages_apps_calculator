@@ -28,7 +28,7 @@
     <string name="digit8">"8"</string>
     <string name="digit9">"9"</string>
     <string name="del">"削除"</string>
-    <string name="clear">"クリア"</string>
+    <string name="clear">"CLEAR"</string>
     <string name="sin">"sin"</string>
     <string name="cos">"cos"</string>
     <string name="tan">"tan"</string>
@@ -37,7 +37,7 @@
     <string name="lg">"log"</string>
     <string name="leftParen">"("</string>
     <string name="rightParen">")"</string>
-    <string name="basic">"普通の電卓"</string>
-    <string name="advanced">"関数電卓"</string>
-    <string name="clear_history">"履歴をクリア"</string>
+    <string name="basic">"標準機能"</string>
+    <string name="advanced">"関数機能"</string>
+    <string name="clear_history">"履歴消去"</string>
 </resources>

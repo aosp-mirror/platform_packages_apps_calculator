@@ -15,7 +15,7 @@
 -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">"Calculator"</string>
+    <string name="app_name">"Calculadora"</string>
     <string name="error">"Error"</string>
     <string name="digit0">"0"</string>
     <string name="digit1">"1"</string>
