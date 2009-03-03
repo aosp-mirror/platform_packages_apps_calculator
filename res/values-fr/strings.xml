@@ -38,6 +38,6 @@
     <string name="leftParen">"("</string>
     <string name="rightParen">")"</string>
     <string name="basic">"Panneau de base"</string>
-    <string name="advanced">"Panneau avancé"</string>
+    <string name="advanced">"Fonctions avancées"</string>
     <string name="clear_history">"Effacer l\'historique"</string>
 </resources>
