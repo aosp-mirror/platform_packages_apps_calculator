@@ -78,6 +78,8 @@ class EventListener implements View.OnKeyListener,
         return false;
     }
     
+    private static final char[] EQUAL = {'='};
+
     //@Override
     public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
         int action = keyEvent.getAction();
@@ -94,6 +96,14 @@ class EventListener implements View.OnKeyListener,
         }
 
         //Calculator.log("KEY " + keyCode + "; " + action);
+        
+        if (keyEvent.getMatch(EQUAL, keyEvent.getMetaState()) == '=') {
+            if (action == KeyEvent.ACTION_UP) {
+                mHandler.onEnter();
+            }
+            return true;
+        }
+
         if (keyCode != KeyEvent.KEYCODE_DPAD_CENTER &&
             keyCode != KeyEvent.KEYCODE_DPAD_UP &&
             keyCode != KeyEvent.KEYCODE_DPAD_DOWN &&
