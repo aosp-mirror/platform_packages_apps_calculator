@@ -15,8 +15,8 @@
 -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">"Calculatrice"</string>
-    <string name="error">"Erreur"</string>
+    <string name="app_name">"Kalkulator"</string>
+    <string name="error">"Feil"</string>
     <string name="digit0">"0"</string>
     <string name="digit1">"1"</string>
     <string name="digit2">"2"</string>
@@ -27,8 +27,8 @@
     <string name="digit7">"7"</string>
     <string name="digit8">"8"</string>
     <string name="digit9">"9"</string>
-    <string name="del">"SUPPRIMER"</string>
-    <string name="clear">"EFFACER"</string>
+    <string name="del">"SLETT"</string>
+    <string name="clear">"RYDD"</string>
     <string name="sin">"sin"</string>
     <string name="cos">"cos"</string>
     <string name="tan">"tan"</string>
@@ -37,7 +37,7 @@
     <string name="lg">"log"</string>
     <string name="leftParen">"("</string>
     <string name="rightParen">")"</string>
-    <string name="basic">"Panneau de base"</string>
-    <string name="advanced">"Fonctions avancées"</string>
-    <string name="clear_history">"Effacer l\'historique"</string>
+    <string name="basic">"Grunnleggende panel"</string>
+    <string name="advanced">"Avansert panel"</string>
+    <string name="clear_history">"Nullstill historie"</string>
 </resources>

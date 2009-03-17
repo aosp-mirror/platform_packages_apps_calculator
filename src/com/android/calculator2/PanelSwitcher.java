@@ -51,7 +51,7 @@ class PanelSwitcher extends FrameLayout {
     public PanelSwitcher(Context context, AttributeSet attrs) {
         super(context, attrs);
         mCurrentView = 0;
-        mGestureDetector = new GestureDetector(new GestureDetector.SimpleOnGestureListener() {
+        mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
                 public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                        float velocityY) {
                     int dx = (int) (e2.getX() - e1.getX());

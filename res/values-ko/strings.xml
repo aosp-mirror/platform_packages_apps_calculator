@@ -15,8 +15,8 @@
 -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">"Calculatrice"</string>
-    <string name="error">"Erreur"</string>
+    <string name="app_name">"계산기"</string>
+    <string name="error">"오류"</string>
     <string name="digit0">"0"</string>
     <string name="digit1">"1"</string>
     <string name="digit2">"2"</string>
@@ -27,8 +27,8 @@
     <string name="digit7">"7"</string>
     <string name="digit8">"8"</string>
     <string name="digit9">"9"</string>
-    <string name="del">"SUPPRIMER"</string>
-    <string name="clear">"EFFACER"</string>
+    <string name="del">"삭제"</string>
+    <string name="clear">"지우기"</string>
     <string name="sin">"sin"</string>
     <string name="cos">"cos"</string>
     <string name="tan">"tan"</string>
@@ -37,7 +37,7 @@
     <string name="lg">"log"</string>
     <string name="leftParen">"("</string>
     <string name="rightParen">")"</string>
-    <string name="basic">"Panneau de base"</string>
-    <string name="advanced">"Fonctions avancées"</string>
-    <string name="clear_history">"Effacer l\'historique"</string>
+    <string name="basic">"기본 패널"</string>
+    <string name="advanced">"고급 패널"</string>
+    <string name="clear_history">"기록 지우기"</string>
 </resources>
