@@ -23,18 +23,14 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:background="#ff000000">
+    <LinearLayout
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         >
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:layout_marginLeft="0px"
-        android:layout_marginRight="0px"
-        android:layout_marginBottom="0px"
-        >
-        
         <LinearLayout
-             android:layout_width="fill_parent"
+             android:layout_width="0px"
+             android:layout_weight="1"
              android:layout_height="wrap_content"
              android:background="@drawable/lcd" 
              android:layout_marginRight="0px"
@@ -49,9 +45,22 @@
                 <EditText style="@style/display_style" />                
                 <EditText style="@style/display_style" />
                 
-            </com.android.calculator2.CalculatorDisplay>                      
+            </com.android.calculator2.CalculatorDisplay>
         </LinearLayout>
-    </RelativeLayout>
+
+        <Button
+             android:background="@drawable/small_button_stateful"
+             android:id="@+id/del"
+             android:text="@string/clear"
+             android:layout_width="90px"
+             android:layout_height="60px"
+             android:textColor="#ffffffff"
+             android:layout_marginRight="0px"
+             android:layout_marginTop="4px"
+             android:layout_marginLeft="5px"
+             android:layout_weight="0"
+             />
+    </LinearLayout>
 
     <com.android.calculator2.PanelSwitcher
          android:id="@+id/panelswitch"
