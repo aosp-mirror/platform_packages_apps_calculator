@@ -39,5 +39,5 @@
     <string name="rightParen">")"</string>
     <string name="basic">"基本面板"</string>
     <string name="advanced">"進階面板"</string>
-    <string name="clear_history">"Clear history"</string>
+    <string name="clear_history">"清除記錄"</string>
 </resources>
