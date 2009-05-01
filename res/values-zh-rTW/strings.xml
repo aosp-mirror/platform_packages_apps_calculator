@@ -15,7 +15,7 @@
 -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">"小算盤"</string>
+    <string name="app_name">"計算機"</string>
     <string name="error">"錯誤"</string>
     <string name="digit0">"0"</string>
     <string name="digit1">"1"</string>
