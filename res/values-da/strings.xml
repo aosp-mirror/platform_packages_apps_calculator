@@ -15,8 +15,8 @@
 -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">"Калькулятор"</string>
-    <string name="error">"Ошибка"</string>
+    <string name="app_name">"Lommeregner"</string>
+    <string name="error">"Fejl"</string>
     <string name="digit0">"0"</string>
     <string name="digit1">"1"</string>
     <string name="digit2">"2"</string>
@@ -27,8 +27,8 @@
     <string name="digit7">"7"</string>
     <string name="digit8">"8"</string>
     <string name="digit9">"9"</string>
-    <string name="del">"Удалить"</string>
-    <string name="clear">"СБРОС"</string>
+    <string name="del">"SLET"</string>
+    <string name="clear">"RYD"</string>
     <string name="sin">"sin"</string>
     <string name="cos">"cos"</string>
     <string name="tan">"tan"</string>
@@ -37,7 +37,7 @@
     <string name="lg">"log"</string>
     <string name="leftParen">"("</string>
     <string name="rightParen">")"</string>
-    <string name="basic">"Основная панель"</string>
-    <string name="advanced">"Дополнительная панель"</string>
-    <string name="clear_history">"Очистить историю"</string>
+    <string name="basic">"Grundlæggende panel"</string>
+    <string name="advanced">"Avanceret panel"</string>
+    <string name="clear_history">"Ryd oversigt"</string>
 </resources>
