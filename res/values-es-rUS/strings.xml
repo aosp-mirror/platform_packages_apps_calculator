@@ -15,8 +15,8 @@
 -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">"計算機"</string>
-    <string name="error">"錯誤"</string>
+    <string name="app_name">"Calculadora"</string>
+    <string name="error">"Error"</string>
     <string name="digit0">"0"</string>
     <string name="digit1">"1"</string>
     <string name="digit2">"2"</string>
@@ -27,8 +27,8 @@
     <string name="digit7">"7"</string>
     <string name="digit8">"8"</string>
     <string name="digit9">"9"</string>
-    <string name="del">"刪除"</string>
-    <string name="clear">"清除"</string>
+    <string name="del">"ELIMINAR"</string>
+    <string name="clear">"BORRAR"</string>
     <string name="sin">"sin"</string>
     <string name="cos">"cos"</string>
     <string name="tan">"tan"</string>
@@ -37,7 +37,7 @@
     <string name="lg">"log"</string>
     <string name="leftParen">"("</string>
     <string name="rightParen">")"</string>
-    <string name="basic">"基本面板"</string>
-    <string name="advanced">"進階面板"</string>
-    <string name="clear_history">"清除記錄"</string>
+    <string name="basic">"Panel básico"</string>
+    <string name="advanced">"Panel avanzado"</string>
+    <string name="clear_history">"Borrar historial"</string>
 </resources>
