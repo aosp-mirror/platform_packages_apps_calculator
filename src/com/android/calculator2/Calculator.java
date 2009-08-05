@@ -24,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.View;
+import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.ListView;
 import android.content.res.Configuration;
@@ -151,6 +152,17 @@ public class Calculator extends Activity {
         super.onPause();
         mLogic.updateHistory();
         mPersist.save();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent keyEvent) {
+        if (keyCode == KeyEvent.KEYCODE_BACK 
+            && mPanelSwitcher.getCurrentIndex() == ADVANCED_PANEL) {
+            mPanelSwitcher.moveRight();
+            return true;
+        } else {
+            return super.onKeyDown(keyCode, keyEvent);
+        }
     }
 
     static void log(String message) {
