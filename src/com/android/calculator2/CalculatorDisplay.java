@@ -21,14 +21,12 @@ import android.text.Editable;
 import android.text.Spanned;
 import android.text.method.NumberKeyListener;
 import android.util.AttributeSet;
-import android.view.KeyEvent;
 import android.view.animation.TranslateAnimation;
 import android.text.InputType;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.ViewSwitcher;
 import android.graphics.Rect;
-
-import java.util.Map;
 
 /**
  * Provides vertical scrolling for the input/result EditText.
@@ -50,6 +48,14 @@ class CalculatorDisplay extends ViewSwitcher {
         super(context, attrs);
     }
     
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        Calculator calc = (Calculator) getContext();
+        calc.adjustFontSize((TextView)getChildAt(0));
+        calc.adjustFontSize((TextView)getChildAt(1));
+    }
+
     protected void setLogic(Logic logic) {
         NumberKeyListener calculatorKeyListener =
             new NumberKeyListener() {
