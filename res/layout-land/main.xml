@@ -25,47 +25,40 @@
               android:background="#ff000000">
     <LinearLayout
          android:layout_width="fill_parent"
-         android:layout_height="wrap_content"
+         android:layout_height="0dp"
+         android:layout_weight="2"
          >
 
-        <LinearLayout
-             android:layout_width="0px"
-             android:layout_weight="1"
-             android:layout_height="wrap_content"
-             android:background="@drawable/lcd" 
-             android:layout_marginRight="0px"
-             >
-            
             <com.android.calculator2.CalculatorDisplay 
                  android:id="@+id/display"
-                 android:layout_width="fill_parent"
-                 android:layout_height="wrap_content"
+                 android:layout_width="0dp"
+                 android:layout_weight="5"
+                 android:layout_height="fill_parent"
                  >
 
                 <EditText style="@style/display_style" />                
                 <EditText style="@style/display_style" />
                 
             </com.android.calculator2.CalculatorDisplay>
-        </LinearLayout>
 
-        <Button
-             android:background="@drawable/small_button_stateful"
+        <com.android.calculator2.ColorButton
              android:id="@+id/del"
              android:text="@string/clear"
-             android:layout_width="90px"
-             android:layout_height="60px"
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:layout_height="fill_parent"
              android:textColor="#ffffffff"
-             android:layout_marginRight="0px"
-             android:layout_marginTop="4px"
-             android:layout_marginLeft="5px"
-             android:layout_weight="0"
+             android:layout_marginRight="0dp"
+             android:textSize="15dp"
+             style="@style/button_style"
              />
     </LinearLayout>
 
     <com.android.calculator2.PanelSwitcher
          android:id="@+id/panelswitch"
          android:layout_width="fill_parent"
-         android:layout_height="fill_parent"
+         android:layout_height="0dp"
+         android:layout_weight="5"
          >
 
     <LinearLayout 
@@ -78,22 +71,22 @@
         <LinearLayout 
              android:layout_weight="1"
              android:layout_width="fill_parent"
-             android:layout_height="0px"
+             android:layout_height="0dp"
              >    
             <com.android.calculator2.ColorButton
                 android:id="@+id/digit7"
                 android:text="@string/digit7"
-                style="@style/button_style"
+                style="@style/digit_button_style"
                 />
             <com.android.calculator2.ColorButton
                 android:id="@+id/digit8"
                 android:text="@string/digit8"
-                style="@style/button_style"
+                style="@style/digit_button_style"
                 />
             <com.android.calculator2.ColorButton
                 android:id="@+id/digit9"
                 android:text="@string/digit9"
-                style="@style/button_style"
+                style="@style/digit_button_style"
                 />
             <com.android.calculator2.ColorButton
                 android:id="@+id/leftParen"
@@ -115,27 +108,27 @@
         <LinearLayout 
              android:layout_weight="1"
              android:layout_width="fill_parent"
-             android:layout_height="0px"
+             android:layout_height="0dp"
              >    
             <com.android.calculator2.ColorButton
                 android:id="@+id/digit4"
                 android:text="@string/digit4"
-                style="@style/button_style"
+                style="@style/digit_button_style"
                 />        
             <com.android.calculator2.ColorButton 
                 android:id="@+id/digit5"
                 android:text="@string/digit5"
-                style="@style/button_style"
+                style="@style/digit_button_style"
                 />
             <com.android.calculator2.ColorButton 
                 android:id="@+id/digit6"
                 android:text="@string/digit6"
-                style="@style/button_style"
+                style="@style/digit_button_style"
                 />
             <com.android.calculator2.ColorButton 
                 android:id="@+id/dot"
                 android:text="@string/dot"
-                style="@style/button_style"
+                style="@style/digit_button_style"
                 />
             <com.android.calculator2.ColorButton
                 android:id="@+id/div"
@@ -152,27 +145,27 @@
         <LinearLayout 
              android:layout_weight="1"
              android:layout_width="fill_parent"
-             android:layout_height="0px"
+             android:layout_height="0dp"
              >            
             <com.android.calculator2.ColorButton
                 android:id="@+id/digit1"
                 android:text="@string/digit1"
-                style="@style/button_style"
+                style="@style/digit_button_style"
                 />        
             <com.android.calculator2.ColorButton
                 android:id="@+id/digit2"
                 android:text="@string/digit2"
-                style="@style/button_style"
+                style="@style/digit_button_style"
                 />
             <com.android.calculator2.ColorButton 
                 android:id="@+id/digit3"
                 android:text="@string/digit3"
-                style="@style/button_style"
+                style="@style/digit_button_style"
                 />
             <com.android.calculator2.ColorButton
                 android:id="@+id/digit0"
                 android:text="@string/digit0"
-                style="@style/button_style"
+                style="@style/digit_button_style"
                 />
             <com.android.calculator2.ColorButton
                 android:id="@+id/equal"
@@ -194,14 +187,14 @@
          android:layout_weight="1"
          android:orientation="vertical"
          android:layout_gravity="center"
-         android:layout_marginTop="5px"         
-         android:layout_marginBottom="0px"
+         android:layout_marginTop="5dp"
+         android:layout_marginBottom="0dp"
          > 
         
         <LinearLayout 
             android:layout_weight="1"
             android:layout_width="fill_parent"
-            android:layout_height="0px"
+            android:layout_height="0dp"
             >            
             <com.android.calculator2.ColorButton 
                 android:id="@+id/sin"
@@ -233,7 +226,7 @@
         <LinearLayout 
             android:layout_weight="1"
             android:layout_width="fill_parent"
-            android:layout_height="0px"
+            android:layout_height="0dp"
             >            
             <com.android.calculator2.ColorButton
                 android:id="@+id/ln"

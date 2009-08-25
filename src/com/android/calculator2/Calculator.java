@@ -20,14 +20,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Config;
+import android.util.TypedValue;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
 import android.view.View;
 import android.view.KeyEvent;
 import android.widget.Button;
-import android.widget.ListView;
-import android.content.res.Configuration;
+import android.widget.TextView;
 
 public class Calculator extends Activity {
     EventListener mListener = new EventListener();
@@ -40,6 +40,8 @@ public class Calculator extends Activity {
     private static final int CMD_CLEAR_HISTORY  = 1;
     private static final int CMD_BASIC_PANEL    = 2;
     private static final int CMD_ADVANCED_PANEL = 3;
+
+    private static final int HVGA_HEIGHT_PIXELS = 480;
 
     static final int BASIC_PANEL    = 0;
     static final int ADVANCED_PANEL = 1;
@@ -71,7 +73,7 @@ public class Calculator extends Activity {
 
 
         if ((view = findViewById(R.id.del)) != null) {
-            view.setOnClickListener(mListener);
+//            view.setOnClickListener(mListener);
             view.setOnLongClickListener(mListener);
         }
         /*
@@ -169,5 +171,18 @@ public class Calculator extends Activity {
         if (LOG_ENABLED) {
             Log.v(LOG_TAG, message);
         }
+    }
+
+    /**
+     * The font sizes in the layout files are specified for a HVGA display.
+     * Adjust the font sizes accordingly if we are running on a different
+     * display.
+     */
+    public void adjustFontSize(TextView view) {
+        float fontPixelSize = view.getTextSize();
+        Display display = getWindowManager().getDefaultDisplay();
+        int h = Math.max(display.getWidth(), display.getHeight());
+        float ratio = (float)h/HVGA_HEIGHT_PIXELS;
+        view.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontPixelSize*ratio);
     }
 }
