@@ -42,6 +42,7 @@ public class Calculator extends Activity {
     private static final int CMD_ADVANCED_PANEL = 3;
 
     private static final int HVGA_HEIGHT_PIXELS = 480;
+    private static final int HVGA_WIDTH_PIXELS  = 320;
 
     static final int BASIC_PANEL    = 0;
     static final int ADVANCED_PANEL = 1;
@@ -79,13 +80,6 @@ public class Calculator extends Activity {
         /*
         if ((view = findViewById(R.id.clear)) != null) {
             view.setOnClickListener(mListener);
-        }
-        */
-
-        /*
-        ListView historyPad = (ListView) findViewById(R.id.historyPad);
-        if (historyPad != null) {
-            historyPad.setAdapter(historyAdapter);
         }
         */
     }
@@ -181,8 +175,8 @@ public class Calculator extends Activity {
     public void adjustFontSize(TextView view) {
         float fontPixelSize = view.getTextSize();
         Display display = getWindowManager().getDefaultDisplay();
-        int h = Math.max(display.getWidth(), display.getHeight());
-        float ratio = (float)h/HVGA_HEIGHT_PIXELS;
+        int h = Math.min(display.getWidth(), display.getHeight());
+        float ratio = (float)h/HVGA_WIDTH_PIXELS;
         view.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontPixelSize*ratio);
     }
 }

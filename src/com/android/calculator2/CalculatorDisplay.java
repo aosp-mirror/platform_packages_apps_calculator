@@ -27,6 +27,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 import android.graphics.Rect;
+import android.graphics.Paint;
 
 /**
  * Provides vertical scrolling for the input/result EditText.
@@ -43,6 +44,9 @@ class CalculatorDisplay extends ViewSwitcher {
     TranslateAnimation outAnimUp;
     TranslateAnimation inAnimDown;
     TranslateAnimation outAnimDown;
+
+    private Logic mLogic;
+    private boolean mComputedLineLength = false;
     
     public CalculatorDisplay(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -56,7 +60,27 @@ class CalculatorDisplay extends ViewSwitcher {
         calc.adjustFontSize((TextView)getChildAt(1));
     }
 
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        if (!mComputedLineLength) {
+            mLogic.setLineLength(getNumberFittingDigits((TextView) getCurrentView()));
+            mComputedLineLength = true;
+        }
+    }
+
+    // compute the maximum number of digits that fit in the
+    // calculator display without scrolling.
+    private int getNumberFittingDigits(TextView display) {
+        int available = display.getWidth()
+            - display.getTotalPaddingLeft() - display.getTotalPaddingRight();
+        Paint paint = display.getPaint();
+        float digitWidth = paint.measureText("2222222222") / 10f;
+        return (int) (available / digitWidth);
+    }
+
     protected void setLogic(Logic logic) {
+        mLogic = logic;
         NumberKeyListener calculatorKeyListener =
             new NumberKeyListener() {
                 public int getInputType() {
