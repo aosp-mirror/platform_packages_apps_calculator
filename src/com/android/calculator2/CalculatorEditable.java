@@ -61,11 +61,6 @@ class CalculatorEditable extends SpannableStringBuilder {
         if (length == 1) {
             char text = delta.charAt(0);
 
-            //don't allow leading operator + * /
-            if (start == 0 && Logic.isOperator(text) && text != Logic.MINUS) {
-                return super.replace(start, end, "");
-            }
-
             //don't allow two dots in the same number
             if (text == '.') {
                 int p = start - 1;
@@ -91,6 +86,11 @@ class CalculatorEditable extends SpannableStringBuilder {
                     --start;
                     prevChar = start > 0 ? charAt(start-1) : '\0';
                 }
+            }
+
+            //don't allow leading operator + * /
+            if (start == 0 && Logic.isOperator(text) && text != Logic.MINUS) {
+                return super.replace(start, end, "");
             }
         } 
         return super.replace(start, end, delta);
