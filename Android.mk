@@ -21,6 +21,8 @@ LOCAL_STATIC_JAVA_LIBRARIES := libarity
 
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
+LOCAL_SDK_VERSION := current
+
 LOCAL_PACKAGE_NAME := Calculator
 
 include $(BUILD_PACKAGE)
