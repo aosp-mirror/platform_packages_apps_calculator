@@ -21,14 +21,13 @@ import android.text.Editable;
 import android.text.Spanned;
 import android.text.method.NumberKeyListener;
 import android.util.AttributeSet;
-import android.view.KeyEvent;
 import android.view.animation.TranslateAnimation;
 import android.text.InputType;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.ViewSwitcher;
 import android.graphics.Rect;
-
-import java.util.Map;
+import android.graphics.Paint;
 
 /**
  * Provides vertical scrolling for the input/result EditText.
@@ -45,12 +44,43 @@ class CalculatorDisplay extends ViewSwitcher {
     TranslateAnimation outAnimUp;
     TranslateAnimation inAnimDown;
     TranslateAnimation outAnimDown;
+
+    private Logic mLogic;
+    private boolean mComputedLineLength = false;
     
     public CalculatorDisplay(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
     
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        Calculator calc = (Calculator) getContext();
+        calc.adjustFontSize((TextView)getChildAt(0));
+        calc.adjustFontSize((TextView)getChildAt(1));
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        if (!mComputedLineLength) {
+            mLogic.setLineLength(getNumberFittingDigits((TextView) getCurrentView()));
+            mComputedLineLength = true;
+        }
+    }
+
+    // compute the maximum number of digits that fit in the
+    // calculator display without scrolling.
+    private int getNumberFittingDigits(TextView display) {
+        int available = display.getWidth()
+            - display.getTotalPaddingLeft() - display.getTotalPaddingRight();
+        Paint paint = display.getPaint();
+        float digitWidth = paint.measureText("2222222222") / 10f;
+        return (int) (available / digitWidth);
+    }
+
     protected void setLogic(Logic logic) {
+        mLogic = logic;
         NumberKeyListener calculatorKeyListener =
             new NumberKeyListener() {
                 public int getInputType() {

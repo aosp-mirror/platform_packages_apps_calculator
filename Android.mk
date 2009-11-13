@@ -27,7 +27,7 @@ include $(BUILD_PACKAGE)
 ##################################################
 include $(CLEAR_VARS)
 
-LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := libarity:arity-1.3.1.jar
+LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := libarity:arity-1.3.3.jar
 include $(BUILD_MULTI_PREBUILT)
 
 # Use the folloing include to make our test apk.
