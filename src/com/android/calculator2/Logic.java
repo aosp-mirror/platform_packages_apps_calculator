@@ -35,11 +35,8 @@ class Logic {
     private Button mEqualButton;
     private final String mEnterString;
     private boolean mIsError = false;
-    private final boolean mOrientationPortrait;
-    private final int mLineLength;
+    private int mLineLength = 0;
 
-    private static final int LINE_LENGTH_PORTRAIT = 14;
-    private static final int LINE_LENGTH_LANDSCAPE = 21;
     private static final String INFINITY_UNICODE = "\u221e";
 
     // the two strings below are the result of Double.toString() for Infinity & NaN
@@ -53,10 +50,6 @@ class Logic {
 
     Logic(Context context, History history, CalculatorDisplay display, Button equalButton) {
         mErrorString = context.getResources().getString(R.string.error);
-        mOrientationPortrait = context.getResources().getConfiguration().orientation
-            == Configuration.ORIENTATION_PORTRAIT;
-        mLineLength = mOrientationPortrait ? LINE_LENGTH_PORTRAIT : LINE_LENGTH_LANDSCAPE;
-
         try {
             // in calculator we use log() for base-10,
             // unlike in arity-lib where log() is natural logarithm
@@ -71,6 +64,10 @@ class Logic {
         mEnterString = context.getText(R.string.enter).toString();
 
         clearWithHistory(false);
+    }
+
+    void setLineLength(int nDigits) {
+        mLineLength = nDigits;
     }
 
     boolean eatHorizontalMove(boolean toLeft) {

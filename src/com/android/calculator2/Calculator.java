@@ -20,13 +20,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Config;
+import android.util.TypedValue;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
 import android.view.View;
+import android.view.KeyEvent;
 import android.widget.Button;
-import android.widget.ListView;
-import android.content.res.Configuration;
+import android.widget.TextView;
 
 public class Calculator extends Activity {
     EventListener mListener = new EventListener();
@@ -40,6 +41,9 @@ public class Calculator extends Activity {
     private static final int CMD_BASIC_PANEL    = 2;
     private static final int CMD_ADVANCED_PANEL = 3;
 
+    private static final int HVGA_HEIGHT_PIXELS = 480;
+    private static final int HVGA_WIDTH_PIXELS  = 320;
+
     static final int BASIC_PANEL    = 0;
     static final int ADVANCED_PANEL = 1;
 
@@ -50,7 +54,7 @@ public class Calculator extends Activity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.main);
 
         mPersist = new Persist(this);
@@ -70,19 +74,12 @@ public class Calculator extends Activity {
 
 
         if ((view = findViewById(R.id.del)) != null) {
-            view.setOnClickListener(mListener);
+//            view.setOnClickListener(mListener);
             view.setOnLongClickListener(mListener);
         }
         /*
         if ((view = findViewById(R.id.clear)) != null) {
             view.setOnClickListener(mListener);
-        }
-        */
-
-        /*
-        ListView historyPad = (ListView) findViewById(R.id.historyPad);
-        if (historyPad != null) {
-            historyPad.setAdapter(historyAdapter);
         }
         */
     }
@@ -153,9 +150,33 @@ public class Calculator extends Activity {
         mPersist.save();
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent keyEvent) {
+        if (keyCode == KeyEvent.KEYCODE_BACK 
+            && mPanelSwitcher.getCurrentIndex() == ADVANCED_PANEL) {
+            mPanelSwitcher.moveRight();
+            return true;
+        } else {
+            return super.onKeyDown(keyCode, keyEvent);
+        }
+    }
+
     static void log(String message) {
         if (LOG_ENABLED) {
             Log.v(LOG_TAG, message);
         }
+    }
+
+    /**
+     * The font sizes in the layout files are specified for a HVGA display.
+     * Adjust the font sizes accordingly if we are running on a different
+     * display.
+     */
+    public void adjustFontSize(TextView view) {
+        float fontPixelSize = view.getTextSize();
+        Display display = getWindowManager().getDefaultDisplay();
+        int h = Math.min(display.getWidth(), display.getHeight());
+        float ratio = (float)h/HVGA_WIDTH_PIXELS;
+        view.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontPixelSize*ratio);
     }
 }

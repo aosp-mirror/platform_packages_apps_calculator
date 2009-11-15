@@ -39,5 +39,5 @@
     <string name="rightParen" msgid="3177971166159324016">")"</string>
     <string name="basic" msgid="7691469861698059753">"Grunnleggende panel"</string>
     <string name="advanced" msgid="7122495413742976492">"Avansert panel"</string>
-    <string name="clear_history" msgid="8458043980601165012">"Nullstill historikk"</string>
+    <string name="clear_history" msgid="8458043980601165012">"Tøm logg"</string>
 </resources>

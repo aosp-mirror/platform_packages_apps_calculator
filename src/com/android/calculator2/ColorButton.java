@@ -18,18 +18,14 @@ package com.android.calculator2;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
+import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.widget.Button;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.view.MotionEvent;
 import android.content.res.Resources;
-
-import java.util.Map;
 
 /**
  * Button with click-animation effect.
@@ -39,47 +35,41 @@ class ColorButton extends Button implements OnClickListener {
     static final int CLICK_FEEDBACK_INTERVAL = 10;
     static final int CLICK_FEEDBACK_DURATION = 350;
     
-    Drawable mButtonBackground;
-    Drawable mButton;
     float mTextX;
     float mTextY;
     long mAnimStart;
     OnClickListener mListener;
+    Paint mFeedbackPaint;
     
     public ColorButton(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
-        mListener = ((Calculator) context).mListener;
+        Calculator calc = (Calculator) context;
+        init(calc);
+        mListener = calc.mListener;
         setOnClickListener(this);
     }
 
     public void onClick(View view) {
-        animateClickFeedback();
         mListener.onClick(this);
     }
 
-    private void init() {
-        setBackgroundDrawable(null);
-
+    private void init(Calculator calc) {
         Resources res = getResources();
 
-        mButtonBackground = res.getDrawable(R.drawable.button_bg);
-        mButton = res.getDrawable(R.drawable.button);
         CLICK_FEEDBACK_COLOR = res.getColor(R.color.magic_flame);
+        mFeedbackPaint = new Paint();
+        mFeedbackPaint.setStyle(Style.STROKE);
+        mFeedbackPaint.setStrokeWidth(2);
         getPaint().setColor(res.getColor(R.color.button_text));
         
         mAnimStart = -1;
+
+        calc.adjustFontSize(this);
     }
 
 
     @Override 
     public void onSizeChanged(int w, int h, int oldW, int oldH) {
-        int selfW = mButton.getIntrinsicWidth();
-        int selfH = mButton.getIntrinsicHeight();
-        int marginX = (w - selfW) / 2;
-        int marginY = (h - selfH) / 2;
-        mButtonBackground.setBounds(marginX, marginY, marginX + selfW, marginY + selfH);
-        mButton.setBounds(marginX, marginY, marginX + selfW, marginY + selfH);
         measureText();
     }
 
@@ -97,14 +87,9 @@ class ColorButton extends Button implements OnClickListener {
     private void drawMagicFlame(int duration, Canvas canvas) {
         int alpha = 255 - 255 * duration / CLICK_FEEDBACK_DURATION;
         int color = CLICK_FEEDBACK_COLOR | (alpha << 24);
-        mButtonBackground.setColorFilter(color, PorterDuff.Mode.SRC_IN);
-        
-        int cx = getWidth() / 2;
-        int cy = getHeight() / 2;
-        float angle = 250.0f * duration / CLICK_FEEDBACK_DURATION;
-        canvas.rotate(angle, cx, cy);
-        mButtonBackground.draw(canvas);
-        canvas.rotate(-angle, cx, cy);
+
+        mFeedbackPaint.setColor(color);
+        canvas.drawRect(1, 1, getWidth() - 1, getHeight() - 1, mFeedbackPaint);
     }
 
     @Override
@@ -113,7 +98,6 @@ class ColorButton extends Button implements OnClickListener {
             int animDuration = (int) (System.currentTimeMillis() - mAnimStart);
             
             if (animDuration >= CLICK_FEEDBACK_DURATION) {
-                mButtonBackground.clearColorFilter();
                 mAnimStart = -1;
             } else {
                 drawMagicFlame(animDuration, canvas);
@@ -122,8 +106,6 @@ class ColorButton extends Button implements OnClickListener {
         } else if (isPressed()) {
             drawMagicFlame(0, canvas);
         }
-        
-        mButton.draw(canvas);
         
         CharSequence text = getText();
         canvas.drawText(text, 0, text.length(), mTextX, mTextY, getPaint());
@@ -136,12 +118,18 @@ class ColorButton extends Button implements OnClickListener {
     
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        int a = event.getAction();
-        if (a == MotionEvent.ACTION_DOWN 
-                || a == MotionEvent.ACTION_CANCEL
-                || a == MotionEvent.ACTION_UP) {
-            invalidate();
+        boolean result = super.onTouchEvent(event);
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_UP:
+                animateClickFeedback();
+                break;
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_CANCEL:
+                invalidate();
+                break;
         }
-        return super.onTouchEvent(event);
+
+        return result;
     }
 }
