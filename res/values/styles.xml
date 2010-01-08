@@ -2,8 +2,8 @@
 <resources>
     <style name="button_style">
        <item name="android:textSize">40dp</item>
-       <item name="android:layout_width">fill_parent</item>
-       <item name="android:layout_height">fill_parent</item>
+       <item name="android:layout_width">match_parent</item>
+       <item name="android:layout_height">match_parent</item>
        <item name="android:layout_weight">1</item>
        <item name="android:focusable">true</item>
        <item name="android:background">@drawable/button</item>
@@ -25,8 +25,8 @@
        <item name="android:maxLines">1</item>
        <item name="android:scrollbars">none</item>
        <item name="android:scrollHorizontally">true</item>
-       <item name="android:layout_width">fill_parent</item>
-       <item name="android:layout_height">fill_parent</item>
+       <item name="android:layout_width">match_parent</item>
+       <item name="android:layout_height">match_parent</item>
        <item name="android:padding">8dp</item>
     </style>
 </resources>

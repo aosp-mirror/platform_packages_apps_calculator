@@ -20,11 +20,11 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
               android:background="#ff000000">
     <LinearLayout
-         android:layout_width="fill_parent"
+         android:layout_width="match_parent"
          android:layout_height="0dp"
          android:layout_weight="2"
          >
@@ -33,7 +33,7 @@
                  android:id="@+id/display"
                  android:layout_width="0dp"
                  android:layout_weight="5"
-                 android:layout_height="fill_parent"
+                 android:layout_height="match_parent"
                  >
 
                 <EditText style="@style/display_style" />                
@@ -46,7 +46,7 @@
              android:text="@string/clear"
              android:layout_width="0dp"
              android:layout_weight="1"
-             android:layout_height="fill_parent"
+             android:layout_height="match_parent"
              android:textColor="#ffffffff"
              android:layout_marginRight="0dp"
              android:textSize="15dp"
@@ -56,21 +56,21 @@
 
     <com.android.calculator2.PanelSwitcher
          android:id="@+id/panelswitch"
-         android:layout_width="fill_parent"
+         android:layout_width="match_parent"
          android:layout_height="0dp"
          android:layout_weight="5"
          >
 
     <LinearLayout 
          android:id="@+id/simplePad"
-         android:layout_width="fill_parent"
-         android:layout_height="fill_parent"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
          android:orientation="vertical"
          android:layout_gravity="center"
          > 
         <LinearLayout 
              android:layout_weight="1"
-             android:layout_width="fill_parent"
+             android:layout_width="match_parent"
              android:layout_height="0dp"
              >    
             <com.android.calculator2.ColorButton
@@ -107,7 +107,7 @@
         
         <LinearLayout 
              android:layout_weight="1"
-             android:layout_width="fill_parent"
+             android:layout_width="match_parent"
              android:layout_height="0dp"
              >    
             <com.android.calculator2.ColorButton
@@ -144,7 +144,7 @@
         
         <LinearLayout 
              android:layout_weight="1"
-             android:layout_width="fill_parent"
+             android:layout_width="match_parent"
              android:layout_height="0dp"
              >            
             <com.android.calculator2.ColorButton
@@ -182,8 +182,8 @@
 
     <LinearLayout 
          android:id="@+id/advancedPad"
-         android:layout_width="fill_parent"
-         android:layout_height="fill_parent"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
          android:layout_weight="1"
          android:orientation="vertical"
          android:layout_gravity="center"
@@ -193,7 +193,7 @@
         
         <LinearLayout 
             android:layout_weight="1"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             >            
             <com.android.calculator2.ColorButton 
@@ -225,7 +225,7 @@
         
         <LinearLayout 
             android:layout_weight="1"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             >            
             <com.android.calculator2.ColorButton
