@@ -50,13 +50,6 @@ class Logic {
 
     Logic(Context context, History history, CalculatorDisplay display, Button equalButton) {
         mErrorString = context.getResources().getString(R.string.error);
-        try {
-            // in calculator we use log() for base-10,
-            // unlike in arity-lib where log() is natural logarithm
-            mSymbols.define(mSymbols.compileWithName("log(x)=log10(x)"));
-        } catch (SyntaxException e) {
-            throw new Error("" + e); //never
-        }
         mHistory = history;
         mDisplay = display;
         mDisplay.setLogic(this);
