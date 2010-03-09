@@ -50,10 +50,11 @@ public class Calculator extends Activity {
     private static final String LOG_TAG = "Calculator";
     private static final boolean DEBUG  = false;
     private static final boolean LOG_ENABLED = DEBUG ? Config.LOGD : Config.LOGV;
+    private static final String STATE_CURRENT_VIEW = "state-current-view";
 
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
+    public void onCreate(Bundle state) {
+        super.onCreate(state);
 
         setContentView(R.layout.main);
 
@@ -65,14 +66,15 @@ public class Calculator extends Activity {
         mLogic = new Logic(this, mHistory, mDisplay, (Button) findViewById(R.id.equal));
         HistoryAdapter historyAdapter = new HistoryAdapter(this, mHistory, mLogic);
         mHistory.setObserver(historyAdapter);
-        View view;
+
         mPanelSwitcher = (PanelSwitcher) findViewById(R.id.panelswitch);
-                                       
+        mPanelSwitcher.setCurrentIndex(state==null ? 0 : state.getInt(STATE_CURRENT_VIEW, 0));
+
         mListener.setHandler(mLogic, mPanelSwitcher);
 
         mDisplay.setOnKeyListener(mListener);
 
-
+        View view;
         if ((view = findViewById(R.id.del)) != null) {
 //            view.setOnClickListener(mListener);
             view.setOnLongClickListener(mListener);
@@ -138,9 +140,9 @@ public class Calculator extends Activity {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle icicle) {
-        // as work-around for ClassCastException in TextView on restart
-        // avoid calling superclass, to keep icicle empty
+    protected void onSaveInstanceState(Bundle state) {
+        super.onSaveInstanceState(state);
+        state.putInt(STATE_CURRENT_VIEW, mPanelSwitcher.getCurrentIndex());
     }
 
     @Override

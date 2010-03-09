@@ -34,7 +34,7 @@ class PanelSwitcher extends FrameLayout {
     private GestureDetector mGestureDetector;
     private int mCurrentView;
     private View mChild, mHistoryView;
-    private View children[];
+    private View mChildren[] = new View[0];
 
     private int mWidth;
     private TranslateAnimation inLeft;
@@ -72,6 +72,17 @@ class PanelSwitcher extends FrameLayout {
             });
     }
 
+    void setCurrentIndex(int current) {
+        mCurrentView = current;
+        updateCurrentView();
+    }
+
+    private void updateCurrentView() {
+        for (int i = mChildren.length-1; i >= 0 ; --i) {
+            mChildren[i].setVisibility(i==mCurrentView ? View.VISIBLE : View.GONE);
+        }
+    }
+
     @Override 
     public void onSizeChanged(int w, int h, int oldW, int oldH) {
         mWidth = w;
@@ -88,13 +99,11 @@ class PanelSwitcher extends FrameLayout {
 
     protected void onFinishInflate() {
         int count = getChildCount();
-        children = new View[count];
+        mChildren = new View[count];
         for (int i = 0; i < count; ++i) {
-            children[i] = getChildAt(i);
-            if (i != mCurrentView) {
-                children[i].setVisibility(View.GONE);
-            }
+            mChildren[i] = getChildAt(i);
         }
+        updateCurrentView();
     }
 
     @Override
@@ -110,11 +119,11 @@ class PanelSwitcher extends FrameLayout {
 
     void moveLeft() {
         //  <--
-        if (mCurrentView < children.length - 1 && mPreviousMove != LEFT) {
-            children[mCurrentView+1].setVisibility(View.VISIBLE);
-            children[mCurrentView+1].startAnimation(inLeft);
-            children[mCurrentView].startAnimation(outLeft);
-            children[mCurrentView].setVisibility(View.GONE);
+        if (mCurrentView < mChildren.length - 1 && mPreviousMove != LEFT) {
+            mChildren[mCurrentView+1].setVisibility(View.VISIBLE);
+            mChildren[mCurrentView+1].startAnimation(inLeft);
+            mChildren[mCurrentView].startAnimation(outLeft);
+            mChildren[mCurrentView].setVisibility(View.GONE);
 
             mCurrentView++;
             mPreviousMove = LEFT;
@@ -124,10 +133,10 @@ class PanelSwitcher extends FrameLayout {
     void moveRight() {
         //  -->
         if (mCurrentView > 0 && mPreviousMove != RIGHT) {
-            children[mCurrentView-1].setVisibility(View.VISIBLE);
-            children[mCurrentView-1].startAnimation(inRight);
-            children[mCurrentView].startAnimation(outRight);
-            children[mCurrentView].setVisibility(View.GONE);
+            mChildren[mCurrentView-1].setVisibility(View.VISIBLE);
+            mChildren[mCurrentView-1].startAnimation(inRight);
+            mChildren[mCurrentView].startAnimation(outRight);
+            mChildren[mCurrentView].setVisibility(View.GONE);
 
             mCurrentView--;
             mPreviousMove = RIGHT;
