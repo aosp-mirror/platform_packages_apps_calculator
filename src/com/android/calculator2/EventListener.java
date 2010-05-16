@@ -18,9 +18,6 @@ package com.android.calculator2;
 
 import android.view.View;
 import android.view.KeyEvent;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.View.OnKeyListener;
 import android.widget.Button;
 
 class EventListener implements View.OnKeyListener, 

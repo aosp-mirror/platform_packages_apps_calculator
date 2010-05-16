@@ -16,12 +16,10 @@
 
 package com.android.calculator2;
 
-import android.view.View;
 import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.content.Context;
-import android.content.res.Configuration;
 
 import org.javia.arity.Symbols;
 import org.javia.arity.SyntaxException;
@@ -32,8 +30,6 @@ class Logic {
     private Symbols mSymbols = new Symbols();
     private History mHistory;
     private String  mResult = "";
-    private Button mEqualButton;
-    private final String mEnterString;
     private boolean mIsError = false;
     private int mLineLength = 0;
 
@@ -60,8 +56,6 @@ class Logic {
         mHistory = history;
         mDisplay = display;
         mDisplay.setLogic(this);
-        mEqualButton = equalButton;
-        mEnterString = context.getText(R.string.enter).toString();
 
         clearWithHistory(false);
     }

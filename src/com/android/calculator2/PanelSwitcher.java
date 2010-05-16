@@ -23,9 +23,6 @@ import android.view.GestureDetector;
 import android.widget.FrameLayout;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.os.Handler;
-
-import java.util.Map;
 
 class PanelSwitcher extends FrameLayout {
     private static final int MAJOR_MOVE = 60;
@@ -33,7 +30,6 @@ class PanelSwitcher extends FrameLayout {
 
     private GestureDetector mGestureDetector;
     private int mCurrentView;
-    private View mChild, mHistoryView;
     private View children[];
 
     private int mWidth;
@@ -43,9 +39,8 @@ class PanelSwitcher extends FrameLayout {
     private TranslateAnimation inRight;
     private TranslateAnimation outRight;
 
-    private static final int NONE  = 1;
-    private static final int LEFT  = 2;
-    private static final int RIGHT = 3;
+    private static final int LEFT  = 1;
+    private static final int RIGHT = 2;
     private int mPreviousMove;
 
     public PanelSwitcher(Context context, AttributeSet attrs) {
