@@ -41,7 +41,6 @@ public class Calculator extends Activity {
     private static final int CMD_BASIC_PANEL    = 2;
     private static final int CMD_ADVANCED_PANEL = 3;
 
-    private static final int HVGA_HEIGHT_PIXELS = 480;
     private static final int HVGA_WIDTH_PIXELS  = 320;
 
     static final int BASIC_PANEL    = 0;
