@@ -16,8 +16,8 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name" msgid="8095131950334945205">"Калькулятор"</string>
-    <string name="error" msgid="9197457880925804499">"Помилка"</string>
+    <string name="app_name" msgid="8095131950334945205">"Računalo"</string>
+    <string name="error" msgid="9197457880925804499">"Napaka"</string>
     <string name="digit0" msgid="8069590963464434135">"0"</string>
     <string name="digit1" msgid="8535041374797804029">"1"</string>
     <string name="digit2" msgid="8977354203154316247">"2"</string>
@@ -28,17 +28,17 @@
     <string name="digit7" msgid="658125644218958447">"7"</string>
     <string name="digit8" msgid="3134686906411558886">"8"</string>
     <string name="digit9" msgid="765379157698748031">"9"</string>
-    <string name="del" msgid="6248896117422989693">"ВИДАЛИТИ"</string>
-    <string name="clear" msgid="895929542545793094">"ОЧИСТИТИ"</string>
+    <string name="del" msgid="6248896117422989693">"IZBRIŠI"</string>
+    <string name="clear" msgid="895929542545793094">"POČISTI"</string>
     <string name="sin" msgid="6793866152659175277">"sin"</string>
     <string name="cos" msgid="6901841853098114414">"cos"</string>
-    <string name="tan" msgid="7957459816738554960">"tg"</string>
+    <string name="tan" msgid="7957459816738554960">"tan"</string>
     <string name="e" msgid="1377847800971731483">"e"</string>
     <string name="ln" msgid="6888500680285403344">"ln"</string>
     <string name="lg" msgid="873623857385418182">"log"</string>
     <string name="leftParen" msgid="4850643713953092099">"("</string>
     <string name="rightParen" msgid="3177971166159324016">")"</string>
-    <string name="basic" msgid="7691469861698059753">"Основна панель"</string>
-    <string name="advanced" msgid="7122495413742976492">"Розширена панель"</string>
-    <string name="clear_history" msgid="8458043980601165012">"Очистити історію"</string>
+    <string name="basic" msgid="7691469861698059753">"Osnovna plošča"</string>
+    <string name="advanced" msgid="7122495413742976492">"Plošča z dodatnimi nastavitvami"</string>
+    <string name="clear_history" msgid="8458043980601165012">"Počisti zgodovino"</string>
 </resources>
