@@ -29,7 +29,7 @@ import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Calculator extends Activity {
+public class Calculator extends Activity implements PanelSwitcher.Listener {
     EventListener mListener = new EventListener();
     private CalculatorDisplay mDisplay;
     private Persist mPersist;
@@ -68,6 +68,7 @@ public class Calculator extends Activity {
 
         mPanelSwitcher = (PanelSwitcher) findViewById(R.id.panelswitch);
         mPanelSwitcher.setCurrentIndex(state==null ? 0 : state.getInt(STATE_CURRENT_VIEW, 0));
+        mPanelSwitcher.setListener(this);
 
         mListener.setHandler(mLogic, mPanelSwitcher);
 
@@ -89,28 +90,31 @@ public class Calculator extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         MenuItem item;
-        
+
         item = menu.add(0, CMD_CLEAR_HISTORY, 0, R.string.clear_history);
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         item.setIcon(R.drawable.clear_history);
-        
+
         item = menu.add(0, CMD_ADVANCED_PANEL, 0, R.string.advanced);
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         item.setIcon(R.drawable.advanced);
-        
+
         item = menu.add(0, CMD_BASIC_PANEL, 0, R.string.basic);
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         item.setIcon(R.drawable.simple);
 
         return true;
     }
-    
+
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        menu.findItem(CMD_BASIC_PANEL).setVisible(mPanelSwitcher != null && 
+        menu.findItem(CMD_BASIC_PANEL).setVisible(mPanelSwitcher != null &&
                           mPanelSwitcher.getCurrentIndex() == ADVANCED_PANEL);
-        
-        menu.findItem(CMD_ADVANCED_PANEL).setVisible(mPanelSwitcher != null && 
+
+        menu.findItem(CMD_ADVANCED_PANEL).setVisible(mPanelSwitcher != null &&
                           mPanelSwitcher.getCurrentIndex() == BASIC_PANEL);
-        
+
         return true;
     }
 
@@ -122,14 +126,14 @@ public class Calculator extends Activity {
             break;
 
         case CMD_BASIC_PANEL:
-            if (mPanelSwitcher != null && 
+            if (mPanelSwitcher != null &&
                 mPanelSwitcher.getCurrentIndex() == ADVANCED_PANEL) {
                 mPanelSwitcher.moveRight();
             }
             break;
 
         case CMD_ADVANCED_PANEL:
-            if (mPanelSwitcher != null && 
+            if (mPanelSwitcher != null &&
                 mPanelSwitcher.getCurrentIndex() == BASIC_PANEL) {
                 mPanelSwitcher.moveLeft();
             }
@@ -153,7 +157,7 @@ public class Calculator extends Activity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent keyEvent) {
-        if (keyCode == KeyEvent.KEYCODE_BACK 
+        if (keyCode == KeyEvent.KEYCODE_BACK
             && mPanelSwitcher.getCurrentIndex() == ADVANCED_PANEL) {
             mPanelSwitcher.moveRight();
             return true;
@@ -179,5 +183,10 @@ public class Calculator extends Activity {
         int h = Math.min(display.getWidth(), display.getHeight());
         float ratio = (float)h/HVGA_WIDTH_PIXELS;
         view.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontPixelSize*ratio);
+    }
+
+    @Override
+    public void onChange() {
+        invalidateOptionsMenu();
     }
 }
