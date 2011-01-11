@@ -16,15 +16,18 @@
 
 package com.android.calculator2;
 
-import android.view.animation.TranslateAnimation;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.GestureDetector;
-import android.widget.FrameLayout;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.FrameLayout;
 
-class PanelSwitcher extends FrameLayout {
+class PanelSwitcher extends FrameLayout implements AnimationListener {
     private static final int MAJOR_MOVE = 60;
     private static final int ANIM_DURATION = 400;
 
@@ -43,10 +46,17 @@ class PanelSwitcher extends FrameLayout {
     private static final int RIGHT = 2;
     private int mPreviousMove;
 
+    public interface Listener {
+        void onChange();
+    }
+
+    private Listener mListener;
+
     public PanelSwitcher(Context context, AttributeSet attrs) {
         super(context, attrs);
         mCurrentView = 0;
         mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
+                @Override
                 public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                        float velocityY) {
                     int dx = (int) (e2.getX() - e1.getX());
@@ -67,9 +77,17 @@ class PanelSwitcher extends FrameLayout {
             });
     }
 
+    public void setListener(Listener listener) {
+        this.mListener = listener;
+    }
+
     void setCurrentIndex(int current) {
+        boolean changed = mCurrentView != current;
         mCurrentView = current;
         updateCurrentView();
+        if (changed && mListener != null) {
+            mListener.onChange();
+        }
     }
 
     private void updateCurrentView() {
@@ -78,12 +96,14 @@ class PanelSwitcher extends FrameLayout {
         }
     }
 
-    @Override 
+    @Override
     public void onSizeChanged(int w, int h, int oldW, int oldH) {
         mWidth = w;
         inLeft   = new TranslateAnimation(mWidth, 0, 0, 0);
-        outLeft  = new TranslateAnimation(0, -mWidth, 0, 0);        
+        inLeft.setAnimationListener(this);
+        outLeft  = new TranslateAnimation(0, -mWidth, 0, 0);
         inRight  = new TranslateAnimation(-mWidth, 0, 0, 0);
+        inRight.setAnimationListener(this);
         outRight = new TranslateAnimation(0, mWidth, 0, 0);
 
         inLeft.setDuration(ANIM_DURATION);
@@ -92,6 +112,7 @@ class PanelSwitcher extends FrameLayout {
         outRight.setDuration(ANIM_DURATION);
     }
 
+    @Override
     protected void onFinishInflate() {
         int count = getChildCount();
         mChildren = new View[count];
@@ -140,5 +161,20 @@ class PanelSwitcher extends FrameLayout {
 
     int getCurrentIndex() {
         return mCurrentView;
+    }
+
+    @Override
+    public void onAnimationRepeat(Animation animation) {
+    }
+
+    @Override
+    public void onAnimationStart(Animation animation) {
+    }
+
+    @Override
+    public void onAnimationEnd(Animation animation) {
+        if (mListener != null) {
+            mListener.onChange();
+        }
     }
 }
