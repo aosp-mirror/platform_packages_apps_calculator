@@ -67,12 +67,44 @@ public class Calculator extends Activity implements PanelSwitcher.Listener {
         mHistory.setObserver(historyAdapter);
 
         mPanelSwitcher = (PanelSwitcher) findViewById(R.id.panelswitch);
-        mPanelSwitcher.setCurrentIndex(state==null ? 0 : state.getInt(STATE_CURRENT_VIEW, 0));
-        mPanelSwitcher.setListener(this);
+        if (mPanelSwitcher != null) {
+            mPanelSwitcher.setCurrentIndex(state==null ? 0 : state.getInt(STATE_CURRENT_VIEW, 0));
+            mPanelSwitcher.setListener(this);
+        }
 
         mListener.setHandler(mLogic, mPanelSwitcher);
-
         mDisplay.setOnKeyListener(mListener);
+
+        setOnClickListener(R.id.digit0);
+        setOnClickListener(R.id.digit1);
+        setOnClickListener(R.id.digit2);
+        setOnClickListener(R.id.digit3);
+        setOnClickListener(R.id.digit4);
+        setOnClickListener(R.id.digit5);
+        setOnClickListener(R.id.digit6);
+        setOnClickListener(R.id.digit7);
+        setOnClickListener(R.id.digit8);
+        setOnClickListener(R.id.digit9);
+        setOnClickListener(R.id.dot);
+
+        setOnClickListener(R.id.plus);
+        setOnClickListener(R.id.minus);
+        setOnClickListener(R.id.div);
+        setOnClickListener(R.id.mul);
+        setOnClickListener(R.id.leftParen);
+        setOnClickListener(R.id.rightParen);
+        setOnClickListener(R.id.equal);
+
+        setOnClickListener(R.id.sin);
+        setOnClickListener(R.id.ln);
+        setOnClickListener(R.id.cos);
+        setOnClickListener(R.id.lg);
+        setOnClickListener(R.id.tan);
+        setOnClickListener(R.id.e);
+        setOnClickListener(R.id.pi);
+        setOnClickListener(R.id.power);
+        setOnClickListener(R.id.factorial);
+        setOnClickListener(R.id.sqrt);
 
         View view;
         if ((view = findViewById(R.id.del)) != null) {
@@ -84,6 +116,10 @@ public class Calculator extends Activity implements PanelSwitcher.Listener {
             view.setOnClickListener(mListener);
         }
         */
+    }
+
+    private void setOnClickListener(int id) {
+        findViewById(id).setOnClickListener(mListener);
     }
 
     @Override
@@ -145,7 +181,9 @@ public class Calculator extends Activity implements PanelSwitcher.Listener {
     @Override
     protected void onSaveInstanceState(Bundle state) {
         super.onSaveInstanceState(state);
-        state.putInt(STATE_CURRENT_VIEW, mPanelSwitcher.getCurrentIndex());
+        if (mPanelSwitcher != null) {
+            state.putInt(STATE_CURRENT_VIEW, mPanelSwitcher.getCurrentIndex());
+        }
     }
 
     @Override
@@ -158,7 +196,7 @@ public class Calculator extends Activity implements PanelSwitcher.Listener {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent keyEvent) {
         if (keyCode == KeyEvent.KEYCODE_BACK
-            && mPanelSwitcher.getCurrentIndex() == ADVANCED_PANEL) {
+            && mPanelSwitcher != null && mPanelSwitcher.getCurrentIndex() == ADVANCED_PANEL) {
             mPanelSwitcher.moveRight();
             return true;
         } else {
