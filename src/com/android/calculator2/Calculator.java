@@ -18,16 +18,13 @@ package com.android.calculator2;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Config;
-import android.util.TypedValue;
-import android.view.Display;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.KeyEvent;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class Calculator extends Activity implements PanelSwitcher.Listener {
     EventListener mListener = new EventListener();
@@ -40,8 +37,6 @@ public class Calculator extends Activity implements PanelSwitcher.Listener {
     private static final int CMD_CLEAR_HISTORY  = 1;
     private static final int CMD_BASIC_PANEL    = 2;
     private static final int CMD_ADVANCED_PANEL = 3;
-
-    private static final int HVGA_WIDTH_PIXELS  = 320;
 
     static final int BASIC_PANEL    = 0;
     static final int ADVANCED_PANEL = 1;
@@ -108,14 +103,9 @@ public class Calculator extends Activity implements PanelSwitcher.Listener {
 
         View view;
         if ((view = findViewById(R.id.del)) != null) {
-//            view.setOnClickListener(mListener);
+            view.setOnClickListener(mListener);
             view.setOnLongClickListener(mListener);
         }
-        /*
-        if ((view = findViewById(R.id.clear)) != null) {
-            view.setOnClickListener(mListener);
-        }
-        */
     }
 
     private void setOnClickListener(int id) {
@@ -208,19 +198,6 @@ public class Calculator extends Activity implements PanelSwitcher.Listener {
         if (LOG_ENABLED) {
             Log.v(LOG_TAG, message);
         }
-    }
-
-    /**
-     * The font sizes in the layout files are specified for a HVGA display.
-     * Adjust the font sizes accordingly if we are running on a different
-     * display.
-     */
-    public void adjustFontSize(TextView view) {
-        float fontPixelSize = view.getTextSize();
-        Display display = getWindowManager().getDefaultDisplay();
-        int h = Math.min(display.getWidth(), display.getHeight());
-        float ratio = (float)h/HVGA_WIDTH_PIXELS;
-        view.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontPixelSize*ratio);
     }
 
     @Override
