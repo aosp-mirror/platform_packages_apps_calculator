@@ -41,8 +41,8 @@
     <string name="digit9">9</string>
     <!-- Button name on screen to delete the last entered digit or operator -->
     <string name="del">DELETE</string>
-    <!-- Button name on screen to clear the entire calculation field -->
-    <string name="clear">CLEAR</string>
+    <!-- Button name on screen to clear the entire calculation field. [CHAR LIMIT=6] -->
+    <string name="clear">CLR</string>
     <!-- Do not translate. Unicode division sign; don't translate. Displayed as button on screen. -->
     <string name="div">\u00f7</string>
     <!-- Do not translate. Unicode multiplication sign; don't translate. Displayed as button on screen. -->

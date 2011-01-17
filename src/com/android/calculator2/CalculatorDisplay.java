@@ -34,12 +34,12 @@ import android.graphics.Paint;
  */
 class CalculatorDisplay extends ViewSwitcher {
     // only these chars are accepted from keyboard
-    private static final char[] ACCEPTED_CHARS = 
+    private static final char[] ACCEPTED_CHARS =
         "0123456789.+-*/\u2212\u00d7\u00f7()!%^".toCharArray();
 
     private static final int ANIM_DURATION = 500;
     enum Scroll { UP, DOWN, NONE }
-    
+
     TranslateAnimation inAnimUp;
     TranslateAnimation outAnimUp;
     TranslateAnimation inAnimDown;
@@ -47,17 +47,9 @@ class CalculatorDisplay extends ViewSwitcher {
 
     private Logic mLogic;
     private boolean mComputedLineLength = false;
-    
+
     public CalculatorDisplay(Context context, AttributeSet attrs) {
         super(context, attrs);
-    }
-    
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        Calculator calc = (Calculator) getContext();
-        calc.adjustFontSize((TextView)getChildAt(0));
-        calc.adjustFontSize((TextView)getChildAt(1));
     }
 
     @Override
@@ -87,11 +79,13 @@ class CalculatorDisplay extends ViewSwitcher {
                     // Don't display soft keyboard.
                     return InputType.TYPE_NULL;
                 }
-            
+
+                @Override
                 protected char[] getAcceptedChars() {
                     return ACCEPTED_CHARS;
                 }
 
+                @Override
                 public CharSequence filter(CharSequence source, int start, int end,
                                            Spanned dest, int dstart, int dend) {
                     /* the EditText should still accept letters (eg. 'sin')
@@ -138,45 +132,45 @@ class CalculatorDisplay extends ViewSwitcher {
     EditText getEditText() {
         return (EditText) getCurrentView();
     }
-        
+
     Editable getText() {
         EditText text = (EditText) getCurrentView();
         return text.getText();
     }
-    
+
     void setText(CharSequence text, Scroll dir) {
         if (getText().length() == 0) {
             dir = Scroll.NONE;
         }
-        
+
         if (dir == Scroll.UP) {
             setInAnimation(inAnimUp);
-            setOutAnimation(outAnimUp);            
+            setOutAnimation(outAnimUp);
         } else if (dir == Scroll.DOWN) {
             setInAnimation(inAnimDown);
-            setOutAnimation(outAnimDown);            
+            setOutAnimation(outAnimDown);
         } else { // Scroll.NONE
             setInAnimation(null);
             setOutAnimation(null);
         }
-        
+
         EditText editText = (EditText) getNextView();
         editText.setText(text);
         //Calculator.log("selection to " + text.length() + "; " + text);
         editText.setSelection(text.length());
         showNext();
     }
-    
+
     void setSelection(int i) {
         EditText text = (EditText) getCurrentView();
         text.setSelection(i);
     }
-    
+
     int getSelectionStart() {
         EditText text = (EditText) getCurrentView();
         return text.getSelectionStart();
     }
-    
+
     @Override
     protected void onFocusChanged(boolean gain, int direction, Rect prev) {
         //Calculator.log("focus " + gain + "; " + direction + "; " + prev);

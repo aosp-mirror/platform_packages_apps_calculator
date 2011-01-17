@@ -34,13 +34,13 @@ class ColorButton extends Button implements OnClickListener {
     int CLICK_FEEDBACK_COLOR;
     static final int CLICK_FEEDBACK_INTERVAL = 10;
     static final int CLICK_FEEDBACK_DURATION = 350;
-    
+
     float mTextX;
     float mTextY;
     long mAnimStart;
     OnClickListener mListener;
     Paint mFeedbackPaint;
-    
+
     public ColorButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         Calculator calc = (Calculator) context;
@@ -61,14 +61,12 @@ class ColorButton extends Button implements OnClickListener {
         mFeedbackPaint.setStyle(Style.STROKE);
         mFeedbackPaint.setStrokeWidth(2);
         getPaint().setColor(res.getColor(R.color.button_text));
-        
-        mAnimStart = -1;
 
-        calc.adjustFontSize(this);
+        mAnimStart = -1;
     }
 
 
-    @Override 
+    @Override
     public void onSizeChanged(int w, int h, int oldW, int oldH) {
         measureText();
     }
@@ -96,7 +94,7 @@ class ColorButton extends Button implements OnClickListener {
     public void onDraw(Canvas canvas) {
         if (mAnimStart != -1) {
             int animDuration = (int) (System.currentTimeMillis() - mAnimStart);
-            
+
             if (animDuration >= CLICK_FEEDBACK_DURATION) {
                 mAnimStart = -1;
             } else {
@@ -106,16 +104,16 @@ class ColorButton extends Button implements OnClickListener {
         } else if (isPressed()) {
             drawMagicFlame(0, canvas);
         }
-        
+
         CharSequence text = getText();
         canvas.drawText(text, 0, text.length(), mTextX, mTextY, getPaint());
     }
 
     public void animateClickFeedback() {
         mAnimStart = System.currentTimeMillis();
-        invalidate();        
-    } 
-    
+        invalidate();
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         boolean result = super.onTouchEvent(event);
