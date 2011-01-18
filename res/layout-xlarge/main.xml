@@ -26,12 +26,12 @@
     android:paddingLeft="32dip"
     android:paddingRight="32dip"
     android:paddingTop="64dip"
-    android:paddingBottom="32dip">
+    android:paddingBottom="64dip">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginBottom="32dip"
+        android:layout_marginBottom="72dip"
         android:background="@drawable/display_background_holo">
 
         <com.android.calculator2.CalculatorDisplay
@@ -40,9 +40,9 @@
             android:layout_weight="1"
             android:layout_height="match_parent">
 
-            <EditText
+            <com.android.calculator2.CalculatorEditText
                 style="@style/display_style" />
-            <EditText
+            <com.android.calculator2.CalculatorEditText
                 style="@style/display_style" />
 
         </com.android.calculator2.CalculatorDisplay>
@@ -74,7 +74,7 @@
         android:layout_height="0dip"
         android:layout_weight="2"
         android:orientation="vertical"
-        android:layout_marginBottom="64dip">
+        android:layout_marginBottom="72dip">
 
         <LinearLayout
             style="@style/btn_row_style">
