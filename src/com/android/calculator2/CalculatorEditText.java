@@ -41,7 +41,7 @@ public class CalculatorEditText extends EditText {
         setSelection(0, text.length());
         ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(
                 Context.CLIPBOARD_SERVICE);
-        clipboard.setPrimaryClip(ClipData.newPlainText(null, null, getText()));
+        clipboard.setPrimaryClip(ClipData.newPlainText(null, getText()));
         Toast.makeText(getContext(), R.string.text_copied_toast, Toast.LENGTH_SHORT).show();
         return true;
     }
