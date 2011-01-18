@@ -2,6 +2,8 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- XL -->
+    <!-- outdated translation 3697480253905829681 -->     <string name="clear" msgid="1681789655912720547">"BORRAR"</string>
+    <!-- XL -->
     <string name="sin" msgid="7638620063925474425">"sin"</string>
     <!-- XL -->
     <string name="lg" msgid="8162827627702585141">"logaritmo"</string>
