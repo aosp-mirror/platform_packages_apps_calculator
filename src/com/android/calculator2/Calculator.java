@@ -24,15 +24,16 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
-public class Calculator extends Activity implements PanelSwitcher.Listener {
+public class Calculator extends Activity implements PanelSwitcher.Listener, Logic.Listener {
     EventListener mListener = new EventListener();
     private CalculatorDisplay mDisplay;
     private Persist mPersist;
     private History mHistory;
     private Logic mLogic;
     private PanelSwitcher mPanelSwitcher;
+    private View mClearButton;
+    private View mBackspaceButton;
 
     private static final int CMD_CLEAR_HISTORY  = 1;
     private static final int CMD_BASIC_PANEL    = 2;
@@ -53,11 +54,25 @@ public class Calculator extends Activity implements PanelSwitcher.Listener {
         setContentView(R.layout.main);
 
         mPersist = new Persist(this);
+        mPersist.load();
+
         mHistory = mPersist.history;
 
         mDisplay = (CalculatorDisplay) findViewById(R.id.display);
 
-        mLogic = new Logic(this, mHistory, mDisplay, (Button) findViewById(R.id.equal));
+        mClearButton = findViewById(R.id.clear);
+        mClearButton.setOnClickListener(mListener);
+        mClearButton.setOnLongClickListener(mListener);
+
+        mBackspaceButton = findViewById(R.id.del);
+        mBackspaceButton.setOnClickListener(mListener);
+        mBackspaceButton.setOnLongClickListener(mListener);
+
+        mLogic = new Logic(this, mHistory, mDisplay);
+        mLogic.setListener(this);
+
+        mLogic.setDeleteMode(mPersist.getDeleteMode());
+
         HistoryAdapter historyAdapter = new HistoryAdapter(this, mHistory, mLogic);
         mHistory.setObserver(historyAdapter);
 
@@ -101,10 +116,16 @@ public class Calculator extends Activity implements PanelSwitcher.Listener {
         setOnClickListener(R.id.factorial);
         setOnClickListener(R.id.sqrt);
 
-        View view;
-        if ((view = findViewById(R.id.del)) != null) {
-            view.setOnClickListener(mListener);
-            view.setOnLongClickListener(mListener);
+        updateDeleteMode();
+    }
+
+    private void updateDeleteMode() {
+        if (mLogic.getDeleteMode() == Logic.DELETE_MODE_BACKSPACE) {
+            mClearButton.setVisibility(View.GONE);
+            mBackspaceButton.setVisibility(View.VISIBLE);
+        } else {
+            mClearButton.setVisibility(View.VISIBLE);
+            mBackspaceButton.setVisibility(View.GONE);
         }
     }
 
@@ -180,6 +201,7 @@ public class Calculator extends Activity implements PanelSwitcher.Listener {
     public void onPause() {
         super.onPause();
         mLogic.updateHistory();
+        mPersist.setDeleteMode(mLogic.getDeleteMode());
         mPersist.save();
     }
 
@@ -203,5 +225,10 @@ public class Calculator extends Activity implements PanelSwitcher.Listener {
     @Override
     public void onChange() {
         invalidateOptionsMenu();
+    }
+
+    @Override
+    public void onDeleteModeChange() {
+        updateDeleteMode();
     }
 }

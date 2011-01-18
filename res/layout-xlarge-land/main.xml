@@ -46,15 +46,26 @@
 
         </com.android.calculator2.CalculatorDisplay>
 
-        <Button
-            android:id="@+id/del"
-            android:text="@string/clear"
-            style="@style/btn_clear"
+        <FrameLayout
             android:layout_width="160dip"
-            android:layout_height="match_parent"
-            android:paddingLeft="5dip"
-            android:paddingRight="5dip"
-        />
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/clear"
+                android:text="@string/clear"
+                style="@style/btn_clear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="5dip"
+                android:paddingRight="5dip" />
+            <ImageButton
+                android:id="@+id/del"
+                android:src="@drawable/sym_keyboard_delete"
+                style="@style/btn_clear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="5dip"
+                android:paddingRight="5dip" />
+        </FrameLayout>
     </LinearLayout>
 
     <LinearLayout
