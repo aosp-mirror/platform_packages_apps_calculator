@@ -28,23 +28,33 @@ import java.io.DataOutputStream;
 import android.content.Context;
 
 class Persist {
-    private static final int LAST_VERSION = 1;
+    private static final int LAST_VERSION = 2;
     private static final String FILE_NAME = "calculator.data";
     private Context mContext;
 
     History history = new History();
+    private int mDeleteMode;
 
     Persist(Context context) {
         this.mContext = context;
-        load();
     }
 
-    private void load() {
+    public void setDeleteMode(int mode) {
+        mDeleteMode = mode;
+    }
+
+    public int getDeleteMode() {
+        return mDeleteMode;
+    }
+
+    public void load() {
         try {
             InputStream is = new BufferedInputStream(mContext.openFileInput(FILE_NAME), 8192);
             DataInputStream in = new DataInputStream(is);
             int version = in.readInt();
-            if (version > LAST_VERSION) {
+            if (version > 1) {
+                mDeleteMode = in.readInt();
+            } else if (version > LAST_VERSION) {
                 throw new IOException("data version " + version + "; expected " + LAST_VERSION);
             }
             history = new History(version, in);
@@ -56,15 +66,16 @@ class Persist {
         }
     }
 
-    void save() {
+    public void save() {
         try {
             OutputStream os = new BufferedOutputStream(mContext.openFileOutput(FILE_NAME, 0), 8192);
             DataOutputStream out = new DataOutputStream(os);
             out.writeInt(LAST_VERSION);
+            out.writeInt(mDeleteMode);
             history.write(out);
             out.close();
         } catch (IOException e) {
             Calculator.log("" + e);
-        } 
+        }
     }
 }

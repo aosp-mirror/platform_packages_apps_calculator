@@ -17,7 +17,6 @@
 package com.android.calculator2;
 
 import android.view.KeyEvent;
-import android.widget.Button;
 import android.widget.EditText;
 import android.content.Context;
 
@@ -37,20 +36,46 @@ class Logic {
 
     // the two strings below are the result of Double.toString() for Infinity & NaN
     // they are not output to the user and don't require internationalization
-    private static final String INFINITY = "Infinity"; 
+    private static final String INFINITY = "Infinity";
     private static final String NAN      = "NaN";
 
     static final char MINUS = '\u2212';
 
     private final String mErrorString;
 
-    Logic(Context context, History history, CalculatorDisplay display, Button equalButton) {
+    public final static int DELETE_MODE_BACKSPACE = 0;
+    public final static int DELETE_MODE_CLEAR = 1;
+
+    private int mDeleteMode = DELETE_MODE_BACKSPACE;
+
+    public interface Listener {
+        void onDeleteModeChange();
+    }
+
+    private Listener mListener;
+
+    Logic(Context context, History history, CalculatorDisplay display) {
         mErrorString = context.getResources().getString(R.string.error);
         mHistory = history;
         mDisplay = display;
         mDisplay.setLogic(this);
 
         clearWithHistory(false);
+    }
+
+    public void setListener(Listener listener) {
+        this.mListener = listener;
+    }
+
+    public void setDeleteMode(int mode) {
+        if (mDeleteMode != mode) {
+            mDeleteMode = mode;
+            mListener.onDeleteModeChange();
+        }
+    }
+
+    public int getDeleteMode() {
+        return mDeleteMode;
     }
 
     void setLineLength(int nDigits) {
@@ -60,7 +85,7 @@ class Logic {
     boolean eatHorizontalMove(boolean toLeft) {
         EditText editText = mDisplay.getEditText();
         int cursorPos = editText.getSelectionStart();
-        return toLeft ? cursorPos == 0 : cursorPos >= editText.length(); 
+        return toLeft ? cursorPos == 0 : cursorPos >= editText.length();
     }
 
     private String getText() {
@@ -68,7 +93,12 @@ class Logic {
     }
 
     void insert(String delta) {
-        mDisplay.insert(delta);
+        if (mDeleteMode == DELETE_MODE_CLEAR) {
+            setText(delta);
+        } else {
+            mDisplay.insert(delta);
+        }
+        setDeleteMode(DELETE_MODE_BACKSPACE);
     }
 
     private void setText(CharSequence text) {
@@ -76,7 +106,7 @@ class Logic {
     }
 
     private void clearWithHistory(boolean scroll) {
-        mDisplay.setText(mHistory.getText(), 
+        mDisplay.setText(mHistory.getText(),
                          scroll ? CalculatorDisplay.Scroll.UP : CalculatorDisplay.Scroll.NONE);
         mResult = "";
         mIsError = false;
@@ -91,12 +121,14 @@ class Logic {
         mResult = "";
         mIsError = false;
         updateHistory();
+
+        setDeleteMode(DELETE_MODE_BACKSPACE);
     }
 
     boolean acceptInsert(String delta) {
         String text = getText();
         return !mIsError &&
-            (!mResult.equals(text) || 
+            (!mResult.equals(text) ||
              isOperator(delta) ||
              mDisplay.getSelectionStart() != text.length());
     }
@@ -111,27 +143,27 @@ class Logic {
     }
 
     void onClear() {
-        clear(false);
+        clear(mDeleteMode == DELETE_MODE_CLEAR);
     }
 
     void onEnter() {
         String text = getText();
-        if (text.equals(mResult)) {
+        if (mDeleteMode == DELETE_MODE_CLEAR) {
             clearWithHistory(false); //clear after an Enter on result
         } else {
-            mHistory.enter(text);
             try {
-                mResult = evaluate(text);
+                String result = evaluate(text);
+                if (!text.equals(result)) {
+                    mHistory.enter(text);
+                    mResult = result;
+                    setText(mResult);
+                    setDeleteMode(DELETE_MODE_CLEAR);
+                }
             } catch (SyntaxException e) {
                 mIsError = true;
                 mResult = mErrorString;
-            }
-            if (text.equals(mResult)) {
-                //no need to show result, it is exactly what the user entered
-                clearWithHistory(true);
-            } else {
                 setText(mResult);
-                //mEqualButton.setText(mEnterString);
+                setDeleteMode(DELETE_MODE_CLEAR);
             }
         }
     }
