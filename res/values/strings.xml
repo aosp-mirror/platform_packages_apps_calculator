@@ -88,4 +88,6 @@
     <string name="advanced">Advanced panel</string>
     <!-- Menu item text to clear the calculation history. -->
     <string name="clear_history">Clear history</string>
+    <!-- Toast shown when text is copied to the clipboard. -->
+    <string name="text_copied_toast">Text copied</string>
 </resources>
