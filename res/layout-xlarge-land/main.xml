@@ -31,7 +31,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginBottom="48dip"
-        android:background="@drawable/display_background_holo">
+        android:background="@drawable/calculator_input_field">
 
         <com.android.calculator2.CalculatorDisplay
             android:id="@+id/display"
@@ -59,7 +59,7 @@
                 android:paddingRight="5dip" />
             <ImageButton
                 android:id="@+id/del"
-                android:src="@drawable/sym_keyboard_delete"
+                android:src="@drawable/calc_clear_symbol"
                 style="@style/btn_clear"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
