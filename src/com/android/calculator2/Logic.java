@@ -93,11 +93,7 @@ class Logic {
     }
 
     void insert(String delta) {
-        if (mDeleteMode == DELETE_MODE_CLEAR) {
-            setText(delta);
-        } else {
-            mDisplay.insert(delta);
-        }
+        mDisplay.insert(delta);
         setDeleteMode(DELETE_MODE_BACKSPACE);
     }
 
