@@ -16,6 +16,8 @@
 
 package com.android.calculator2;
 
+import com.android.calculator2.CalculatorDisplay.Scroll;
+
 import android.view.KeyEvent;
 import android.widget.EditText;
 import android.content.Context;
@@ -33,6 +35,8 @@ class Logic {
     private int mLineLength = 0;
 
     private static final String INFINITY_UNICODE = "\u221e";
+
+    public static final String MARKER_EVALUATE_ON_RESUME = "?";
 
     // the two strings below are the result of Double.toString() for Infinity & NaN
     // they are not output to the user and don't require internationalization
@@ -59,8 +63,6 @@ class Logic {
         mHistory = history;
         mDisplay = display;
         mDisplay.setLogic(this);
-
-        clearWithHistory(false);
     }
 
     public void setListener(Listener listener) {
@@ -97,15 +99,24 @@ class Logic {
         setDeleteMode(DELETE_MODE_BACKSPACE);
     }
 
-    private void setText(CharSequence text) {
-        mDisplay.setText(text, CalculatorDisplay.Scroll.UP);
+    public void resumeWithHistory() {
+        clearWithHistory(false);
     }
 
     private void clearWithHistory(boolean scroll) {
-        mDisplay.setText(mHistory.getText(),
-                         scroll ? CalculatorDisplay.Scroll.UP : CalculatorDisplay.Scroll.NONE);
-        mResult = "";
-        mIsError = false;
+        String text = mHistory.getText();
+        if (MARKER_EVALUATE_ON_RESUME.equals(text)) {
+            if (!mHistory.moveToPrevious()) {
+                text = "";
+            }
+            text = mHistory.getText();
+            evaluateAndShowResult(text, CalculatorDisplay.Scroll.NONE);
+        } else {
+            mResult = "";
+            mDisplay.setText(
+                    text, scroll ? CalculatorDisplay.Scroll.UP : CalculatorDisplay.Scroll.NONE);
+            mIsError = false;
+        }
     }
 
     private void clear(boolean scroll) {
@@ -143,24 +154,27 @@ class Logic {
     }
 
     void onEnter() {
-        String text = getText();
         if (mDeleteMode == DELETE_MODE_CLEAR) {
-            clearWithHistory(false); //clear after an Enter on result
+            clearWithHistory(false); // clear after an Enter on result
         } else {
-            try {
-                String result = evaluate(text);
-                if (!text.equals(result)) {
-                    mHistory.enter(text);
-                    mResult = result;
-                    setText(mResult);
-                    setDeleteMode(DELETE_MODE_CLEAR);
-                }
-            } catch (SyntaxException e) {
-                mIsError = true;
-                mResult = mErrorString;
-                setText(mResult);
+            evaluateAndShowResult(getText(), CalculatorDisplay.Scroll.UP);
+        }
+    }
+
+    public void evaluateAndShowResult(String text, Scroll scroll) {
+        try {
+            String result = evaluate(text);
+            if (!text.equals(result)) {
+                mHistory.enter(text);
+                mResult = result;
+                mDisplay.setText(mResult, scroll);
                 setDeleteMode(DELETE_MODE_CLEAR);
             }
+        } catch (SyntaxException e) {
+            mIsError = true;
+            mResult = mErrorString;
+            mDisplay.setText(mResult, scroll);
+            setDeleteMode(DELETE_MODE_CLEAR);
         }
     }
 
@@ -185,7 +199,12 @@ class Logic {
     }
 
     void updateHistory() {
-        mHistory.update(getText());
+        String text = getText();
+        if (text.equals(mResult)) {
+            mHistory.update(MARKER_EVALUATE_ON_RESUME);
+        } else {
+            mHistory.update(getText());
+        }
     }
 
     private static final int ROUND_DIGITS = 1;
@@ -201,12 +220,62 @@ class Logic {
             --size;
         }
 
-        String result = Util.doubleToString(mSymbols.eval(input), mLineLength, ROUND_DIGITS);
+        double value = mSymbols.eval(input);
+
+        String result = "";
+        for (int precision = mLineLength; precision > 6; precision--) {
+            result = tryFormattingWithPrecision(value, precision);
+            if (result.length() <= mLineLength) {
+                break;
+            }
+        }
+        return result.replace('-', MINUS).replace(INFINITY, INFINITY_UNICODE);
+    }
+
+    private String tryFormattingWithPrecision(double value, int precision) {
+        // The standard scientific formatter is basically what we need. We will
+        // start with what it produces and then massage it a bit.
+        String result = String.format("%" + mLineLength + "." + precision + "g", value);
         if (result.equals(NAN)) { // treat NaN as Error
             mIsError = true;
             return mErrorString;
         }
-        return result.replace('-', MINUS).replace(INFINITY, INFINITY_UNICODE);
+        String mantissa = result;
+        String exponent = null;
+        int e = result.indexOf('e');
+        if (e != -1) {
+            mantissa = result.substring(0, e);
+
+            // Strip "+" and unnecessary 0's from the exponent
+            exponent = result.substring(e + 1);
+            if (exponent.startsWith("+")) {
+                exponent = exponent.substring(1);
+            }
+            exponent = String.valueOf(Integer.parseInt(exponent));
+        } else {
+            mantissa = result;
+        }
+
+        int period = mantissa.indexOf('.');
+        if (period == -1) {
+            period = mantissa.indexOf(',');
+        }
+        if (period != -1) {
+            // Strip trailing 0's
+            while (mantissa.length() > 0 && mantissa.endsWith("0")) {
+                mantissa = mantissa.substring(0, mantissa.length() - 1);
+            }
+            if (mantissa.length() == period + 1) {
+                mantissa = mantissa.substring(0, mantissa.length() - 1);
+            }
+        }
+
+        if (exponent != null) {
+            result = mantissa + 'e' + exponent;
+        } else {
+            result = mantissa;
+        }
+        return result;
     }
 
     static boolean isOperator(String text) {
