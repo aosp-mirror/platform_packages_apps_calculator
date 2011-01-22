@@ -17,27 +17,30 @@
 package com.android.calculator2;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.Spanned;
 import android.text.method.NumberKeyListener;
 import android.util.AttributeSet;
 import android.view.animation.TranslateAnimation;
-import android.text.InputType;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.ViewSwitcher;
-import android.graphics.Rect;
-import android.graphics.Paint;
 
 /**
  * Provides vertical scrolling for the input/result EditText.
  */
 class CalculatorDisplay extends ViewSwitcher {
+
+    private static final String ATTR_MAX_DIGITS = "maxDigits";
+    private static final int DEFAULT_MAX_DIGITS = 10;
+
     // only these chars are accepted from keyboard
     private static final char[] ACCEPTED_CHARS =
         "0123456789.+-*/\u2212\u00d7\u00f7()!%^".toCharArray();
 
     private static final int ANIM_DURATION = 500;
+
     enum Scroll { UP, DOWN, NONE }
 
     TranslateAnimation inAnimUp;
@@ -46,29 +49,15 @@ class CalculatorDisplay extends ViewSwitcher {
     TranslateAnimation outAnimDown;
 
     private Logic mLogic;
-    private boolean mComputedLineLength = false;
+    private int mMaxDigits = DEFAULT_MAX_DIGITS;
 
     public CalculatorDisplay(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mMaxDigits = attrs.getAttributeIntValue(null, ATTR_MAX_DIGITS, DEFAULT_MAX_DIGITS);
     }
 
-    @Override
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed, left, top, right, bottom);
-        if (!mComputedLineLength) {
-            mLogic.setLineLength(getNumberFittingDigits((TextView) getCurrentView()));
-            mComputedLineLength = true;
-        }
-    }
-
-    // compute the maximum number of digits that fit in the
-    // calculator display without scrolling.
-    private int getNumberFittingDigits(TextView display) {
-        int available = display.getWidth()
-            - display.getTotalPaddingLeft() - display.getTotalPaddingRight();
-        Paint paint = display.getPaint();
-        float digitWidth = paint.measureText("2222222222") / 10f;
-        return (int) (available / digitWidth);
+    public int getMaxDigits() {
+        return mMaxDigits;
     }
 
     protected void setLogic(Logic logic) {
@@ -101,6 +90,7 @@ class CalculatorDisplay extends ViewSwitcher {
             text.setBackgroundDrawable(null);
             text.setEditableFactory(factory);
             text.setKeyListener(calculatorKeyListener);
+            text.setSingleLine();
         }
     }
 

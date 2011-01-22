@@ -37,7 +37,9 @@
             android:id="@+id/display"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            maxDigits="14"
+            >
 
             <com.android.calculator2.CalculatorEditText
                 style="@style/display_style" />
