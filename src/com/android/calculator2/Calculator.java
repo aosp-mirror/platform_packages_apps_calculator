@@ -72,6 +72,7 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
         mLogic.setListener(this);
 
         mLogic.setDeleteMode(mPersist.getDeleteMode());
+        mLogic.setLineLength(mDisplay.getMaxDigits());
 
         HistoryAdapter historyAdapter = new HistoryAdapter(this, mHistory, mLogic);
         mHistory.setObserver(historyAdapter);
@@ -116,6 +117,7 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
         setOnClickListener(R.id.factorial);
         setOnClickListener(R.id.sqrt);
 
+        mLogic.resumeWithHistory();
         updateDeleteMode();
     }
 
