@@ -19,11 +19,11 @@ package com.android.calculator2;
 import android.content.Context;
 import android.graphics.Rect;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.Spanned;
 import android.text.method.NumberKeyListener;
 import android.util.AttributeSet;
 import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ViewSwitcher;
 
@@ -65,8 +65,7 @@ class CalculatorDisplay extends ViewSwitcher {
         NumberKeyListener calculatorKeyListener =
             new NumberKeyListener() {
                 public int getInputType() {
-                    // Don't display soft keyboard.
-                    return InputType.TYPE_NULL;
+                    return EditorInfo.TYPE_CLASS_TEXT;
                 }
 
                 @Override
