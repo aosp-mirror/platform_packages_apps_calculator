@@ -31,7 +31,7 @@ class EventListener implements View.OnKeyListener,
         mPanelSwitcher = panelSwitcher;
     }
 
-    //@Override
+    @Override
     public void onClick(View view) {
         int id = view.getId();
         switch (id) {
@@ -63,7 +63,7 @@ class EventListener implements View.OnKeyListener,
         }
     }
 
-    //@Override
+    @Override
     public boolean onLongClick(View view) {
         int id = view.getId();
         if (id == R.id.del) {
@@ -73,9 +73,7 @@ class EventListener implements View.OnKeyListener,
         return false;
     }
 
-    private static final char[] EQUAL = {'='};
-
-    //@Override
+    @Override
     public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
         int action = keyEvent.getAction();
 
@@ -92,7 +90,7 @@ class EventListener implements View.OnKeyListener,
 
         //Calculator.log("KEY " + keyCode + "; " + action);
 
-        if (keyEvent.getMatch(EQUAL, keyEvent.getMetaState()) == '=') {
+        if (keyEvent.getUnicodeChar() == '=') {
             if (action == KeyEvent.ACTION_UP) {
                 mHandler.onEnter();
             }
