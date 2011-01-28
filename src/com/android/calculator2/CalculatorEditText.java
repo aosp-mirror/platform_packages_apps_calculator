@@ -23,6 +23,9 @@ import android.graphics.Rect;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.ActionMode;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -32,6 +35,7 @@ public class CalculatorEditText extends EditText {
 
     public CalculatorEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setCustomSelectionActionModeCallback(new NoTextSelectionMode());
     }
 
     @Override
@@ -40,7 +44,9 @@ public class CalculatorEditText extends EditText {
 
         InputMethodManager imm = ((InputMethodManager) getContext().
                 getSystemService(Context.INPUT_METHOD_SERVICE));
-        imm.hideSoftInputFromWindow(getApplicationWindowToken(), 0);
+        if (imm != null && imm.isActive(this)) {
+            imm.hideSoftInputFromWindow(getApplicationWindowToken(), 0);
+        }
     }
 
     @Override
@@ -54,16 +60,49 @@ public class CalculatorEditText extends EditText {
 
     @Override
     public boolean performLongClick() {
-        Editable text = getText();
+        final Editable text = getText();
         if (TextUtils.isEmpty(text)) {
             return false;
         }
 
+        copyContent();
+        return true;
+    }
+
+    private void copyContent() {
+        final Editable text = getText();
         setSelection(0, text.length());
         ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(
                 Context.CLIPBOARD_SERVICE);
-        clipboard.setPrimaryClip(ClipData.newPlainText(null, getText()));
+        clipboard.setPrimaryClip(ClipData.newPlainText(null, text));
         Toast.makeText(getContext(), R.string.text_copied_toast, Toast.LENGTH_SHORT).show();
-        return true;
+    }
+
+    class NoTextSelectionMode implements ActionMode.Callback {
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            return false;
+        }
+
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            copyContent();
+            // Make the selection highlight blink
+            postDelayed(new Runnable() {
+                public void run() {
+                    setSelection(getSelectionEnd());
+                }
+            }, 200);
+            // Prevents the selection action mode on double tap.
+            return false;
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {}
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false;
+        }
     }
 }
