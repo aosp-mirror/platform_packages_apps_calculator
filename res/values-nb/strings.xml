@@ -29,7 +29,7 @@
     <string name="digit8" msgid="3134686906411558886">"8"</string>
     <string name="digit9" msgid="765379157698748031">"9"</string>
     <string name="del" msgid="6248896117422989693">"SLETT"</string>
-    <!-- outdated translation 3697480253905829681 -->     <string name="clear" msgid="8103610981407459768">"TØM"</string>
+    <string name="clear" msgid="8103610981407459768">"CLR"</string>
     <string name="sin" msgid="6793866152659175277">"sin"</string>
     <string name="cos" msgid="6901841853098114414">"cos"</string>
     <string name="tan" msgid="7957459816738554960">"tan"</string>
@@ -41,6 +41,5 @@
     <string name="basic" msgid="7691469861698059753">"Grunnleggende panel"</string>
     <string name="advanced" msgid="7122495413742976492">"Avansert panel"</string>
     <string name="clear_history" msgid="8458043980601165012">"Tøm logg"</string>
-    <!-- no translation found for text_copied_toast (8283471249866321961) -->
-    <skip />
+    <string name="text_copied_toast" msgid="8283471249866321961">"Tekst kopiert"</string>
 </resources>
