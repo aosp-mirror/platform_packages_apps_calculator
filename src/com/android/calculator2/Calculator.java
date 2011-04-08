@@ -18,7 +18,6 @@ package com.android.calculator2;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Config;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -44,7 +43,7 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
 
     private static final String LOG_TAG = "Calculator";
     private static final boolean DEBUG  = false;
-    private static final boolean LOG_ENABLED = DEBUG ? Config.LOGD : Config.LOGV;
+    private static final boolean LOG_ENABLED = false;
     private static final String STATE_CURRENT_VIEW = "state-current-view";
 
     @Override
