@@ -23,15 +23,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ff000000"
-    android:paddingLeft="32dip"
-    android:paddingRight="32dip"
-    android:paddingTop="64dip"
-    android:paddingBottom="64dip">
+    android:paddingLeft="@dimen/left_right_padding"
+    android:paddingRight="@dimen/left_right_padding"
+    android:paddingTop="@dimen/top_bottom_padding"
+    android:paddingBottom="@dimen/top_bottom_padding">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginBottom="72dip"
+        android:layout_marginBottom="@dimen/group_padding"
         android:background="@drawable/calculator_input_field">
 
         <com.android.calculator2.CalculatorDisplay
@@ -50,7 +50,7 @@
         </com.android.calculator2.CalculatorDisplay>
 
         <FrameLayout
-            android:layout_width="160dip"
+            android:layout_width="100dip"
             android:layout_height="match_parent">
             <Button
                 android:id="@+id/clear"
@@ -76,7 +76,7 @@
         android:layout_height="0dip"
         android:layout_weight="2"
         android:orientation="vertical"
-        android:layout_marginBottom="72dip">
+        android:layout_marginBottom="@dimen/group_padding">
 
         <LinearLayout
             style="@style/btn_row_style">
