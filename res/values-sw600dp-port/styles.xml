@@ -14,9 +14,5 @@
      limitations under the License.
 -->
 <resources>
-    <dimen name="btn_digit_text_size">64sp</dimen>
-    <dimen name="btn_operation_text_size">64sp</dimen>
-    <dimen name="btn_function_text_size">32sp</dimen>
-    <dimen name="btn_clear_text_size">48sp</dimen>
-    <dimen name="display_text_size">72sp</dimen>
+    <dimen name="group_padding">48sp</dimen>
 </resources>

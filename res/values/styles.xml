@@ -48,7 +48,10 @@
        <item name="android:scrollHorizontally">true</item>
        <item name="android:layout_width">match_parent</item>
        <item name="android:layout_height">match_parent</item>
-       <item name="android:padding">8dp</item>
+       <item name="android:paddingTop">8dp</item>
+       <item name="android:paddingLeft">8dp</item>
+       <item name="android:paddingRight">8dp</item>
+       <item name="android:paddingBottom">0dp</item>
     </style>
 
     <style name="btn_row_style">
@@ -70,6 +73,7 @@
        <item name="android:layout_width">0dip</item>
        <item name="android:layout_weight">1</item>
        <item name="android:layout_height">match_parent</item>
+       <item name="android:gravity">center</item>
        <item name="android:background">@drawable/btn_function</item>
        <item name="android:textSize">@dimen/btn_operation_text_size</item>
     </style>
@@ -78,6 +82,7 @@
        <item name="android:layout_width">0dip</item>
        <item name="android:layout_weight">1</item>
        <item name="android:layout_height">match_parent</item>
+       <item name="android:gravity">center</item>
        <item name="android:background">@drawable/btn_digit</item>
        <item name="android:textSize">@dimen/btn_digit_text_size</item>
     </style>
