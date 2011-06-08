@@ -120,6 +120,7 @@ class Logic {
     }
 
     private void clear(boolean scroll) {
+        mHistory.enter("");
         mDisplay.setText("", scroll ? CalculatorDisplay.Scroll.UP : CalculatorDisplay.Scroll.NONE);
         cleared();
     }
