@@ -23,6 +23,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 
 public class Calculator extends Activity implements PanelSwitcher.Listener, Logic.Listener {
     EventListener mListener = new EventListener();
@@ -49,6 +50,10 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
+
+        // Disable IME for this application
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM,
+                WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
 
         setContentView(R.layout.main);
 
