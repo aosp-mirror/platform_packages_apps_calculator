@@ -20,6 +20,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.ActionMode;
@@ -34,7 +35,7 @@ public class CalculatorEditText extends EditText {
     public CalculatorEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         setCustomSelectionActionModeCallback(new NoTextSelectionMode());
-        setSuggestionsEnabled(false);
+        setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
     }
 
     @Override
