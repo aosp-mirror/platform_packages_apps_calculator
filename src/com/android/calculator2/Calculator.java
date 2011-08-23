@@ -211,6 +211,7 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
         switch (item.getItemId()) {
             case R.id.clear_history:
                 mHistory.clear();
+                mLogic.onClear();
                 break;
 
             case R.id.basic:
