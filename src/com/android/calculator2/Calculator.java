@@ -21,11 +21,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.WindowManager;
+import android.view.View.OnClickListener;
+import android.widget.PopupMenu;
+import android.widget.PopupMenu.OnMenuItemClickListener;
 
-public class Calculator extends Activity implements PanelSwitcher.Listener, Logic.Listener {
+import java.util.ArrayList;
+
+public class Calculator extends Activity implements PanelSwitcher.Listener, Logic.Listener,
+        OnClickListener, OnMenuItemClickListener {
     EventListener mListener = new EventListener();
     private CalculatorDisplay mDisplay;
     private Persist mPersist;
@@ -34,10 +42,7 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
     private PanelSwitcher mPanelSwitcher;
     private View mClearButton;
     private View mBackspaceButton;
-
-    private static final int CMD_CLEAR_HISTORY  = 1;
-    private static final int CMD_BASIC_PANEL    = 2;
-    private static final int CMD_ADVANCED_PANEL = 3;
+    private View mOverflowMenuButton;
 
     static final int BASIC_PANEL    = 0;
     static final int ADVANCED_PANEL = 1;
@@ -90,6 +95,9 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
         mListener.setHandler(mLogic, mPanelSwitcher);
         mDisplay.setOnKeyListener(mListener);
 
+        if (!ViewConfiguration.get(this).hasPermanentMenuKey()) {
+            createFakeMenu();
+        }
         setOnClickListener(R.id.digit0);
         setOnClickListener(R.id.digit1);
         setOnClickListener(R.id.digit2);
@@ -142,55 +150,80 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        MenuItem item;
-
-        item = menu.add(0, CMD_CLEAR_HISTORY, 0, R.string.clear_history);
-        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-        item.setIcon(R.drawable.clear_history);
-
-        item = menu.add(0, CMD_ADVANCED_PANEL, 0, R.string.advanced);
-        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-        item.setIcon(R.drawable.advanced);
-
-        item = menu.add(0, CMD_BASIC_PANEL, 0, R.string.basic);
-        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-        item.setIcon(R.drawable.simple);
-
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        menu.findItem(CMD_BASIC_PANEL).setVisible(mPanelSwitcher != null &&
-                          mPanelSwitcher.getCurrentIndex() == ADVANCED_PANEL);
-
-        menu.findItem(CMD_ADVANCED_PANEL).setVisible(mPanelSwitcher != null &&
-                          mPanelSwitcher.getCurrentIndex() == BASIC_PANEL);
-
+        menu.findItem(R.id.basic).setVisible(getBasicVisibility());
+        menu.findItem(R.id.advanced).setVisible(getAdvancedVisibility());
         return true;
+    }
+
+
+    private void createFakeMenu() {
+        mOverflowMenuButton = findViewById(R.id.overflow_menu);
+        if (mOverflowMenuButton != null) {
+            mOverflowMenuButton.setVisibility(View.VISIBLE);
+            mOverflowMenuButton.setOnClickListener(this);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.overflow_menu:
+                PopupMenu menu = constructPopupMenu();
+                if (menu != null) {
+                    menu.show();
+                }
+                break;
+        }
+    }
+
+    private PopupMenu constructPopupMenu() {
+        final PopupMenu popupMenu = new PopupMenu(this, mOverflowMenuButton);
+        final Menu menu = popupMenu.getMenu();
+        popupMenu.inflate(R.menu.menu);
+        popupMenu.setOnMenuItemClickListener(this);
+        onPrepareOptionsMenu(menu);
+        return popupMenu;
+    }
+
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        return onOptionsItemSelected(item);
+    }
+
+    private boolean getBasicVisibility() {
+        return mPanelSwitcher != null && mPanelSwitcher.getCurrentIndex() == ADVANCED_PANEL;
+    }
+
+    private boolean getAdvancedVisibility() {
+        return mPanelSwitcher != null && mPanelSwitcher.getCurrentIndex() == BASIC_PANEL;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-        case CMD_CLEAR_HISTORY:
-            mHistory.clear();
-            break;
+            case R.id.clear_history:
+                mHistory.clear();
+                break;
 
-        case CMD_BASIC_PANEL:
-            if (mPanelSwitcher != null &&
-                mPanelSwitcher.getCurrentIndex() == ADVANCED_PANEL) {
-                mPanelSwitcher.moveRight();
-            }
-            break;
+            case R.id.basic:
+                if (mPanelSwitcher != null && mPanelSwitcher.getCurrentIndex() == ADVANCED_PANEL) {
+                    mPanelSwitcher.moveRight();
+                }
+                break;
 
-        case CMD_ADVANCED_PANEL:
-            if (mPanelSwitcher != null &&
-                mPanelSwitcher.getCurrentIndex() == BASIC_PANEL) {
-                mPanelSwitcher.moveLeft();
-            }
-            break;
+            case R.id.advanced:
+                if (mPanelSwitcher != null && mPanelSwitcher.getCurrentIndex() == BASIC_PANEL) {
+                    mPanelSwitcher.moveLeft();
+                }
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
