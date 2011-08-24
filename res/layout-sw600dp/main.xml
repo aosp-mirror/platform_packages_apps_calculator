@@ -39,7 +39,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            maxDigits="12"
+            maxDigits="@integer/max_digits"
             >
 
             <com.android.calculator2.CalculatorEditText

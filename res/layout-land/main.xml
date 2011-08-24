@@ -29,12 +29,12 @@
          android:layout_weight="2"
          >
 
-        <com.android.calculator2.CalculatorDisplay 
+        <com.android.calculator2.CalculatorDisplay
              android:id="@+id/display"
              android:layout_width="0dp"
              android:layout_weight="5"
              android:layout_height="match_parent"
-             maxDigits="12">
+             maxDigits="@integer/max_digits">
 
             <EditText style="@style/display_style" />
             <EditText style="@style/display_style" />

@@ -37,7 +37,7 @@
                      android:layout_width="0dip"
                      android:layout_height="match_parent"
                      android:layout_weight="1"
-                     maxDigits="8">
+                     maxDigits="@integer/max_digits">
 
                     <EditText style="@style/display_style" />
                     <EditText style="@style/display_style" />
