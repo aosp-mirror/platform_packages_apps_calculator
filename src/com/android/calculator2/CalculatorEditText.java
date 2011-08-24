@@ -76,12 +76,6 @@ public class CalculatorEditText extends EditText {
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
             copyContent();
-            // Make the selection highlight blink
-            postDelayed(new Runnable() {
-                public void run() {
-                    setSelection(getSelectionEnd());
-                }
-            }, 200);
             // Prevents the selection action mode on double tap.
             return false;
         }
