@@ -18,6 +18,7 @@ package com.android.calculator2;
 
 import com.android.calculator2.CalculatorDisplay.Scroll;
 
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.widget.EditText;
 import android.content.Context;
@@ -201,7 +202,10 @@ class Logic {
 
     void updateHistory() {
         String text = getText();
-        if (text.equals(mResult)) {
+        // Don't set the ? marker for empty text or the error string.
+        // There is no need to evaluate those later.
+        if (!TextUtils.isEmpty(text) && !TextUtils.equals(text, mErrorString)
+                && text.equals(mResult)) {
             mHistory.update(MARKER_EVALUATE_ON_RESUME);
         } else {
             mHistory.update(getText());
