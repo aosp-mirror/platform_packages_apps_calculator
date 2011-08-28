@@ -39,8 +39,10 @@
                      android:layout_weight="1"
                      maxDigits="@integer/max_digits">
 
-                    <EditText style="@style/display_style" />
-                    <EditText style="@style/display_style" />
+                    <com.android.calculator2.CalculatorEditText
+                        style="@style/display_style" />
+                    <com.android.calculator2.CalculatorEditText
+                        style="@style/display_style" />
 
                 </com.android.calculator2.CalculatorDisplay>
                 <ImageButton android:id="@+id/overflow_menu"
