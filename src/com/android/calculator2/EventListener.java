@@ -16,19 +16,20 @@
 
 package com.android.calculator2;
 
-import android.view.View;
+import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.Button;
 
 class EventListener implements View.OnKeyListener,
                                View.OnClickListener,
                                View.OnLongClickListener {
     Logic mHandler;
-    PanelSwitcher mPanelSwitcher;
+    ViewPager mPager;
 
-    void setHandler(Logic handler, PanelSwitcher panelSwitcher) {
+    void setHandler(Logic handler, ViewPager pager) {
         mHandler = handler;
-        mPanelSwitcher = panelSwitcher;
+        mPager = pager;
     }
 
     @Override
@@ -55,9 +56,8 @@ class EventListener implements View.OnKeyListener,
                     text += '(';
                 }
                 mHandler.insert(text);
-                if (mPanelSwitcher != null &&
-                    mPanelSwitcher.getCurrentIndex() == Calculator.ADVANCED_PANEL) {
-                    mPanelSwitcher.moveRight();
+                if (mPager != null && mPager.getCurrentItem() == Calculator.ADVANCED_PANEL) {
+                    mPager.setCurrentItem(Calculator.BASIC_PANEL);
                 }
             }
         }
