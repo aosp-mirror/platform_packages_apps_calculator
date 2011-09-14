@@ -144,8 +144,8 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        menu.findItem(R.id.basic).setVisible(getBasicVisibility());
-        menu.findItem(R.id.advanced).setVisible(getAdvancedVisibility());
+        menu.findItem(R.id.basic).setVisible(!getBasicVisibility());
+        menu.findItem(R.id.advanced).setVisible(!getAdvancedVisibility());
         return true;
     }
 
@@ -186,11 +186,11 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
     }
 
     private boolean getBasicVisibility() {
-        return mPager != null && mPager.getCurrentItem() == ADVANCED_PANEL;
+        return mPager != null && mPager.getCurrentItem() == BASIC_PANEL;
     }
 
     private boolean getAdvancedVisibility() {
-        return mPager != null && mPager.getCurrentItem() == BASIC_PANEL;
+        return mPager != null && mPager.getCurrentItem() == ADVANCED_PANEL;
     }
 
     @Override
@@ -202,13 +202,13 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
                 break;
 
             case R.id.basic:
-                if (getAdvancedVisibility()) {
+                if (!getBasicVisibility()) {
                     mPager.setCurrentItem(BASIC_PANEL);
                 }
                 break;
 
             case R.id.advanced:
-                if (getBasicVisibility()) {
+                if (!getAdvancedVisibility()) {
                     mPager.setCurrentItem(ADVANCED_PANEL);
                 }
                 break;
