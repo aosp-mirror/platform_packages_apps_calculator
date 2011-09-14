@@ -17,20 +17,24 @@
 package com.android.calculator2;
 
 import android.app.Activity;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewConfiguration;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.ViewConfiguration;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
-
-import java.util.ArrayList;
 
 public class Calculator extends Activity implements PanelSwitcher.Listener, Logic.Listener,
         OnClickListener, OnMenuItemClickListener {
@@ -39,7 +43,7 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
     private Persist mPersist;
     private History mHistory;
     private Logic mLogic;
-    private PanelSwitcher mPanelSwitcher;
+    private ViewPager mPager;
     private View mClearButton;
     private View mBackspaceButton;
     private View mOverflowMenuButton;
@@ -61,6 +65,28 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
                 WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
 
         setContentView(R.layout.main);
+        mPager = (ViewPager) findViewById(R.id.panelswitch);
+        if (mPager != null) {
+            mPager.setAdapter(new PageAdapter(mPager));
+        } else {
+            // Single page UI
+            final TypedArray buttons = getResources().obtainTypedArray(R.array.buttons);
+            for (int i = 0; i < buttons.length(); i++) {
+                setOnClickListener(null, buttons.getResourceId(i, 0));
+            }
+            buttons.recycle();
+        }
+
+        if (mClearButton == null) {
+            mClearButton = findViewById(R.id.clear);
+            mClearButton.setOnClickListener(mListener);
+            mClearButton.setOnLongClickListener(mListener);
+        }
+        if (mBackspaceButton == null) {
+            mBackspaceButton = findViewById(R.id.del);
+            mBackspaceButton.setOnClickListener(mListener);
+            mBackspaceButton.setOnLongClickListener(mListener);
+        }
 
         mPersist = new Persist(this);
         mPersist.load();
@@ -68,14 +94,6 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
         mHistory = mPersist.history;
 
         mDisplay = (CalculatorDisplay) findViewById(R.id.display);
-
-        mClearButton = findViewById(R.id.clear);
-        mClearButton.setOnClickListener(mListener);
-        mClearButton.setOnLongClickListener(mListener);
-
-        mBackspaceButton = findViewById(R.id.del);
-        mBackspaceButton.setOnClickListener(mListener);
-        mBackspaceButton.setOnLongClickListener(mListener);
 
         mLogic = new Logic(this, mHistory, mDisplay);
         mLogic.setListener(this);
@@ -86,48 +104,16 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
         HistoryAdapter historyAdapter = new HistoryAdapter(this, mHistory, mLogic);
         mHistory.setObserver(historyAdapter);
 
-        mPanelSwitcher = (PanelSwitcher) findViewById(R.id.panelswitch);
-        if (mPanelSwitcher != null) {
-            mPanelSwitcher.setCurrentIndex(state==null ? 0 : state.getInt(STATE_CURRENT_VIEW, 0));
-            mPanelSwitcher.setListener(this);
+        if (mPager != null) {
+            mPager.setCurrentItem(state == null ? 0 : state.getInt(STATE_CURRENT_VIEW, 0));
         }
 
-        mListener.setHandler(mLogic, mPanelSwitcher);
+        mListener.setHandler(mLogic, mPager);
         mDisplay.setOnKeyListener(mListener);
 
         if (!ViewConfiguration.get(this).hasPermanentMenuKey()) {
             createFakeMenu();
         }
-        setOnClickListener(R.id.digit0);
-        setOnClickListener(R.id.digit1);
-        setOnClickListener(R.id.digit2);
-        setOnClickListener(R.id.digit3);
-        setOnClickListener(R.id.digit4);
-        setOnClickListener(R.id.digit5);
-        setOnClickListener(R.id.digit6);
-        setOnClickListener(R.id.digit7);
-        setOnClickListener(R.id.digit8);
-        setOnClickListener(R.id.digit9);
-        setOnClickListener(R.id.dot);
-
-        setOnClickListener(R.id.plus);
-        setOnClickListener(R.id.minus);
-        setOnClickListener(R.id.div);
-        setOnClickListener(R.id.mul);
-        setOnClickListener(R.id.leftParen);
-        setOnClickListener(R.id.rightParen);
-        setOnClickListener(R.id.equal);
-
-        setOnClickListener(R.id.sin);
-        setOnClickListener(R.id.ln);
-        setOnClickListener(R.id.cos);
-        setOnClickListener(R.id.lg);
-        setOnClickListener(R.id.tan);
-        setOnClickListener(R.id.e);
-        setOnClickListener(R.id.pi);
-        setOnClickListener(R.id.power);
-        setOnClickListener(R.id.factorial);
-        setOnClickListener(R.id.sqrt);
 
         mLogic.resumeWithHistory();
         updateDeleteMode();
@@ -143,8 +129,9 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
         }
     }
 
-    private void setOnClickListener(int id) {
-        findViewById(id).setOnClickListener(mListener);
+    void setOnClickListener(View root, int id) {
+        final View target = root != null ? root.findViewById(id) : findViewById(id);
+        target.setOnClickListener(mListener);
     }
 
     @Override
@@ -199,11 +186,11 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
     }
 
     private boolean getBasicVisibility() {
-        return mPanelSwitcher != null && mPanelSwitcher.getCurrentIndex() == ADVANCED_PANEL;
+        return mPager != null && mPager.getCurrentItem() == ADVANCED_PANEL;
     }
 
     private boolean getAdvancedVisibility() {
-        return mPanelSwitcher != null && mPanelSwitcher.getCurrentIndex() == BASIC_PANEL;
+        return mPager != null && mPager.getCurrentItem() == BASIC_PANEL;
     }
 
     @Override
@@ -215,14 +202,14 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
                 break;
 
             case R.id.basic:
-                if (mPanelSwitcher != null && mPanelSwitcher.getCurrentIndex() == ADVANCED_PANEL) {
-                    mPanelSwitcher.moveRight();
+                if (getAdvancedVisibility()) {
+                    mPager.setCurrentItem(BASIC_PANEL);
                 }
                 break;
 
             case R.id.advanced:
-                if (mPanelSwitcher != null && mPanelSwitcher.getCurrentIndex() == BASIC_PANEL) {
-                    mPanelSwitcher.moveLeft();
+                if (getBasicVisibility()) {
+                    mPager.setCurrentItem(ADVANCED_PANEL);
                 }
                 break;
         }
@@ -232,8 +219,8 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
     @Override
     protected void onSaveInstanceState(Bundle state) {
         super.onSaveInstanceState(state);
-        if (mPanelSwitcher != null) {
-            state.putInt(STATE_CURRENT_VIEW, mPanelSwitcher.getCurrentIndex());
+        if (mPager != null) {
+            state.putInt(STATE_CURRENT_VIEW, mPager.getCurrentItem());
         }
     }
 
@@ -247,9 +234,8 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent keyEvent) {
-        if (keyCode == KeyEvent.KEYCODE_BACK
-            && mPanelSwitcher != null && mPanelSwitcher.getCurrentIndex() == ADVANCED_PANEL) {
-            mPanelSwitcher.moveRight();
+        if (keyCode == KeyEvent.KEYCODE_BACK && getAdvancedVisibility()) {
+            mPager.setCurrentItem(BASIC_PANEL);
             return true;
         } else {
             return super.onKeyDown(keyCode, keyEvent);
@@ -270,5 +256,80 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
     @Override
     public void onDeleteModeChange() {
         updateDeleteMode();
+    }
+
+    class PageAdapter extends PagerAdapter {
+        private View mSimplePage;
+        private View mAdvancedPage;
+
+        public PageAdapter(ViewPager parent) {
+            final LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+            final View simplePage = inflater.inflate(R.layout.simple_pad, parent, false);
+            final View advancedPage = inflater.inflate(R.layout.advanced_pad, parent, false);
+            mSimplePage = simplePage;
+            mAdvancedPage = advancedPage;
+
+            final Resources res = getResources();
+            final TypedArray simpleButtons = res.obtainTypedArray(R.array.simple_buttons);
+            for (int i = 0; i < simpleButtons.length(); i++) {
+                setOnClickListener(simplePage, simpleButtons.getResourceId(i, 0));
+            }
+            simpleButtons.recycle();
+
+            final TypedArray advancedButtons = res.obtainTypedArray(R.array.advanced_buttons);
+            for (int i = 0; i < advancedButtons.length(); i++) {
+                setOnClickListener(advancedPage, advancedButtons.getResourceId(i, 0));
+            }
+            advancedButtons.recycle();
+
+            final View clearButton = simplePage.findViewById(R.id.clear);
+            if (clearButton != null) {
+                mClearButton = clearButton;
+            }
+
+            final View backspaceButton = simplePage.findViewById(R.id.del);
+            if (backspaceButton != null) {
+                mBackspaceButton = backspaceButton;
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
+
+        @Override
+        public void startUpdate(View container) {
+        }
+
+        @Override
+        public Object instantiateItem(View container, int position) {
+            final View page = position == 0 ? mSimplePage : mAdvancedPage;
+            ((ViewGroup) container).addView(page);
+            return page;
+        }
+
+        @Override
+        public void destroyItem(View container, int position, Object object) {
+            ((ViewGroup) container).removeView((View) object);
+        }
+
+        @Override
+        public void finishUpdate(View container) {
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == object;
+        }
+
+        @Override
+        public Parcelable saveState() {
+            return null;
+        }
+
+        @Override
+        public void restoreState(Parcelable state, ClassLoader loader) {
+        }
     }
 }
