@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name" msgid="8095131950334945205">"kikokotoo"</string>
+    <string name="app_name" msgid="8095131950334945205">"Kikokotoo"</string>
     <string name="error" msgid="9197457880925804499">"Hitilafu"</string>
     <string name="digit0" msgid="8069590963464434135">"0"</string>
     <string name="digit1" msgid="8535041374797804029">"1"</string>
@@ -29,13 +29,13 @@
     <string name="digit8" msgid="3134686906411558886">"8"</string>
     <string name="digit9" msgid="765379157698748031">"9"</string>
     <string name="del" msgid="6248896117422989693">"FUTA"</string>
-    <string name="clear" msgid="8103610981407459768">"CLR"</string>
-    <string name="sin" msgid="6793866152659175277">"Sin"</string>
+    <string name="clear" msgid="8103610981407459768">"FUT"</string>
+    <string name="sin" msgid="6793866152659175277">"sin"</string>
     <string name="cos" msgid="6901841853098114414">"cos"</string>
     <string name="tan" msgid="7957459816738554960">"tan"</string>
     <string name="e" msgid="1377847800971731483">"e"</string>
     <string name="ln" msgid="6888500680285403344">"Kwenye"</string>
-    <string name="lg" msgid="873623857385418182">"ingia"</string>
+    <string name="lg" msgid="873623857385418182">"log"</string>
     <string name="leftParen" msgid="4850643713953092099">"("</string>
     <string name="rightParen" msgid="3177971166159324016">")"</string>
     <string name="basic" msgid="7691469861698059753">"Paneli msingi"</string>
