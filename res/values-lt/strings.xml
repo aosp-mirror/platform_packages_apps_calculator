@@ -41,5 +41,5 @@
     <string name="basic" msgid="7691469861698059753">"Pagrindinis skydelis"</string>
     <string name="advanced" msgid="7122495413742976492">"Išplėstinis skydelis"</string>
     <string name="clear_history" msgid="8458043980601165012">"Išvalyti istoriją"</string>
-    <string name="text_copied_toast" msgid="8283471249866321961">"Tekstas nukopijuotas"</string>
+    <string name="text_copied_toast" msgid="5801480710472541833">"Tekstas nukopijuotas."</string>
 </resources>

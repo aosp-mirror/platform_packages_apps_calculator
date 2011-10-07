@@ -41,5 +41,5 @@
     <string name="basic" msgid="7691469861698059753">"Основен панел"</string>
     <string name="advanced" msgid="7122495413742976492">"Разширен панел"</string>
     <string name="clear_history" msgid="8458043980601165012">"Изчистване на историята"</string>
-    <string name="text_copied_toast" msgid="8283471249866321961">"Текстът е копиран"</string>
+    <string name="text_copied_toast" msgid="5801480710472541833">"Текстът е копиран."</string>
 </resources>

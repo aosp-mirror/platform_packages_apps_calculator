@@ -41,5 +41,5 @@
     <string name="basic" msgid="7691469861698059753">"기본 패널"</string>
     <string name="advanced" msgid="7122495413742976492">"고급 패널"</string>
     <string name="clear_history" msgid="8458043980601165012">"기록 지우기"</string>
-    <string name="text_copied_toast" msgid="8283471249866321961">"텍스트 복사됨"</string>
+    <string name="text_copied_toast" msgid="5801480710472541833">"텍스트를 복사했습니다."</string>
 </resources>

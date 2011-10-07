@@ -41,5 +41,5 @@
     <string name="basic" msgid="7691469861698059753">"基本面板"</string>
     <string name="advanced" msgid="7122495413742976492">"高级面板"</string>
     <string name="clear_history" msgid="8458043980601165012">"清除历史记录"</string>
-    <string name="text_copied_toast" msgid="8283471249866321961">"文本已复制"</string>
+    <string name="text_copied_toast" msgid="5801480710472541833">"文本已复制。"</string>
 </resources>
