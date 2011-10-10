@@ -27,47 +27,6 @@
               >
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        >
-
-        <View
-            android:background="@drawable/btn_function"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            />
-
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent">
-            <!-- marginRight has to be 0 to catch border-touch -->
-            <com.android.calculator2.ColorButton
-                android:id="@+id/clear"
-                android:text="@string/clear"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="0dp"
-                android:textSize="15dp"
-                style="@style/button_style"
-                />
-            <!-- marginRight has to be 0 to catch border-touch -->
-            <com.android.calculator2.ColorButton
-                android:id="@+id/del"
-                android:text="@string/del"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="0dp"
-                android:textSize="15dp"
-                style="@style/button_style"
-                />
-        </FrameLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
         android:layout_weight="3"
         android:layout_width="match_parent"
         android:layout_height="0dp">
