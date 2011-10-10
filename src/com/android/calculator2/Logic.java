@@ -23,6 +23,8 @@ import android.view.KeyEvent;
 import android.widget.EditText;
 import android.content.Context;
 
+import java.util.Locale;
+
 import org.javia.arity.Symbols;
 import org.javia.arity.SyntaxException;
 import org.javia.arity.Util;
@@ -240,7 +242,7 @@ class Logic {
     private String tryFormattingWithPrecision(double value, int precision) {
         // The standard scientific formatter is basically what we need. We will
         // start with what it produces and then massage it a bit.
-        String result = String.format("%" + mLineLength + "." + precision + "g", value);
+        String result = String.format(Locale.US, "%" + mLineLength + "." + precision + "g", value);
         if (result.equals(NAN)) { // treat NaN as Error
             mIsError = true;
             return mErrorString;
