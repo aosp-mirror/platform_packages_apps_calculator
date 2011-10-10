@@ -41,5 +41,5 @@
     <string name="basic" msgid="7691469861698059753">"Základní funkce"</string>
     <string name="advanced" msgid="7122495413742976492">"Pokročilé funkce"</string>
     <string name="clear_history" msgid="8458043980601165012">"Vymazat historii"</string>
-    <string name="text_copied_toast" msgid="8283471249866321961">"Text zkopírován"</string>
+    <string name="text_copied_toast" msgid="5801480710472541833">"Text zkopírován."</string>
 </resources>

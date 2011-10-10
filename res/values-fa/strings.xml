@@ -41,5 +41,5 @@
     <string name="basic" msgid="7691469861698059753">"پانل اصلی"</string>
     <string name="advanced" msgid="7122495413742976492">"پانل پیشرفته"</string>
     <string name="clear_history" msgid="8458043980601165012">"پاک کردن سابقه"</string>
-    <string name="text_copied_toast" msgid="8283471249866321961">"متن کپی شده"</string>
+    <string name="text_copied_toast" msgid="5801480710472541833">"نوشتار کپی شد."</string>
 </resources>
