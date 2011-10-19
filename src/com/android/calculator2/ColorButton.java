@@ -120,7 +120,11 @@ class ColorButton extends Button implements OnClickListener {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_UP:
-                animateClickFeedback();
+                if (isPressed()) {
+                    animateClickFeedback();
+                } else {
+                    invalidate();
+                }
                 break;
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_CANCEL:
