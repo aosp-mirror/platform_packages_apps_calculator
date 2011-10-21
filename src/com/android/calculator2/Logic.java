@@ -102,6 +102,10 @@ class Logic {
         setDeleteMode(DELETE_MODE_BACKSPACE);
     }
 
+    public void onTextChanged() {
+        setDeleteMode(DELETE_MODE_BACKSPACE);
+    }
+
     public void resumeWithHistory() {
         clearWithHistory(false);
     }

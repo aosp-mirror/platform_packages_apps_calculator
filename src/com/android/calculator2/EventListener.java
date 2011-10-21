@@ -101,6 +101,10 @@ class EventListener implements View.OnKeyListener,
             keyCode != KeyEvent.KEYCODE_DPAD_UP &&
             keyCode != KeyEvent.KEYCODE_DPAD_DOWN &&
             keyCode != KeyEvent.KEYCODE_ENTER) {
+            if (keyEvent.isPrintingKey() && action == KeyEvent.ACTION_UP) {
+                // Tell the handler that text was updated.
+                mHandler.onTextChanged();
+            }
             return false;
         }
 
