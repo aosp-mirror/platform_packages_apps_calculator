@@ -19,11 +19,11 @@ package com.android.calculator2;
 import android.content.Context;
 import android.graphics.Rect;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.Spanned;
 import android.text.method.NumberKeyListener;
 import android.util.AttributeSet;
 import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ViewSwitcher;
 
@@ -48,7 +48,6 @@ class CalculatorDisplay extends ViewSwitcher {
     TranslateAnimation inAnimDown;
     TranslateAnimation outAnimDown;
 
-    private Logic mLogic;
     private int mMaxDigits = DEFAULT_MAX_DIGITS;
 
     public CalculatorDisplay(Context context, AttributeSet attrs) {
@@ -61,11 +60,10 @@ class CalculatorDisplay extends ViewSwitcher {
     }
 
     protected void setLogic(Logic logic) {
-        mLogic = logic;
         NumberKeyListener calculatorKeyListener =
             new NumberKeyListener() {
                 public int getInputType() {
-                    return EditorInfo.TYPE_CLASS_TEXT;
+                    return InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS;
                 }
 
                 @Override
