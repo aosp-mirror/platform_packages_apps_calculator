@@ -31,24 +31,24 @@ class HistoryAdapter extends BaseAdapter {
     private Vector<HistoryEntry> mEntries;
     private LayoutInflater mInflater;
     private Logic mEval;
-    
+
     HistoryAdapter(Context context, History history, Logic evaluator) {
         mEntries = history.mEntries;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mEval = evaluator;
     }
 
-    // @Override
+    @Override
     public int getCount() {
         return mEntries.size() - 1;
     }
 
-    // @Override
+    @Override
     public Object getItem(int position) {
         return mEntries.elementAt(position);
     }
 
-    // @Override
+    @Override
     public long getItemId(int position) {
         return position;
     }
@@ -58,7 +58,7 @@ class HistoryAdapter extends BaseAdapter {
         return true;
     }
 
-    // @Override
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view;
         if (convertView == null) {
@@ -84,4 +84,3 @@ class HistoryAdapter extends BaseAdapter {
         return view;
     }
 }
-
