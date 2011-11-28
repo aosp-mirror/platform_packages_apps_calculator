@@ -88,6 +88,8 @@ class EventListener implements View.OnKeyListener,
             return true; // eat it
         }
 
+        //Calculator.log("KEY " + keyCode + "; " + action);
+
         if (keyEvent.getUnicodeChar() == '=') {
             if (action == KeyEvent.ACTION_UP) {
                 mHandler.onEnter();

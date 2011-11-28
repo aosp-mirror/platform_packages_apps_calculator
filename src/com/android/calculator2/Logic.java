@@ -27,6 +27,7 @@ import java.util.Locale;
 
 import org.javia.arity.Symbols;
 import org.javia.arity.SyntaxException;
+import org.javia.arity.Util;
 
 class Logic {
     private CalculatorDisplay mDisplay;
@@ -40,7 +41,7 @@ class Logic {
 
     public static final String MARKER_EVALUATE_ON_RESUME = "?";
 
-    // The two strings below are the result of Double.toString() for Infinity & NaN
+    // the two strings below are the result of Double.toString() for Infinity & NaN
     // they are not output to the user and don't require internationalization
     private static final String INFINITY = "Infinity";
     private static final String NAN      = "NaN";
@@ -217,6 +218,7 @@ class Logic {
         }
     }
 
+    private static final int ROUND_DIGITS = 1;
     String evaluate(String input) throws SyntaxException {
         if (input.trim().equals("")) {
             return "";
