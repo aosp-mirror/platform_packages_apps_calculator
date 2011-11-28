@@ -31,23 +31,23 @@ class CalculatorEditable extends SpannableStringBuilder {
     }
 
     @Override
-    public SpannableStringBuilder
+    public SpannableStringBuilder 
     replace(int start, int end, CharSequence tb, int tbstart, int tbend) {
         if (isInsideReplace) {
             return super.replace(start, end, tb, tbstart, tbend);
-        } else {
-          isInsideReplace = true;
+        } else {        
+            isInsideReplace = true;
             try {
-                String delta = tb.subSequence(tbstart, tbend).toString();
+                String delta = tb.subSequence(tbstart, tbend).toString();            
                 return internalReplace(start, end, delta);
             } finally {
                 isInsideReplace = false;
             }
         }
     }
-
+    
     private SpannableStringBuilder internalReplace(int start, int end, String delta) {
-        if (!mLogic.acceptInsert(delta)) {
+        if (!mLogic.acceptInsert(delta)) {            
             mLogic.cleared();
             start = 0;
             end = length();
@@ -61,7 +61,7 @@ class CalculatorEditable extends SpannableStringBuilder {
         if (length == 1) {
             char text = delta.charAt(0);
 
-            // Don't allow two dots in the same number
+            //don't allow two dots in the same number
             if (text == '.') {
                 int p = start - 1;
                 while (p >= 0 && Character.isDigit(charAt(p))) {
@@ -74,25 +74,25 @@ class CalculatorEditable extends SpannableStringBuilder {
 
             char prevChar = start > 0 ? charAt(start-1) : '\0';
 
-            // Don't allow 2 successive minuses
+            //don't allow 2 successive minuses
             if (text == Logic.MINUS && prevChar == Logic.MINUS) {
                 return super.replace(start, end, "");
             }
 
-            // Don't allow multiple successive operators
+            //don't allow multiple successive operators
             if (Logic.isOperator(text)) {
-                while (Logic.isOperator(prevChar) &&
+                while (Logic.isOperator(prevChar) && 
                        (text != Logic.MINUS || prevChar == '+')) {
                     --start;
                     prevChar = start > 0 ? charAt(start-1) : '\0';
                 }
             }
 
-            // Don't allow leading operator + * /
+            //don't allow leading operator + * /
             if (start == 0 && Logic.isOperator(text) && text != Logic.MINUS) {
                 return super.replace(start, end, "");
             }
-        }
+        } 
         return super.replace(start, end, delta);
     }
 
@@ -103,7 +103,6 @@ class CalculatorEditable extends SpannableStringBuilder {
             mLogic = logic;
         }
 
-        @Override
         public Editable newEditable(CharSequence source) {
             return new CalculatorEditable(source, mLogic);
         }

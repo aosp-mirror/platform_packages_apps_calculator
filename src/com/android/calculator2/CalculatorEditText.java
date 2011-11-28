@@ -63,7 +63,6 @@ public class CalculatorEditText extends EditText {
     }
 
     private class MenuHandler implements MenuItem.OnMenuItemClickListener {
-        @Override
         public boolean onMenuItemClick(MenuItem item) {
             return onTextContextMenuItem(item.getTitle());
         }
@@ -130,7 +129,7 @@ public class CalculatorEditText extends EditText {
         int textLength = text.length();
         setSelection(0, textLength);
         setPrimaryClip(ClipData.newPlainText(null, text));
-        getText().delete(0, textLength);
+        ((Editable) getText()).delete(0, textLength);
         setSelection(0);
     }
 
@@ -146,7 +145,7 @@ public class CalculatorEditText extends EditText {
             for (int i = 0; i < clip.getItemCount(); i++) {
                 CharSequence paste = clip.getItemAt(i).coerceToText(getContext());
                 if (canPaste(paste)) {
-                    getText().insert(getSelectionEnd(), paste);
+                    ((Editable) getText()).insert(getSelectionEnd(), paste);
                 }
             }
         }
