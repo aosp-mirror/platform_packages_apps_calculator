@@ -49,6 +49,7 @@
             android:id="@+id/div"
             android:text="@string/div"
             style="@style/button_style"
+            android:contentDescription="@string/divDesc"
             />
     </LinearLayout>
 
@@ -76,6 +77,7 @@
             android:id="@+id/mul"
             android:text="@string/mul"
             style="@style/button_style"
+            android:contentDescription="@string/mulDesc"
             />
     </LinearLayout>
 
@@ -103,6 +105,7 @@
             android:id="@+id/minus"
             android:text="@string/minus"
             style="@style/button_style"
+            android:contentDescription="@string/minusDesc"
             />
     </LinearLayout>
 
@@ -115,6 +118,7 @@
             android:id="@+id/dot"
             android:text="@string/dot"
             style="@style/digit_button_style"
+            android:contentDescription="@string/dotDesc"
             />
         <com.android.calculator2.ColorButton
             android:id="@+id/digit0"
@@ -125,11 +129,13 @@
             android:id="@+id/equal"
             android:text="@string/equal"
             style="@style/button_style"
+            android:contentDescription="@string/equalDesc"
             />
         <com.android.calculator2.ColorButton
             android:id="@+id/plus"
             android:text="@string/plus"
             style="@style/button_style"
+            android:contentDescription="@string/plusDesc"
             />
     </LinearLayout>
 </LinearLayout>

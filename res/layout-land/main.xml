@@ -72,6 +72,7 @@
                  android:layout_marginRight="0dp"
                  android:textSize="15dp"
                  style="@style/button_style"
+                 android:contentDescription="@string/delDesc"
                  />
         </FrameLayout>
     </LinearLayout>

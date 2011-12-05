@@ -35,16 +35,19 @@
             android:id="@+id/sin"
             android:text="@string/sin"
             style="@style/button_small_style"
+            android:contentDescription="@string/sinDesc"
             />
         <com.android.calculator2.ColorButton
             android:id="@+id/cos"
             android:text="@string/cos"
             style="@style/button_small_style"
+            android:contentDescription="@string/cosDesc"
             />
         <com.android.calculator2.ColorButton
             android:id="@+id/tan"
             android:text="@string/tan"
             style="@style/button_small_style"
+            android:contentDescription="@string/tanDesc"
             />
     </LinearLayout>
 
@@ -57,16 +60,19 @@
             android:id="@+id/ln"
             android:text="@string/ln"
             style="@style/button_small_style"
+            android:contentDescription="@string/lnDesc"
             />
         <com.android.calculator2.ColorButton
             android:id="@+id/lg"
             android:text="@string/lg"
             style="@style/button_small_style"
+            android:contentDescription="@string/lgDesc"
             />
         <com.android.calculator2.ColorButton
             android:id="@+id/factorial"
             android:text="@string/factorial"
             style="@style/button_style"
+            android:contentDescription="@string/factorialDesc"
             />
     </LinearLayout>
 
@@ -79,16 +85,19 @@
             android:id="@+id/pi"
             android:text="@string/pi"
             style="@style/button_style"
+            android:contentDescription="@string/piDesc"
             />
         <com.android.calculator2.ColorButton
             android:id="@+id/e"
             android:text="@string/e"
             style="@style/button_style"
+            android:contentDescription="@string/eDesc"
             />
         <com.android.calculator2.ColorButton
             android:id="@+id/power"
             android:text="@string/power"
             style="@style/button_style"
+            android:contentDescription="@string/powerDesc"
             />
     </LinearLayout>
 
@@ -101,16 +110,19 @@
             android:id="@+id/leftParen"
             android:text="@string/leftParen"
             style="@style/button_style"
+            android:contentDescription="@string/leftParenDesc"
             />
         <com.android.calculator2.ColorButton
             android:id="@+id/rightParen"
             android:text="@string/rightParen"
             style="@style/button_style"
+            android:contentDescription="@string/rightParenDesc"
             />
         <com.android.calculator2.ColorButton
             android:id="@+id/sqrt"
             android:text="@string/sqrt"
             style="@style/button_style"
+            android:contentDescription="@string/sqrtDesc"
             />
     </LinearLayout>
 </LinearLayout>

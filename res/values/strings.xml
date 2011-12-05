@@ -90,4 +90,28 @@
     <string name="clear_history">Clear history</string>
     <!-- Toast shown when text is copied to the clipboard. -->
     <string name="text_copied_toast">Text copied.</string>
+
+    <!--Content descriptions for accessibility. These strings will be read aloud to users who are using the calculator with
+    accessibility features enabled and should reflect the mathematical concept instead of a direct representation of what is shown
+    on the button-->
+    <string name="leftParenDesc">left parenthesis</string>
+    <string name="rightParenDesc">right parenthesis</string>
+    <string name="factorialDesc">factorial</string>
+    <string name="lnDesc">natural logarithm</string>
+    <string name="lgDesc">logarithm</string>
+    <string name="sqrtDesc">square root</string>
+    <string name="divDesc">divide</string>
+    <string name="mulDesc">multiply</string>
+    <string name="plusDesc">plus</string>
+    <string name="minusDesc">minus</string>
+    <string name="dotDesc">point</string>
+    <string name="powerDesc">power</string>
+    <string name="delDesc">delete</string>
+    <string name="clearDesc">clear</string>
+    <string name="tanDesc">tangent</string>
+    <string name="sinDesc">sine</string>
+    <string name="cosDesc">cosine</string>
+    <string name="eDesc">Euler\'s number</string>
+    <string name="piDesc">pi</string>
+    <string name="equalDesc">equals</string>
 </resources>
