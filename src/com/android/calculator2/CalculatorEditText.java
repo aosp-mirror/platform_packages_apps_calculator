@@ -30,8 +30,12 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.accessibility.AccessibilityEvent;
+import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.common.collect.ImmutableMap;
 
 public class CalculatorEditText extends EditText {
 
@@ -40,6 +44,8 @@ public class CalculatorEditText extends EditText {
     private static final int COPY = 1;
     private static final int PASTE = 2;
     private String[] mMenuItemsStrings;
+    private ImmutableMap<String, String> sReplacementTable;
+    private String[] sOperators;
 
     public CalculatorEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -60,6 +66,58 @@ public class CalculatorEditText extends EditText {
     public boolean performLongClick() {
         showContextMenu();
         return true;
+    }
+
+    @Override
+    public void onInitializeAccessibilityEvent(AccessibilityEvent event) {
+        super.onInitializeAccessibilityEvent(event);
+        String mathText = mathParse(getText().toString());
+        // Parse the string into something more "mathematical" sounding.
+        if (!TextUtils.isEmpty(mathText)) {
+            event.getText().clear();
+            event.getText().add(mathText);
+            setContentDescription(mathText);
+        }
+    }
+
+    @Override
+    public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
+        super.onInitializeAccessibilityNodeInfo(info);
+        info.setText(mathParse(getText().toString()));
+    }
+
+    @Override
+    public void onPopulateAccessibilityEvent(AccessibilityEvent event) {
+        // Do nothing.
+    }
+
+    private String mathParse(String plainText) {
+        String parsedText = plainText;
+        if (!TextUtils.isEmpty(parsedText)) {
+            // Initialize replacement table.
+            initializeReplacementTable();
+            for (String operator : sOperators) {
+                if (sReplacementTable.containsKey(operator)) {
+                    parsedText = parsedText.replace(operator, sReplacementTable.get(operator));
+                }
+            }
+        }
+        return parsedText;
+    }
+
+    private synchronized void initializeReplacementTable() {
+        if (sReplacementTable == null) {
+            ImmutableMap.Builder<String, String> builder = ImmutableMap.builder();
+            Resources res = getContext().getResources();
+            sOperators = res.getStringArray(R.array.operators);
+            String[] descs = res.getStringArray(R.array.operatorDescs);
+            int pos = 0;
+            for (String key : sOperators) {
+                builder.put(key, descs[pos]);
+                pos++;
+            }
+            sReplacementTable = builder.build();
+        }
     }
 
     private class MenuHandler implements MenuItem.OnMenuItemClickListener {
