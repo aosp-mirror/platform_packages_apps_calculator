@@ -40,7 +40,7 @@
     <string name="rightParen" msgid="3177971166159324016">")"</string>
     <string name="basic" msgid="7691469861698059753">"Panel básico"</string>
     <string name="advanced" msgid="7122495413742976492">"Panel avanzado"</string>
-    <string name="clear_history" msgid="8458043980601165012">"Borrar historial"</string>
+    <string name="clear_history" msgid="8458043980601165012">"Eliminar historial"</string>
     <string name="text_copied_toast" msgid="5801480710472541833">"Se ha copiado el texto."</string>
     <string name="leftParenDesc" msgid="8446428211982811379">"paréntesis de apertura"</string>
     <string name="rightParenDesc" msgid="9133691645148976523">"paréntesis de cierre"</string>
