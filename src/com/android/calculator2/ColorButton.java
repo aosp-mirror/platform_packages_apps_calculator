@@ -128,6 +128,7 @@ class ColorButton extends Button implements OnClickListener {
                 break;
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_CANCEL:
+                mAnimStart = -1;
                 invalidate();
                 break;
         }
