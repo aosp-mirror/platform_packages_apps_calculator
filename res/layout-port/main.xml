@@ -63,12 +63,11 @@
             android:background="@drawable/btn_function"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="1"
             />
 
         <FrameLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent">
             <!-- marginRight has to be 0 to catch border-touch -->
             <com.android.calculator2.ColorButton
@@ -79,6 +78,7 @@
                 android:layout_marginRight="0dp"
                 android:textSize="15dp"
                 style="@style/button_style"
+                android:minWidth="100dip"
                 />
             <!-- marginRight has to be 0 to catch border-touch -->
             <com.android.calculator2.ColorButton
@@ -90,6 +90,8 @@
                 android:textSize="15dp"
                 style="@style/button_style"
                 android:contentDescription="@string/delDesc"
+                android:ellipsize="end"
+                android:minWidth="89dip"
                 />
         </FrameLayout>
 
