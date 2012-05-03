@@ -22,12 +22,15 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.widget.EditText;
 import android.content.Context;
+import android.content.res.Resources;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.javia.arity.Symbols;
 import org.javia.arity.SyntaxException;
-import org.javia.arity.Util;
 
 class Logic {
     private CalculatorDisplay mDisplay;
@@ -60,9 +63,12 @@ class Logic {
     }
 
     private Listener mListener;
+    private Context mContext;
+    private Set<Entry<String, String>> mTranslationsSet;
 
     Logic(Context context, History history, CalculatorDisplay display) {
-        mErrorString = context.getResources().getString(R.string.error);
+        mContext = context;
+        mErrorString = mContext.getResources().getString(R.string.error);
         mHistory = history;
         mDisplay = display;
         mDisplay.setLogic(this);
@@ -230,7 +236,8 @@ class Logic {
             input = input.substring(0, size - 1);
             --size;
         }
-
+        // Find and replace any translated mathematical functions.
+        input = replaceTranslations(input);
         double value = mSymbols.eval(input);
 
         String result = "";
@@ -241,6 +248,29 @@ class Logic {
             }
         }
         return result.replace('-', MINUS).replace(INFINITY, INFINITY_UNICODE);
+    }
+
+    private void addTranslation(HashMap<String, String> map, int t, int m) {
+        Resources res = mContext.getResources();
+        String translated = res.getString(t);
+        String math = res.getString(m);
+        if (!TextUtils.equals(translated, math)) {
+            map.put(translated, math);
+        }
+    }
+
+    private String replaceTranslations(String input) {
+        if (mTranslationsSet == null) {
+            HashMap<String, String> map = new HashMap<String, String>();
+            addTranslation(map, R.string.sin, R.string.sin_mathematical_value);
+            addTranslation(map, R.string.cos, R.string.cos_mathematical_value);
+            addTranslation(map, R.string.tan, R.string.tan_mathematical_value);
+            mTranslationsSet = map.entrySet();
+        }
+        for (Entry<String, String> entry : mTranslationsSet) {
+            input = input.replace(entry.getKey(), entry.getValue());
+        }
+        return input;
     }
 
     private String tryFormattingWithPrecision(double value, int precision) {
