@@ -73,10 +73,16 @@
     <string name="pi">\u03c0</string>
     <!-- Displayed on buttons on screen for the e function. -->
     <string name="e">e</string>
+    <!-- Do not translate. What we replace translated e with for calculating e. -->
+    <string translate="false" name="e_mathematical_value">e</string>
     <!-- Displayed on buttons on screen for the ln function. -->
     <string name="ln">ln</string>
+    <!-- Do not translate. What we replace translated ln with for calculating ln. -->
+    <string translate="false" name="ln_mathematical_value">ln</string>
     <!-- Displayed on buttons on screen for the log function. -->
     <string name="lg">log</string>
+    <!-- Do not translate. What we replace translated lg with for calculating lg. -->
+    <string translate="false" name="lg_mathematical_value">lg</string>
     <!-- Displayed on buttons on screen for a left parenthesis. -->
     <string name="leftParen">(</string>
     <!-- Displayed on buttons on screen for a right parenthesis. -->
