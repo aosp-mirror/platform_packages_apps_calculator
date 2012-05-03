@@ -265,6 +265,9 @@ class Logic {
             addTranslation(map, R.string.sin, R.string.sin_mathematical_value);
             addTranslation(map, R.string.cos, R.string.cos_mathematical_value);
             addTranslation(map, R.string.tan, R.string.tan_mathematical_value);
+            addTranslation(map, R.string.e, R.string.e_mathematical_value);
+            addTranslation(map, R.string.ln, R.string.ln_mathematical_value);
+            addTranslation(map, R.string.lg, R.string.lg_mathematical_value);
             mTranslationsSet = map.entrySet();
         }
         for (Entry<String, String> entry : mTranslationsSet) {
