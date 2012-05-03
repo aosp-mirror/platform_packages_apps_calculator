@@ -59,11 +59,16 @@
     <string name="enter">\u2193</string>
     <!-- Displayed on buttons on screen for the sin function. -->
     <string name="sin">sin</string>
+    <!-- Do not translate. What we replace translated SIN with for calculating sin.-->
+    <string translate="false" name="sin_mathematical_value">sin</string>
     <!-- Displayed on buttons on screen for the cos function. -->
     <string name="cos">cos</string>
+    <!-- Do not translate. What we replace translated COS with for calculating cos. -->
+    <string translate="false" name="cos_mathematical_value">cos</string>
     <!-- Displayed on buttons on screen for the tan function. -->
     <string name="tan">tan</string>
-       
+    <!-- Do not translate. What we replace translated TAN with for calculating tan. -->
+    <string translate="false" name="tan_mathematical_value">tan</string>
     <!-- Do not translate. Unicode pi sign; don't translate. Displayed as button on screen. -->
     <string name="pi">\u03c0</string>
     <!-- Displayed on buttons on screen for the e function. -->
