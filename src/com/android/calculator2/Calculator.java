@@ -202,13 +202,13 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
                 break;
 
             case R.id.basic:
-                if (!getBasicVisibility()) {
+                if (!getBasicVisibility() && mPager != null) {
                     mPager.setCurrentItem(BASIC_PANEL);
                 }
                 break;
 
             case R.id.advanced:
-                if (!getAdvancedVisibility()) {
+                if (!getAdvancedVisibility() && mPager != null) {
                     mPager.setCurrentItem(ADVANCED_PANEL);
                 }
                 break;
@@ -234,7 +234,8 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent keyEvent) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && getAdvancedVisibility()) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && getAdvancedVisibility()
+                && mPager != null) {
             mPager.setCurrentItem(BASIC_PANEL);
             return true;
         } else {
