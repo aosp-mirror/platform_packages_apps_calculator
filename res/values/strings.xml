@@ -175,7 +175,7 @@
         <!-- Description for mathematical - [CHAR LIMIT=200]-->
         <item>minus</item>
         <!-- Description for mathematical . [CHAR LIMIT=200]-->
-        <item>point</item>
+        <item>&#160;point&#160;</item>
         <!-- Description for mathematical ^ [CHAR LIMIT=200]-->
         <item>power</item>
         <!-- Description for mathematical TAN [CHAR LIMIT=200]-->
