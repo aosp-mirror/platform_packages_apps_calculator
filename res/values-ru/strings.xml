@@ -62,23 +62,5 @@
     <string name="eDesc" msgid="6709583372168924068">"число Эйлера"</string>
     <string name="piDesc" msgid="8838151606775021517">"число \"пи\""</string>
     <string name="equalDesc" msgid="4164435100263313101">"равно"</string>
-  <string-array name="operatorDescs">
-    <item msgid="7903565108986789641">"открывающая скобка"</item>
-    <item msgid="1688156211934459752">"закрывающая скобка"</item>
-    <item msgid="6664829080840305856">"факториал числа"</item>
-    <item msgid="2880199289575144121">"натуральный логарифм числа"</item>
-    <item msgid="4398774906998694599">"логарифм числа"</item>
-    <item msgid="1791869359785943266">"квадратный корень из числа"</item>
-    <item msgid="6833720171974254459">"разделить на"</item>
-    <item msgid="2646574635189709515">"умножить на"</item>
-    <item msgid="3487936384379753697">"плюс"</item>
-    <item msgid="8608534484562258856">"минус"</item>
-    <item msgid="8243291093478001971">"десятичный разделитель"</item>
-    <item msgid="4528629783180278651">"в степени"</item>
-    <item msgid="4050948027333760159">"тангенс"</item>
-    <item msgid="8716478860618683850">"синус"</item>
-    <item msgid="3203211483560707480">"косинус"</item>
-    <item msgid="8587490959348493065">"число \"пи\""</item>
-    <item msgid="8134315487552198394">"равно"</item>
-  </string-array>
+    <!-- no translation found for operatorDescs:10 (3456824579675198186) -->
 </resources>
