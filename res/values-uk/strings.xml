@@ -62,5 +62,23 @@
     <string name="eDesc" msgid="6709583372168924068">"число Ейлера"</string>
     <string name="piDesc" msgid="8838151606775021517">"пі"</string>
     <string name="equalDesc" msgid="4164435100263313101">"дорівнює"</string>
-    <!-- no translation found for operatorDescs:10 (3456824579675198186) -->
+  <string-array name="operatorDescs">
+    <item msgid="7903565108986789641">"ліва дужка"</item>
+    <item msgid="1688156211934459752">"права дужка"</item>
+    <item msgid="6664829080840305856">"факторіал"</item>
+    <item msgid="2880199289575144121">"натуральний логарифм"</item>
+    <item msgid="4398774906998694599">"логарифм"</item>
+    <item msgid="1791869359785943266">"квадратний корінь"</item>
+    <item msgid="6833720171974254459">"поділити на"</item>
+    <item msgid="2646574635189709515">"помножити на"</item>
+    <item msgid="3487936384379753697">"плюс"</item>
+    <item msgid="8608534484562258856">"мінус"</item>
+    <item msgid="3456824579675198186">" крапка "</item>
+    <item msgid="4528629783180278651">"показник ступеня"</item>
+    <item msgid="4050948027333760159">"тангенс"</item>
+    <item msgid="8716478860618683850">"синус"</item>
+    <item msgid="3203211483560707480">"косинус"</item>
+    <item msgid="8587490959348493065">"пі"</item>
+    <item msgid="8134315487552198394">"дорівнює"</item>
+  </string-array>
 </resources>
