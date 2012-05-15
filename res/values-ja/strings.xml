@@ -62,5 +62,23 @@
     <string name="eDesc" msgid="6709583372168924068">"自然対数の底"</string>
     <string name="piDesc" msgid="8838151606775021517">"パイ"</string>
     <string name="equalDesc" msgid="4164435100263313101">"イコール"</string>
-    <!-- no translation found for operatorDescs:10 (3456824579675198186) -->
+  <string-array name="operatorDescs">
+    <item msgid="7903565108986789641">"左かっこ"</item>
+    <item msgid="1688156211934459752">"右かっこ"</item>
+    <item msgid="6664829080840305856">"階乗"</item>
+    <item msgid="2880199289575144121">"自然対数"</item>
+    <item msgid="4398774906998694599">"対数"</item>
+    <item msgid="1791869359785943266">"平方根"</item>
+    <item msgid="6833720171974254459">"割る"</item>
+    <item msgid="2646574635189709515">"掛ける"</item>
+    <item msgid="3487936384379753697">"足す"</item>
+    <item msgid="8608534484562258856">"引く"</item>
+    <item msgid="3456824579675198186">"ポイント"</item>
+    <item msgid="4528629783180278651">"累乗"</item>
+    <item msgid="4050948027333760159">"タンジェント"</item>
+    <item msgid="8716478860618683850">"サイン"</item>
+    <item msgid="3203211483560707480">"コサイン"</item>
+    <item msgid="8587490959348493065">"パイ"</item>
+    <item msgid="8134315487552198394">"イコール"</item>
+  </string-array>
 </resources>
