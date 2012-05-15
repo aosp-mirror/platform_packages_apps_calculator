@@ -29,17 +29,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/group_padding"
         android:background="@drawable/calculator_input_field">
 
         <com.android.calculator2.CalculatorDisplay
             android:id="@+id/display"
-            android:layout_width="0dp"
+            android:layout_width="0dip"
             android:layout_weight="1"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             maxDigits="@integer/max_digits"
+            android:layout_alignParentTop="true"
             >
 
             <com.android.calculator2.CalculatorEditText
@@ -50,12 +50,14 @@
         </com.android.calculator2.CalculatorDisplay>
 
         <FrameLayout
-            android:layout_width="100dip"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true">
             <Button
                 android:id="@+id/clear"
                 android:text="@string/clear"
                 style="@style/btn_clear"
+                android:minWidth="100dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingLeft="5dip"
