@@ -62,5 +62,23 @@
     <string name="eDesc" msgid="6709583372168924068">"Số Euler"</string>
     <string name="piDesc" msgid="8838151606775021517">"pi"</string>
     <string name="equalDesc" msgid="4164435100263313101">"bằng"</string>
-    <!-- no translation found for operatorDescs:10 (3456824579675198186) -->
+  <string-array name="operatorDescs">
+    <item msgid="7903565108986789641">"dấu ngoặc trái"</item>
+    <item msgid="1688156211934459752">"dấu ngoặc phải"</item>
+    <item msgid="6664829080840305856">"giai thừa"</item>
+    <item msgid="2880199289575144121">"logarit tự nhiên"</item>
+    <item msgid="4398774906998694599">"logarit"</item>
+    <item msgid="1791869359785943266">"dấu khai căn"</item>
+    <item msgid="6833720171974254459">"chia cho"</item>
+    <item msgid="2646574635189709515">"nhân với"</item>
+    <item msgid="3487936384379753697">"cộng"</item>
+    <item msgid="8608534484562258856">"trừ"</item>
+    <item msgid="3456824579675198186">" điểm "</item>
+    <item msgid="4528629783180278651">"lũy thừa"</item>
+    <item msgid="4050948027333760159">"tiếp tuyến"</item>
+    <item msgid="8716478860618683850">"sin"</item>
+    <item msgid="3203211483560707480">"cosin"</item>
+    <item msgid="8587490959348493065">"pi"</item>
+    <item msgid="8134315487552198394">"bằng"</item>
+  </string-array>
 </resources>
