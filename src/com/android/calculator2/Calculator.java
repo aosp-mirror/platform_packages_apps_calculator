@@ -203,13 +203,13 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
 
             case R.id.basic:
                 if (!getBasicVisibility() && mPager != null) {
-                    mPager.setCurrentItem(BASIC_PANEL);
+                    mPager.setCurrentItem(BASIC_PANEL, true);
                 }
                 break;
 
             case R.id.advanced:
                 if (!getAdvancedVisibility() && mPager != null) {
-                    mPager.setCurrentItem(ADVANCED_PANEL);
+                    mPager.setCurrentItem(ADVANCED_PANEL, true);
                 }
                 break;
         }
