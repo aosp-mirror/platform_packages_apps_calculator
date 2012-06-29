@@ -84,7 +84,7 @@ class CalculatorDisplay extends ViewSwitcher {
         Editable.Factory factory = new CalculatorEditable.Factory(logic);
         for (int i = 0; i < 2; ++i) {
             EditText text = (EditText) getChildAt(i);
-            text.setBackgroundDrawable(null);
+            text.setBackground(null);
             text.setEditableFactory(factory);
             text.setKeyListener(calculatorKeyListener);
             text.setSingleLine();
