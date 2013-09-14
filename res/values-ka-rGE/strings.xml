@@ -31,17 +31,17 @@
     <string name="del" msgid="6248896117422989693">"წაშლა"</string>
     <string name="clear" msgid="8103610981407459768">"CLR"</string>
     <string name="sin" msgid="6793866152659175277">"sin"</string>
-    <string name="cos" msgid="6901841853098114414">"კოს"</string>
+    <string name="cos" msgid="6901841853098114414">"cos"</string>
     <string name="tan" msgid="7957459816738554960">"tan"</string>
     <string name="e" msgid="1377847800971731483">"e"</string>
     <string name="ln" msgid="6888500680285403344">"ln"</string>
-    <string name="lg" msgid="873623857385418182">"ლოგ"</string>
+    <string name="lg" msgid="873623857385418182">"log"</string>
     <string name="leftParen" msgid="4850643713953092099">"("</string>
     <string name="rightParen" msgid="3177971166159324016">")"</string>
     <string name="basic" msgid="7691469861698059753">"ძირითადი პანელი"</string>
     <string name="advanced" msgid="7122495413742976492">"დამატებითი ფუნქციების პანელი"</string>
     <string name="clear_history" msgid="8458043980601165012">"ისტორიის წაშლა"</string>
-    <string name="text_copied_toast" msgid="5801480710472541833">"ტექსტი გადაიწერა."</string>
+    <string name="text_copied_toast" msgid="5801480710472541833">"ტექსტი დაკოპირდა."</string>
     <string name="leftParenDesc" msgid="8446428211982811379">"მარცხენა ფრჩხილი"</string>
     <string name="rightParenDesc" msgid="9133691645148976523">"მარჯვენა ფრჩხილი"</string>
     <string name="factorialDesc" msgid="9217024218012761574">"ფაქტორიალი"</string>
@@ -52,14 +52,14 @@
     <string name="mulDesc" msgid="9003016819648670694">"გამრავლება"</string>
     <string name="plusDesc" msgid="3145322700823848264">"პლუსი"</string>
     <string name="minusDesc" msgid="5033462008907390900">"მინუსი"</string>
-    <string name="dotDesc" msgid="5253752241630161722">"მთელი"</string>
+    <string name="dotDesc" msgid="5253752241630161722">"ათობითი გამყოფი"</string>
     <string name="powerDesc" msgid="9034898318444176910">"ხარისხში აყვანა"</string>
     <string name="delDesc" msgid="8211175878012032240">"წაშლა"</string>
-    <string name="clearDesc" msgid="8015748901120751476">"წაშლა"</string>
+    <string name="clearDesc" msgid="8015748901120751476">"გასუფთავება"</string>
     <string name="tanDesc" msgid="2055554933130702423">"ტანგენსი"</string>
     <string name="sinDesc" msgid="6563285042235077204">"სინუსი"</string>
     <string name="cosDesc" msgid="4048942450207926538">"კოსინუსი"</string>
-    <string name="eDesc" msgid="6709583372168924068">"ეილერის ნომერი"</string>
+    <string name="eDesc" msgid="6709583372168924068">"ეილერის რიცხვი"</string>
     <string name="piDesc" msgid="8838151606775021517">"pi"</string>
     <string name="equalDesc" msgid="4164435100263313101">"ტოლია"</string>
   <string-array name="operatorDescs">
@@ -73,7 +73,7 @@
     <item msgid="2646574635189709515">"გამრავლებული"</item>
     <item msgid="3487936384379753697">"პლუს"</item>
     <item msgid="8608534484562258856">"მინუს"</item>
-    <item msgid="3456824579675198186">" მთელი "</item>
+    <item msgid="3456824579675198186">" ათობითი გამყოფი "</item>
     <item msgid="4528629783180278651">"ხარისხში აყვანილი"</item>
     <item msgid="4050948027333760159">"ტანგენსი"</item>
     <item msgid="8716478860618683850">"სინუსი"</item>
