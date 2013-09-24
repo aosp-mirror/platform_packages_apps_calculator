@@ -172,6 +172,7 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
 
     private PopupMenu constructPopupMenu() {
         final PopupMenu popupMenu = new PopupMenu(this, mOverflowMenuButton);
+        mOverflowMenuButton.setOnTouchListener(popupMenu.getDragToOpenListener());
         final Menu menu = popupMenu.getMenu();
         popupMenu.inflate(R.menu.menu);
         popupMenu.setOnMenuItemClickListener(this);
