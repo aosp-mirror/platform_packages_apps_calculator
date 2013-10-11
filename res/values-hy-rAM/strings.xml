@@ -30,12 +30,12 @@
     <string name="digit9" msgid="765379157698748031">"9"</string>
     <string name="del" msgid="6248896117422989693">"Ջնջել"</string>
     <string name="clear" msgid="8103610981407459768">"Մքր"</string>
-    <string name="sin" msgid="6793866152659175277">"սին"</string>
-    <string name="cos" msgid="6901841853098114414">"կոս"</string>
-    <string name="tan" msgid="7957459816738554960">"տան"</string>
+    <string name="sin" msgid="6793866152659175277">"sin"</string>
+    <string name="cos" msgid="6901841853098114414">"cos"</string>
+    <string name="tan" msgid="7957459816738554960">"tg"</string>
     <string name="e" msgid="1377847800971731483">"e"</string>
     <string name="ln" msgid="6888500680285403344">"ln"</string>
-    <string name="lg" msgid="873623857385418182">"լոգ"</string>
+    <string name="lg" msgid="873623857385418182">"log"</string>
     <string name="leftParen" msgid="4850643713953092099">"("</string>
     <string name="rightParen" msgid="3177971166159324016">")"</string>
     <string name="basic" msgid="7691469861698059753">"Հիմնական վահանակ"</string>
@@ -53,7 +53,7 @@
     <string name="plusDesc" msgid="3145322700823848264">"գումարում"</string>
     <string name="minusDesc" msgid="5033462008907390900">"հանում"</string>
     <string name="dotDesc" msgid="5253752241630161722">"կետ"</string>
-    <string name="powerDesc" msgid="9034898318444176910">"հոսանք"</string>
+    <string name="powerDesc" msgid="9034898318444176910">"աստիճան"</string>
     <string name="delDesc" msgid="8211175878012032240">"ջնջել"</string>
     <string name="clearDesc" msgid="8015748901120751476">"մաքրել"</string>
     <string name="tanDesc" msgid="2055554933130702423">"տանգենս"</string>
@@ -74,7 +74,7 @@
     <item msgid="3487936384379753697">"գումարում"</item>
     <item msgid="8608534484562258856">"հանում"</item>
     <item msgid="3456824579675198186">" կետ "</item>
-    <item msgid="4528629783180278651">"հոսանք"</item>
+    <item msgid="4528629783180278651">"աստիճան"</item>
     <item msgid="4050948027333760159">"տանգենս"</item>
     <item msgid="8716478860618683850">"սինուս"</item>
     <item msgid="3203211483560707480">"կոսինուս"</item>
