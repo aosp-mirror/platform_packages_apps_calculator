@@ -16,5 +16,24 @@
 
 <resources>
     <color name="magic_flame">#00ffffff</color>
-    <color name="button_text">#ffffffff</color>
+
+    <color name="accent">#18FFFF</color>
+
+    <color name="primary_light">#B3E5FC</color>
+    <color name="primary">#03A9F4</color>
+    <color name="primary_dark">#0288D1</color>
+
+    <color name="gray_80">#CCCCCC</color>
+    <color name="gray_70">#B3B3B3</color>
+    <color name="gray_60">#999999</color>
+    <color name="gray_50">#808080</color>
+    <color name="gray_40">#666666</color>
+    <color name="gray_30">#4D4D4D</color>
+    <color name="gray_20">#333333</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="text_light">#B3FFFFFF</color>
+    <color name="text_dark">#B3000000</color>
 </resources>

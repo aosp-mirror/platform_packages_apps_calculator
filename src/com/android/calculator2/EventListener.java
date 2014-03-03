@@ -21,6 +21,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
+import com.android.calculator2.R;
+
 class EventListener implements View.OnKeyListener,
                                View.OnClickListener,
                                View.OnLongClickListener {
@@ -55,10 +57,7 @@ class EventListener implements View.OnKeyListener,
                     // add paren after sin, cos, ln, etc. from buttons
                     text += '(';
                 }
-                mHandler.insert(text);
-                if (mPager != null && mPager.getCurrentItem() == Calculator.ADVANCED_PANEL) {
-                    mPager.setCurrentItem(Calculator.BASIC_PANEL);
-                }
+                mHandler.append(text);
             }
         }
     }

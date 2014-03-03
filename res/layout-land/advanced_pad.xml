@@ -19,85 +19,84 @@
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/advancedPad"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:layout_weight="1"
-              android:orientation="vertical"
-              android:layout_gravity="center"
-              >
+    android:id="@+id/advancedPad"
+    style="@style/advanced_pad"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_weight="1"
+    android:orientation="vertical" >
 
     <LinearLayout
-        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        >
-        <com.android.calculator2.ColorButton
+        android:layout_weight="1" >
+
+        <Button
             android:id="@+id/sin"
-            android:text="@string/sin"
-            style="@style/button_small_style"
+            style="@style/advanced_button_small"
             android:contentDescription="@string/sinDesc"
-            />
-        <com.android.calculator2.ColorButton
+            android:text="@string/sin" />
+
+        <Button
             android:id="@+id/cos"
-            android:text="@string/cos"
-            style="@style/button_small_style"
+            style="@style/advanced_button_small"
             android:contentDescription="@string/cosDesc"
-            />
-        <com.android.calculator2.ColorButton
+            android:text="@string/cos" />
+
+        <Button
             android:id="@+id/tan"
-            android:text="@string/tan"
-            style="@style/button_small_style"
+            style="@style/advanced_button_small"
             android:contentDescription="@string/tanDesc"
-            />
-        <com.android.calculator2.ColorButton
+            android:text="@string/tan" />
+
+        <Button
             android:id="@+id/pi"
-            android:text="@string/pi"
-            style="@style/button_style"
+            style="@style/advanced_button"
             android:contentDescription="@string/piDesc"
-            />
-        <com.android.calculator2.ColorButton
+            android:text="@string/pi" />
+
+        <Button
             android:id="@+id/factorial"
-            android:text="@string/factorial"
-            style="@style/button_style"
+            style="@style/advanced_button"
             android:contentDescription="@string/factorialDesc"
-            />
+            android:text="@string/factorial" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        >
-        <com.android.calculator2.ColorButton
+        android:layout_weight="1" >
+
+        <Button
             android:id="@+id/ln"
-            android:text="@string/ln"
-            style="@style/button_small_style"
+            style="@style/advanced_button_small"
             android:contentDescription="@string/lnDesc"
-            />
-        <com.android.calculator2.ColorButton
+            android:text="@string/ln" />
+
+        <Button
             android:id="@+id/lg"
-            android:text="@string/lg"
-            style="@style/button_small_style"
+            style="@style/advanced_button_small"
             android:contentDescription="@string/lgDesc"
-            />
-        <com.android.calculator2.ColorButton
+            android:text="@string/lg" />
+
+        <Button
             android:id="@+id/e"
-            android:text="@string/e"
-            style="@style/button_style"
+            style="@style/advanced_button"
             android:contentDescription="@string/eDesc"
-            />
-        <com.android.calculator2.ColorButton
+            android:text="@string/e" />
+
+        <Button
             android:id="@+id/power"
-            android:text="@string/power"
-            style="@style/button_style"
+            style="@style/advanced_button"
             android:contentDescription="@string/powerDesc"
-            />
-        <com.android.calculator2.ColorButton
+            android:text="@string/power" />
+
+        <Button
             android:id="@+id/sqrt"
-            android:text="@string/sqrt"
-            style="@style/button_style"
+            style="@style/advanced_button"
             android:contentDescription="@string/sqrtDesc"
-            />
+            android:text="@string/sqrt" />
     </LinearLayout>
+
 </LinearLayout>

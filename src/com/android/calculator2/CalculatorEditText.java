@@ -16,6 +16,8 @@
 
 package com.android.calculator2;
 
+import com.google.common.collect.ImmutableMap;
+
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -35,7 +37,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.common.collect.ImmutableMap;
+import com.android.calculator2.R;
 
 public class CalculatorEditText extends EditText {
 
@@ -47,10 +49,15 @@ public class CalculatorEditText extends EditText {
     private ImmutableMap<String, String> sReplacementTable;
     private String[] sOperators;
 
+    public CalculatorEditText(Context context) {
+        this(context, null);
+    }
+
     public CalculatorEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         setCustomSelectionActionModeCallback(new NoTextSelectionMode());
         setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        setCursorVisible(false);
     }
 
     @Override

@@ -18,7 +18,7 @@
     <dimen name="btn_operation_text_size">50sp</dimen>
     <dimen name="btn_function_text_size">25sp</dimen>
     <dimen name="btn_clear_text_size">40sp</dimen>
-    <dimen name="display_text_size">60sp</dimen>
+    <dimen name="display_text_size">72sp</dimen>
 
     <dimen name="left_right_padding">16sp</dimen>
     <dimen name="top_bottom_padding">16sp</dimen>
@@ -30,7 +30,7 @@
        <item name="android:gravity">right|bottom</item>
        <item name="android:layout_gravity">right|bottom</item>
        <item name="android:textColor">#ffffff</item>
-       <item name="android:maxLines">1</item>
+       <item name="android:maxLines">2</item>
        <item name="android:scrollbars">none</item>
        <item name="android:scrollHorizontally">true</item>
        <item name="android:layout_width">match_parent</item>

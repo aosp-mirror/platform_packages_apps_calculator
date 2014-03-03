@@ -50,9 +50,16 @@ class CalculatorDisplay extends ViewSwitcher {
 
     private int mMaxDigits = DEFAULT_MAX_DIGITS;
 
+    public CalculatorDisplay(Context context) {
+        this(context, null);
+    }
+
     public CalculatorDisplay(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mMaxDigits = attrs.getAttributeIntValue(null, ATTR_MAX_DIGITS, DEFAULT_MAX_DIGITS);
+
+        if (attrs != null) {
+            mMaxDigits = attrs.getAttributeIntValue(null, ATTR_MAX_DIGITS, DEFAULT_MAX_DIGITS);
+        }
     }
 
     public int getMaxDigits() {
@@ -62,6 +69,7 @@ class CalculatorDisplay extends ViewSwitcher {
     protected void setLogic(Logic logic) {
         NumberKeyListener calculatorKeyListener =
             new NumberKeyListener() {
+                @Override
                 public int getInputType() {
                     return InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS;
                 }
@@ -84,7 +92,6 @@ class CalculatorDisplay extends ViewSwitcher {
         Editable.Factory factory = new CalculatorEditable.Factory(logic);
         for (int i = 0; i < 2; ++i) {
             EditText text = (EditText) getChildAt(i);
-            text.setBackground(null);
             text.setEditableFactory(factory);
             text.setKeyListener(calculatorKeyListener);
             text.setSingleLine();
@@ -114,6 +121,11 @@ class CalculatorDisplay extends ViewSwitcher {
         EditText editor = (EditText) getCurrentView();
         int cursor = editor.getSelectionStart();
         editor.getText().insert(cursor, delta);
+    }
+
+    void append(String delta) {
+        EditText editor = (EditText) getCurrentView();
+        editor.getText().append(delta);
     }
 
     EditText getEditText() {

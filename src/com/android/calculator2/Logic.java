@@ -16,21 +16,22 @@
 
 package com.android.calculator2;
 
-import com.android.calculator2.CalculatorDisplay.Scroll;
-
+import android.content.Context;
+import android.content.res.Resources;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.widget.EditText;
-import android.content.Context;
-import android.content.res.Resources;
+
+import com.android.calculator2.R;
+import com.android.calculator2.CalculatorDisplay.Scroll;
+
+import org.javia.arity.Symbols;
+import org.javia.arity.SyntaxException;
 
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map.Entry;
 import java.util.Set;
-
-import org.javia.arity.Symbols;
-import org.javia.arity.SyntaxException;
 
 class Logic {
     private CalculatorDisplay mDisplay;
@@ -105,6 +106,11 @@ class Logic {
 
     void insert(String delta) {
         mDisplay.insert(delta);
+        setDeleteMode(DELETE_MODE_BACKSPACE);
+    }
+
+    void append(String delta) {
+        mDisplay.append(delta);
         setDeleteMode(DELETE_MODE_BACKSPACE);
     }
 

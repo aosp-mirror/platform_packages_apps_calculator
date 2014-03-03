@@ -16,16 +16,18 @@
 
 package com.android.calculator2;
 
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.view.View;
 import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.Vector;
+import com.android.calculator2.R;
 
 import org.javia.arity.SyntaxException;
+
+import java.util.Vector;
 
 class HistoryAdapter extends BaseAdapter {
     private Vector<HistoryEntry> mEntries;
