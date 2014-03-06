@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--  Copyright (C) 2007 The Android Open Source Project
+<!-- 
+     Copyright (C) 2007 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -16,7 +17,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name" msgid="8095131950334945205">"計算機"</string>
+    <string name="app_name" msgid="1500378215150041745">"量子計算機"</string>
     <string name="error" msgid="9197457880925804499">"錯誤"</string>
     <string name="digit0" msgid="8069590963464434135">"0"</string>
     <string name="digit1" msgid="8535041374797804029">"1"</string>
@@ -28,7 +29,7 @@
     <string name="digit7" msgid="658125644218958447">"7"</string>
     <string name="digit8" msgid="3134686906411558886">"8"</string>
     <string name="digit9" msgid="765379157698748031">"9"</string>
-    <string name="del" msgid="6248896117422989693">"刪除"</string>
+    <string name="del" msgid="2051454354221101970">"DEL"</string>
     <string name="clear" msgid="8103610981407459768">"清除"</string>
     <string name="sin" msgid="6793866152659175277">"sin"</string>
     <string name="cos" msgid="6901841853098114414">"cos"</string>
