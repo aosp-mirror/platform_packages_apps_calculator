@@ -51,16 +51,10 @@
             android:text="@string/tan" />
 
         <Button
-            android:id="@+id/pi"
-            style="@style/advanced_button"
-            android:contentDescription="@string/piDesc"
-            android:text="@string/pi" />
-
-        <Button
-            android:id="@+id/factorial"
-            style="@style/advanced_button"
-            android:contentDescription="@string/factorialDesc"
-            android:text="@string/factorial" />
+            android:id="@+id/leftParen"
+            style="@style/function_button"
+            android:contentDescription="@string/leftParenDesc"
+            android:text="@string/leftParen" />
     </LinearLayout>
 
     <LinearLayout
@@ -79,6 +73,30 @@
             style="@style/advanced_button_small"
             android:contentDescription="@string/lgDesc"
             android:text="@string/lg" />
+
+        <Button
+            android:id="@+id/factorial"
+            style="@style/advanced_button"
+            android:contentDescription="@string/factorialDesc"
+            android:text="@string/factorial" />
+
+        <Button
+            android:id="@+id/rightParen"
+            style="@style/function_button"
+            android:contentDescription="@string/rightParenDesc"
+            android:text="@string/rightParen" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/pi"
+            style="@style/advanced_button"
+            android:contentDescription="@string/piDesc"
+            android:text="@string/pi" />
 
         <Button
             android:id="@+id/e"

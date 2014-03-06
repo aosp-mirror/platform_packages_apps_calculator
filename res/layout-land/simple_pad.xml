@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!--
-/*
-* Copyright (C) 2011, The Android Open Source Project
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+     Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -47,22 +44,37 @@
             android:text="@string/digit9" />
 
         <Button
-            android:id="@+id/leftParen"
+            android:id="@+id/div"
             style="@style/function_button"
-            android:contentDescription="@string/leftParenDesc"
-            android:text="@string/leftParen" />
-
-        <Button
-            android:id="@+id/rightParen"
-            style="@style/function_button"
-            android:contentDescription="@string/rightParenDesc"
-            android:text="@string/rightParen" />
+            android:contentDescription="@string/divDesc"
+            android:text="@string/div" />
 
         <Button
             android:id="@+id/mul"
             style="@style/function_button"
             android:contentDescription="@string/mulDesc"
             android:text="@string/mul" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <ImageButton
+                android:id="@+id/del"
+                style="@style/function_button"
+                android:contentDescription="@string/delDesc"
+                android:src="@drawable/ic_delete"
+                android:textSize="@dimen/small_text_size" />
+
+            <Button
+                android:id="@+id/clear"
+                style="@style/function_button"
+                android:contentDescription="@string/clearDesc"
+                android:text="@string/clear"
+                android:textSize="@dimen/small_text_size"
+                android:visibility="invisible" />
+        </FrameLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -86,22 +98,21 @@
             android:text="@string/digit6" />
 
         <Button
-            android:id="@+id/dot"
-            style="@style/digit_button"
-            android:contentDescription="@string/dotDesc"
-            android:text="@string/dot" />
-
-        <Button
-            android:id="@+id/div"
+            android:id="@+id/plus"
             style="@style/function_button"
-            android:contentDescription="@string/divDesc"
-            android:text="@string/div" />
+            android:contentDescription="@string/plusDesc"
+            android:text="@string/plus" />
 
         <Button
             android:id="@+id/minus"
             style="@style/function_button"
             android:contentDescription="@string/minusDesc"
             android:text="@string/minus" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -130,16 +141,16 @@
             android:text="@string/digit0" />
 
         <Button
+            android:id="@+id/dot"
+            style="@style/digit_button"
+            android:contentDescription="@string/dotDesc"
+            android:text="@string/dot" />
+
+        <Button
             android:id="@+id/equal"
             style="@style/function_button"
             android:contentDescription="@string/equalDesc"
             android:text="@string/equal" />
-
-        <Button
-            android:id="@+id/plus"
-            style="@style/function_button"
-            android:contentDescription="@string/plusDesc"
-            android:text="@string/plus" />
     </LinearLayout>
 
 </LinearLayout>
