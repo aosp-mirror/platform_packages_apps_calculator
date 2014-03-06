@@ -16,18 +16,14 @@
 -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="button_style">
+    <style name="button_style" parent="@android:style/Widget.Quantum.Button.Borderless">
         <item name="android:textSize">24dp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
         <item name="android:focusable">true</item>
         <item name="android:onClick">onClick</item>
-    </style>
-
-    <style name="stationary_button" parent="button_style">
-        <item name="android:background">@drawable/btn_stationary</item>
-        <item name="android:textColor">@color/text_dark</item>
     </style>
     
     <style name="function_pad">

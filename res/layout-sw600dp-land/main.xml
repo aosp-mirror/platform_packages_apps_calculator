@@ -67,7 +67,7 @@
                 android:contentDescription="@string/delDesc"
                 android:paddingLeft="5dip"
                 android:paddingRight="5dip"
-                android:src="@drawable/calc_clear_symbol_tintable"
+                android:src="@drawable/ic_delete_alpha"
                 android:visibility="invisible" />
         </FrameLayout>
     </LinearLayout>

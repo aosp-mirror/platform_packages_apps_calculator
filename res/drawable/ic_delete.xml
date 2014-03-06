@@ -1,3 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <bitmap xmlns:android="http://schemas.android.com/apk/res/android"
-    android:src="@drawable/calc_clear_symbol_tintable" />
+    android:src="@drawable/ic_delete_alpha"
+    android:tint="@color/text_light" />

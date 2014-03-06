@@ -115,8 +115,17 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
     }
 
     @Override
-    public void onDeleteModeChange() {
-        // Meh?
+    public void onDeleteModeChange(int deleteMode) {
+        final View clear = findViewById(R.id.clear);
+        final View delete = findViewById(R.id.del);
+
+        if (deleteMode == Logic.DELETE_MODE_BACKSPACE) {
+            delete.setVisibility(View.VISIBLE);
+            clear.setVisibility(View.GONE);
+        } else {
+            delete.setVisibility(View.GONE);
+            clear.setVisibility(View.VISIBLE);
+        }
     }
 
     static void log(String message) {

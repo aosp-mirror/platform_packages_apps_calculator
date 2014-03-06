@@ -18,7 +18,7 @@
 <resources>
 
     <!-- Application name -->
-    <string name="app_name">Quantum Calculator</string>
+    <string name="app_name">Calculator</string>
     <!-- If there is a syntax error in the user entered calculation, an error dialog will appear.  This is the title. -->
     <string name="error">Error</string>
     <!-- Displayed numbers for the digit buttons -->

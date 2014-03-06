@@ -60,7 +60,7 @@ class Logic {
     private int mDeleteMode = DELETE_MODE_BACKSPACE;
 
     public interface Listener {
-        void onDeleteModeChange();
+        void onDeleteModeChange(int mode);
     }
 
     private Listener mListener;
@@ -82,7 +82,7 @@ class Logic {
     public void setDeleteMode(int mode) {
         if (mDeleteMode != mode) {
             mDeleteMode = mode;
-            mListener.onDeleteModeChange();
+            mListener.onDeleteModeChange(mode);
         }
     }
 
