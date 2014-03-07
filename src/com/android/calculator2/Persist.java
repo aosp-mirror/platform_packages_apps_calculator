@@ -16,27 +16,29 @@
 
 package com.android.calculator2;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.IOException;
-import java.io.FileNotFoundException;
+import android.content.Context;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-
-import android.content.Context;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 class Persist {
     private static final int LAST_VERSION = 2;
     private static final String FILE_NAME = "calculator.data";
-    private Context mContext;
 
-    History history = new History();
+    private Context mContext;
+    private History mHistory;
     private int mDeleteMode;
 
-    Persist(Context context) {
-        this.mContext = context;
+    public Persist(Context context) {
+        mContext = context;
+    }
+
+    public History getHistory() {
+        return mHistory;
     }
 
     public void setDeleteMode(int mode) {
@@ -49,33 +51,45 @@ class Persist {
 
     public void load() {
         try {
-            InputStream is = new BufferedInputStream(mContext.openFileInput(FILE_NAME), 8192);
-            DataInputStream in = new DataInputStream(is);
-            int version = in.readInt();
+            final DataInputStream in = new DataInputStream(
+                    new BufferedInputStream(mContext.openFileInput(FILE_NAME), 8192));
+            final int version = in.readInt();
             if (version > 1) {
                 mDeleteMode = in.readInt();
             } else if (version > LAST_VERSION) {
                 throw new IOException("data version " + version + "; expected " + LAST_VERSION);
             }
-            history = new History(version, in);
+
+            mHistory = new History(version, in);
+
             in.close();
         } catch (FileNotFoundException e) {
-            Calculator.log("" + e);
+            e.printStackTrace();
         } catch (IOException e) {
-            Calculator.log("" + e);
+            e.printStackTrace();
+        }
+
+        if (mHistory == null) {
+            mHistory = new History();
         }
     }
 
     public void save() {
+        if (mHistory == null) {
+            return;
+        }
+
         try {
-            OutputStream os = new BufferedOutputStream(mContext.openFileOutput(FILE_NAME, 0), 8192);
-            DataOutputStream out = new DataOutputStream(os);
+            final DataOutputStream out = new DataOutputStream(
+                    new BufferedOutputStream(mContext.openFileOutput(FILE_NAME, 0), 8192));
             out.writeInt(LAST_VERSION);
             out.writeInt(mDeleteMode);
-            history.write(out);
+
+            mHistory.write(out);
+
             out.close();
         } catch (IOException e) {
-            Calculator.log("" + e);
+            e.printStackTrace();
         }
     }
 }

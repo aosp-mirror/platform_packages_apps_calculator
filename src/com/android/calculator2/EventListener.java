@@ -23,71 +23,63 @@ import android.widget.Button;
 
 import com.android.calculator2.R;
 
-class EventListener implements View.OnKeyListener,
-                               View.OnClickListener,
-                               View.OnLongClickListener {
-    Logic mHandler;
-    ViewPager mPager;
+class EventListener implements View.OnKeyListener, View.OnClickListener, View.OnLongClickListener {
+    private Logic mHandler;
+    private ViewPager mPager;
 
-    void setHandler(Logic handler, ViewPager pager) {
+    public void setHandler(Logic handler, ViewPager pager) {
         mHandler = handler;
         mPager = pager;
     }
 
     @Override
     public void onClick(View view) {
-        int id = view.getId();
+        final int id = view.getId();
         switch (id) {
-        case R.id.del:
-            mHandler.onDelete();
-            break;
+            case R.id.del:
+                mHandler.onDelete();
+                break;
+            case R.id.clear:
+                mHandler.onClear();
+                break;
+            case R.id.equal:
+                mHandler.onEnter();
+                break;
+            default:
+                if (view instanceof Button) {
+                    String text = ((Button) view).getText().toString();
+                    if (text.length() >= 2) {
+                        // Add paren after sin, cos, ln, etc. from buttons.
+                        text += '(';
+                    }
 
-        case R.id.clear:
-            mHandler.onClear();
-            break;
-
-        case R.id.equal:
-            mHandler.onEnter();
-            break;
-
-        default:
-            if (view instanceof Button) {
-                String text = ((Button) view).getText().toString();
-                if (text.length() >= 2) {
-                    // add paren after sin, cos, ln, etc. from buttons
-                    text += '(';
+                    mHandler.append(text);
                 }
-                mHandler.append(text);
-            }
         }
     }
 
     @Override
     public boolean onLongClick(View view) {
-        int id = view.getId();
+        final int id = view.getId();
         if (id == R.id.del) {
             mHandler.onClear();
             return true;
         }
+
         return false;
     }
 
     @Override
     public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
-        int action = keyEvent.getAction();
-
-        if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT ||
-            keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
-            boolean eat = mHandler.eatHorizontalMove(keyCode == KeyEvent.KEYCODE_DPAD_LEFT);
-            return eat;
+        if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT || keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
+            return mHandler.eatHorizontalMove(keyCode == KeyEvent.KEYCODE_DPAD_LEFT);
         }
 
-        //Work-around for spurious key event from IME, bug #1639445
+        // Work-around for spurious key event from IME, bug #1639445
+        final int action = keyEvent.getAction();
         if (action == KeyEvent.ACTION_MULTIPLE && keyCode == KeyEvent.KEYCODE_UNKNOWN) {
-            return true; // eat it
+            return true;
         }
-
-        //Calculator.log("KEY " + keyCode + "; " + action);
 
         if (keyEvent.getUnicodeChar() == '=') {
             if (action == KeyEvent.ACTION_UP) {
@@ -96,10 +88,8 @@ class EventListener implements View.OnKeyListener,
             return true;
         }
 
-        if (keyCode != KeyEvent.KEYCODE_DPAD_CENTER &&
-            keyCode != KeyEvent.KEYCODE_DPAD_UP &&
-            keyCode != KeyEvent.KEYCODE_DPAD_DOWN &&
-            keyCode != KeyEvent.KEYCODE_ENTER) {
+        if (keyCode != KeyEvent.KEYCODE_DPAD_CENTER && keyCode != KeyEvent.KEYCODE_DPAD_UP &&
+                keyCode != KeyEvent.KEYCODE_DPAD_DOWN && keyCode != KeyEvent.KEYCODE_ENTER) {
             if (keyEvent.isPrintingKey() && action == KeyEvent.ACTION_UP) {
                 // Tell the handler that text was updated.
                 mHandler.onTextChanged();
@@ -107,29 +97,26 @@ class EventListener implements View.OnKeyListener,
             return false;
         }
 
-        /*
-           We should act on KeyEvent.ACTION_DOWN, but strangely
-           sometimes the DOWN event isn't received, only the UP.
-           So the workaround is to act on UP...
-           http://b/issue?id=1022478
-         */
-
+        // We should act on KeyEvent.ACTION_DOWN, but strangely sometimes the
+        // DOWN event isn't received, only the UP. So the workaround is to act
+        // on UP... http://b/issue?id=1022478
         if (action == KeyEvent.ACTION_UP) {
             switch (keyCode) {
-            case KeyEvent.KEYCODE_ENTER:
-            case KeyEvent.KEYCODE_DPAD_CENTER:
-                mHandler.onEnter();
-                break;
+                case KeyEvent.KEYCODE_ENTER:
+                case KeyEvent.KEYCODE_DPAD_CENTER:
+                    mHandler.onEnter();
+                    break;
 
-            case KeyEvent.KEYCODE_DPAD_UP:
-                mHandler.onUp();
-                break;
+                case KeyEvent.KEYCODE_DPAD_UP:
+                    mHandler.onUp();
+                    break;
 
-            case KeyEvent.KEYCODE_DPAD_DOWN:
-                mHandler.onDown();
-                break;
+                case KeyEvent.KEYCODE_DPAD_DOWN:
+                    mHandler.onDown();
+                    break;
             }
         }
+
         return true;
     }
 }

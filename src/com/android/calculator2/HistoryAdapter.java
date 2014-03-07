@@ -30,27 +30,27 @@ import org.javia.arity.SyntaxException;
 import java.util.Vector;
 
 class HistoryAdapter extends BaseAdapter {
-    private Vector<HistoryEntry> mEntries;
-    private LayoutInflater mInflater;
-    private Logic mEval;
-    
-    HistoryAdapter(Context context, History history, Logic evaluator) {
-        mEntries = history.mEntries;
+    private final Vector<HistoryEntry> mEntries;
+    private final LayoutInflater mInflater;
+    private final Logic mEval;
+
+    public HistoryAdapter(Context context, History history, Logic evaluator) {
+        mEntries = history.getEntries();
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mEval = evaluator;
     }
 
-    // @Override
+    @Override
     public int getCount() {
         return mEntries.size() - 1;
     }
 
-    // @Override
+    @Override
     public Object getItem(int position) {
         return mEntries.elementAt(position);
     }
 
-    // @Override
+    @Override
     public long getItemId(int position) {
         return position;
     }
@@ -60,24 +60,24 @@ class HistoryAdapter extends BaseAdapter {
         return true;
     }
 
-    // @Override
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view;
+        final View view;
         if (convertView == null) {
             view = mInflater.inflate(R.layout.history_item, parent, false);
         } else {
             view = convertView;
         }
 
-        TextView expr   = (TextView) view.findViewById(R.id.historyExpr);
-        TextView result = (TextView) view.findViewById(R.id.historyResult);
+        final TextView expr = (TextView) view.findViewById(R.id.historyExpr);
+        final TextView result = (TextView) view.findViewById(R.id.historyResult);
 
-        HistoryEntry entry = mEntries.elementAt(position);
-        String base = entry.getBase();
+        final HistoryEntry entry = mEntries.elementAt(position);
+        final String base = entry.getBase();
         expr.setText(entry.getBase());
 
         try {
-            String res = mEval.evaluate(base);
+            final String res = mEval.evaluate(base);
             result.setText("= " + res);
         } catch (SyntaxException e) {
             result.setText("");
@@ -86,4 +86,3 @@ class HistoryAdapter extends BaseAdapter {
         return view;
     }
 }
-

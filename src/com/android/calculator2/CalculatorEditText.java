@@ -16,8 +16,6 @@
 
 package com.android.calculator2;
 
-import com.google.common.collect.ImmutableMap;
-
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -39,15 +37,20 @@ import android.widget.Toast;
 
 import com.android.calculator2.R;
 
-public class CalculatorEditText extends EditText {
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
+public class CalculatorEditText extends EditText {
     private static final String LOG_TAG = "Calculator2";
     private static final int CUT = 0;
     private static final int COPY = 1;
     private static final int PASTE = 2;
+
+    private static Map<String, String> sReplacementTable;
+    private static String[] sOperators;
+
     private String[] mMenuItemsStrings;
-    private ImmutableMap<String, String> sReplacementTable;
-    private String[] sOperators;
 
     public CalculatorEditText(Context context) {
         this(context, null);
@@ -55,6 +58,7 @@ public class CalculatorEditText extends EditText {
 
     public CalculatorEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
+
         setCustomSelectionActionModeCallback(new NoTextSelectionMode());
         setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         setCursorVisible(false);
@@ -62,23 +66,26 @@ public class CalculatorEditText extends EditText {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-       if (event.getActionMasked() == MotionEvent.ACTION_UP) {
+        if (event.getActionMasked() == MotionEvent.ACTION_UP) {
             // Hack to prevent keyboard and insertion handle from showing.
-           cancelLongPress();
+            cancelLongPress();
         }
+
         return super.onTouchEvent(event);
     }
 
     @Override
     public boolean performLongClick() {
         showContextMenu();
+
         return true;
     }
 
     @Override
     public void onInitializeAccessibilityEvent(AccessibilityEvent event) {
         super.onInitializeAccessibilityEvent(event);
-        String mathText = mathParse(getText().toString());
+
+        final String mathText = mathParse(getText().toString());
         // Parse the string into something more "mathematical" sounding.
         if (!TextUtils.isEmpty(mathText)) {
             event.getText().clear();
@@ -90,6 +97,7 @@ public class CalculatorEditText extends EditText {
     @Override
     public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
         super.onInitializeAccessibilityNodeInfo(info);
+
         info.setText(mathParse(getText().toString()));
     }
 
@@ -109,63 +117,63 @@ public class CalculatorEditText extends EditText {
                 }
             }
         }
+
         return parsedText;
     }
 
     private synchronized void initializeReplacementTable() {
         if (sReplacementTable == null) {
-            ImmutableMap.Builder<String, String> builder = ImmutableMap.builder();
-            Resources res = getContext().getResources();
-            sOperators = res.getStringArray(R.array.operators);
-            String[] descs = res.getStringArray(R.array.operatorDescs);
-            int pos = 0;
-            for (String key : sOperators) {
-                builder.put(key, descs[pos]);
-                pos++;
+            final Resources res = getContext().getResources();
+            final String[] descs = res.getStringArray(R.array.operatorDescs);
+            final String[] ops = res.getStringArray(R.array.operators);
+            final HashMap<String, String> table = new HashMap<String, String>();
+            final int len = ops.length;
+            for (int i = 0; i < len; i++) {
+                table.put(ops[i], descs[i]);
             }
-            sReplacementTable = builder.build();
-        }
-    }
 
-    private class MenuHandler implements MenuItem.OnMenuItemClickListener {
-        public boolean onMenuItemClick(MenuItem item) {
-            return onTextContextMenuItem(item.getTitle());
+            sOperators = ops;
+            sReplacementTable = Collections.unmodifiableMap(table);
         }
     }
 
     public boolean onTextContextMenuItem(CharSequence title) {
-        boolean handled = false;
         if (TextUtils.equals(title, mMenuItemsStrings[CUT])) {
             cutContent();
-            handled = true;
-        } else if (TextUtils.equals(title,  mMenuItemsStrings[COPY])) {
+            return true;
+        } else if (TextUtils.equals(title, mMenuItemsStrings[COPY])) {
             copyContent();
-            handled = true;
-        } else if (TextUtils.equals(title,  mMenuItemsStrings[PASTE])) {
+            return true;
+        } else if (TextUtils.equals(title, mMenuItemsStrings[PASTE])) {
             pasteContent();
-            handled = true;
+            return true;
         }
-        return handled;
+
+        return false;
     }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu) {
-        MenuHandler handler = new MenuHandler();
         if (mMenuItemsStrings == null) {
-            Resources resources = getResources();
+            final Resources resources = getResources();
             mMenuItemsStrings = new String[3];
             mMenuItemsStrings[CUT] = resources.getString(android.R.string.cut);
             mMenuItemsStrings[COPY] = resources.getString(android.R.string.copy);
             mMenuItemsStrings[PASTE] = resources.getString(android.R.string.paste);
         }
-        for (int i = 0; i < mMenuItemsStrings.length; i++) {
+
+        final MenuHandler handler = new MenuHandler();
+        final int len = mMenuItemsStrings.length;
+        for (int i = 0; i < len; i++) {
             menu.add(Menu.NONE, i, i, mMenuItemsStrings[i]).setOnMenuItemClickListener(handler);
         }
+
         if (getText().length() == 0) {
             menu.getItem(CUT).setVisible(false);
             menu.getItem(COPY).setVisible(false);
         }
-        ClipData primaryClip = getPrimaryClip();
+
+        final ClipData primaryClip = getPrimaryClip();
         if (primaryClip == null || primaryClip.getItemCount() == 0
                 || !canPaste(primaryClip.getItemAt(0).coerceToText(getContext()))) {
             menu.getItem(PASTE).setVisible(false);
@@ -173,61 +181,67 @@ public class CalculatorEditText extends EditText {
     }
 
     private void setPrimaryClip(ClipData clip) {
-        ClipboardManager clipboard = (ClipboardManager) getContext().
-                getSystemService(Context.CLIPBOARD_SERVICE);
+        final ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(
+                Context.CLIPBOARD_SERVICE);
         clipboard.setPrimaryClip(clip);
     }
 
     private void copyContent() {
         final Editable text = getText();
-        int textLength = text.length();
+        final int textLength = text.length();
         setSelection(0, textLength);
-        ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(
-                Context.CLIPBOARD_SERVICE);
-        clipboard.setPrimaryClip(ClipData.newPlainText(null, text));
-        Toast.makeText(getContext(), R.string.text_copied_toast, Toast.LENGTH_SHORT).show();
+        setPrimaryClip(ClipData.newPlainText(null, text));
         setSelection(textLength);
+
+        Toast.makeText(getContext(), R.string.text_copied_toast, Toast.LENGTH_SHORT).show();
     }
 
     private void cutContent() {
         final Editable text = getText();
-        int textLength = text.length();
+        final int textLength = text.length();
         setSelection(0, textLength);
         setPrimaryClip(ClipData.newPlainText(null, text));
-        ((Editable) getText()).delete(0, textLength);
+        getText().delete(0, textLength);
         setSelection(0);
     }
 
     private ClipData getPrimaryClip() {
-        ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(
+        final ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(
                 Context.CLIPBOARD_SERVICE);
         return clipboard.getPrimaryClip();
     }
 
     private void pasteContent() {
-        ClipData clip = getPrimaryClip();
+        final ClipData clip = getPrimaryClip();
         if (clip != null) {
-            for (int i = 0; i < clip.getItemCount(); i++) {
-                CharSequence paste = clip.getItemAt(i).coerceToText(getContext());
+            final int len = clip.getItemCount();
+            for (int i = 0; i < len; i++) {
+                final CharSequence paste = clip.getItemAt(i).coerceToText(getContext());
                 if (canPaste(paste)) {
-                    ((Editable) getText()).insert(getSelectionEnd(), paste);
+                    getText().insert(getSelectionEnd(), paste);
                 }
             }
         }
     }
 
     private boolean canPaste(CharSequence paste) {
-        boolean canPaste = true;
         try {
             Float.parseFloat(paste.toString());
+            return true;
         } catch (NumberFormatException e) {
             Log.e(LOG_TAG, "Error turning string to integer. Ignoring paste.", e);
-            canPaste = false;
+            return false;
         }
-        return canPaste;
     }
 
-    class NoTextSelectionMode implements ActionMode.Callback {
+    private class MenuHandler implements MenuItem.OnMenuItemClickListener {
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            return onTextContextMenuItem(item.getTitle());
+        }
+    }
+
+    private class NoTextSelectionMode implements ActionMode.Callback {
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             return false;
@@ -241,7 +255,8 @@ public class CalculatorEditText extends EditText {
         }
 
         @Override
-        public void onDestroyActionMode(ActionMode mode) {}
+        public void onDestroyActionMode(ActionMode mode) {
+        }
 
         @Override
         public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
