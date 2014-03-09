@@ -35,5 +35,5 @@ LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := libarity:arity-2.1.2.jar
 
 include $(BUILD_MULTI_PREBUILT)
 
-# Use the folloing include to make our test apk.
+# Use the following include to make our test apk.
 include $(call all-makefiles-under,$(LOCAL_PATH))
