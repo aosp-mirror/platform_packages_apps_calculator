@@ -1,299 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-/*
- * Copyright (C) 2011, The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+     Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
 -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/top_bottom_padding"
-    android:paddingLeft="@dimen/left_right_padding"
-    android:paddingRight="@dimen/left_right_padding"
-    android:paddingTop="@dimen/top_bottom_padding" >
+    android:orientation="vertical" >
+
+    <com.android.calculator2.CalculatorDisplay
+        android:id="@+id/display"
+        style="@style/display_holder_style"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        maxDigits="@integer/max_digits" >
+
+        <com.android.calculator2.CalculatorEditText style="@style/display_style" />
+
+        <com.android.calculator2.CalculatorEditText style="@style/display_style" />
+    </com.android.calculator2.CalculatorDisplay>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/group_padding"
-        android:orientation="horizontal" >
-
-        <com.android.calculator2.CalculatorDisplay
-            android:id="@+id/display"
-            style="@style/display_holder_style"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            maxDigits="@integer/max_digits" >
-
-            <com.android.calculator2.CalculatorEditText style="@style/display_style" />
-
-            <com.android.calculator2.CalculatorEditText style="@style/display_style" />
-        </com.android.calculator2.CalculatorDisplay>
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" >
-
-            <Button
-                android:id="@+id/clear"
-                style="@style/btn_clear"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/clearDesc"
-                android:minWidth="100dp"
-                android:paddingLeft="5dip"
-                android:paddingRight="5dip"
-                android:text="@string/clear" />
-
-            <ImageButton
-                android:id="@+id/del"
-                style="@style/btn_clear"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/delDesc"
-                android:paddingLeft="5dip"
-                android:paddingRight="5dip"
-                android:src="@drawable/ic_delete_alpha"
-                android:visibility="invisible" />
-        </FrameLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="4"
+        android:layout_height="360dp"
         android:baselineAligned="false"
         android:orientation="horizontal" >
 
-        <LinearLayout
-            style="@style/advanced_pad"
-            android:layout_width="0dip"
+        <include
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="@dimen/group_padding"
-            android:layout_weight="2"
-            android:orientation="vertical" >
+            android:layout_weight="1"
+            layout="@layout/simple_pad" />
 
-            <LinearLayout style="@style/btn_row_style" >
-
-                <Button
-                    android:id="@+id/sin"
-                    style="@style/function_button_sw600"
-                    android:contentDescription="@string/sinDesc"
-                    android:text="@string/sin" />
-
-                <Button
-                    android:id="@+id/ln"
-                    style="@style/function_button_sw600"
-                    android:contentDescription="@string/lnDesc"
-                    android:text="@string/ln" />
-            </LinearLayout>
-
-            <LinearLayout style="@style/btn_row_style" >
-
-                <Button
-                    android:id="@+id/cos"
-                    style="@style/function_button_sw600"
-                    android:contentDescription="@string/cosDesc"
-                    android:text="@string/cos" />
-
-                <Button
-                    android:id="@+id/lg"
-                    style="@style/function_button_sw600"
-                    android:contentDescription="@string/lgDesc"
-                    android:text="@string/lg" />
-            </LinearLayout>
-
-            <LinearLayout style="@style/btn_row_style" >
-
-                <Button
-                    android:id="@+id/tan"
-                    style="@style/function_button_sw600"
-                    android:contentDescription="@string/tanDesc"
-                    android:text="@string/tan" />
-
-                <Button
-                    android:id="@+id/e"
-                    style="@style/function_button_sw600"
-                    android:contentDescription="@string/eDesc"
-                    android:text="@string/e" />
-            </LinearLayout>
-
-            <LinearLayout style="@style/btn_row_style" >
-
-                <Button
-                    android:id="@+id/pi"
-                    style="@style/function_button_sw600"
-                    android:contentDescription="@string/piDesc"
-                    android:text="@string/pi" />
-
-                <Button
-                    android:id="@+id/power"
-                    style="@style/function_button_sw600"
-                    android:contentDescription="@string/powerDesc"
-                    android:text="@string/power" />
-            </LinearLayout>
-
-            <LinearLayout style="@style/btn_row_style" >
-
-                <Button
-                    android:id="@+id/factorial"
-                    style="@style/function_button_sw600"
-                    android:contentDescription="@string/factorialDesc"
-                    android:text="@string/factorial" />
-
-                <Button
-                    android:id="@+id/sqrt"
-                    style="@style/function_button_sw600"
-                    android:contentDescription="@string/sqrtDesc"
-                    android:text="@string/sqrt" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dip"
+        <include
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:orientation="vertical" >
-
-            <LinearLayout style="@style/btn_row_style" >
-
-                <Button
-                    android:id="@+id/digit7"
-                    style="@style/digit_button_sw600"
-                    android:text="@string/digit7" />
-
-                <Button
-                    android:id="@+id/digit8"
-                    style="@style/digit_button_sw600"
-                    android:text="@string/digit8" />
-
-                <Button
-                    android:id="@+id/digit9"
-                    style="@style/digit_button_sw600"
-                    android:text="@string/digit9" />
-
-                <Button
-                    android:id="@+id/div"
-                    style="@style/function_button_sw600"
-                    android:contentDescription="@string/divDesc"
-                    android:text="@string/div" />
-
-                <Button
-                    android:id="@+id/leftParen"
-                    style="@style/function_button_sw600"
-                    android:contentDescription="@string/leftParenDesc"
-                    android:text="@string/leftParen" />
-            </LinearLayout>
-
-            <LinearLayout style="@style/btn_row_style" >
-
-                <Button
-                    android:id="@+id/digit4"
-                    style="@style/digit_button_sw600"
-                    android:text="@string/digit4" />
-
-                <Button
-                    android:id="@+id/digit5"
-                    style="@style/digit_button_sw600"
-                    android:text="@string/digit5" />
-
-                <Button
-                    android:id="@+id/digit6"
-                    style="@style/digit_button_sw600"
-                    android:text="@string/digit6" />
-
-                <Button
-                    android:id="@+id/mul"
-                    style="@style/function_button_sw600"
-                    android:contentDescription="@string/mulDesc"
-                    android:text="@string/mul" />
-
-                <Button
-                    android:id="@+id/rightParen"
-                    style="@style/function_button_sw600"
-                    android:contentDescription="@string/rightParenDesc"
-                    android:text="@string/rightParen" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dip"
-                android:layout_weight="2"
-                android:orientation="horizontal" >
-
-                <LinearLayout
-                    android:layout_width="0dip"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:orientation="vertical" >
-
-                    <LinearLayout style="@style/btn_row_style" >
-
-                        <Button
-                            android:id="@+id/digit1"
-                            style="@style/digit_button_sw600"
-                            android:text="@string/digit1" />
-
-                        <Button
-                            android:id="@+id/digit2"
-                            style="@style/digit_button_sw600"
-                            android:text="@string/digit2" />
-
-                        <Button
-                            android:id="@+id/digit3"
-                            style="@style/digit_button_sw600"
-                            android:text="@string/digit3" />
-
-                        <Button
-                            android:id="@+id/minus"
-                            style="@style/function_button_sw600"
-                            android:contentDescription="@string/minusDesc"
-                            android:text="@string/minus" />
-                    </LinearLayout>
-
-                    <LinearLayout style="@style/btn_row_style" >
-
-                        <Button
-                            android:id="@+id/digit0"
-                            style="@style/digit_button_sw600"
-                            android:layout_weight="2"
-                            android:text="@string/digit0" />
-
-                        <Button
-                            android:id="@+id/dot"
-                            style="@style/digit_button_sw600"
-                            android:contentDescription="@string/dotDesc"
-                            android:text="@string/dot" />
-
-                        <Button
-                            android:id="@+id/plus"
-                            style="@style/function_button_sw600"
-                            android:contentDescription="@string/plusDesc"
-                            android:text="@string/plus" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/equal"
-                    style="@style/function_button_sw600"
-                    android:contentDescription="@string/equalDesc"
-                    android:text="@string/equal" />
-            </LinearLayout>
-        </LinearLayout>
+            android:layout_weight="1"
+            layout="@layout/advanced_pad" />
     </LinearLayout>
 
 </LinearLayout>
