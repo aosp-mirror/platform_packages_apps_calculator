@@ -63,6 +63,9 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
 
             mPager.setAdapter(adapter);
             mPager.setCurrentItem(state == null ? 0 : state.getInt(STATE_CURRENT_VIEW, 0));
+        } else {
+            mClr = findViewById(R.id.clear);
+            mDel = findViewById(R.id.del);
         }
 
         mPersist = new Persist(this);
