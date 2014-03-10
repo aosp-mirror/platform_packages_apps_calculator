@@ -17,8 +17,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- no translation found for app_name (1500378215150041745) -->
-    <skip />
+    <string name="app_name" msgid="8095131950334945205">"Kalkulator"</string>
     <string name="error" msgid="9197457880925804499">"Ralat"</string>
     <string name="digit0" msgid="8069590963464434135">"0"</string>
     <string name="digit1" msgid="8535041374797804029">"1"</string>
@@ -30,8 +29,7 @@
     <string name="digit7" msgid="658125644218958447">"7"</string>
     <string name="digit8" msgid="3134686906411558886">"8"</string>
     <string name="digit9" msgid="765379157698748031">"9"</string>
-    <!-- no translation found for del (2051454354221101970) -->
-    <skip />
+    <string name="del" msgid="2051454354221101970">"PADAM"</string>
     <string name="clear" msgid="8103610981407459768">"CLR"</string>
     <string name="sin" msgid="6793866152659175277">"sin"</string>
     <string name="cos" msgid="6901841853098114414">"kos"</string>
