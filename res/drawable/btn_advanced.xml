@@ -15,4 +15,4 @@
      limitations under the License.
 -->
 <touch-feedback xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@color/primary_dark" />
+    android:tint="@color/primary_dark" android:pinned="true" />
