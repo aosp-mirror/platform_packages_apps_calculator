@@ -30,7 +30,7 @@
     <string name="digit8" msgid="3134686906411558886">"8"</string>
     <string name="digit9" msgid="765379157698748031">"9"</string>
     <string name="del" msgid="2051454354221101970">"DEL"</string>
-    <string name="clear" msgid="8103610981407459768">"አጥራ"</string>
+    <string name="clear" msgid="8103610981407459768">"አጽዳ"</string>
     <string name="sin" msgid="6793866152659175277">"sin"</string>
     <string name="cos" msgid="6901841853098114414">"cos"</string>
     <string name="tan" msgid="7957459816738554960">"tan"</string>
@@ -41,7 +41,7 @@
     <string name="rightParen" msgid="3177971166159324016">")"</string>
     <string name="basic" msgid="7691469861698059753">"መሠረታዊ መደብ"</string>
     <string name="advanced" msgid="7122495413742976492">"የላቀ ፓናል"</string>
-    <string name="clear_history" msgid="8458043980601165012">"ታሪክ አጥራ"</string>
+    <string name="clear_history" msgid="8458043980601165012">"ታሪክ አጽዳ"</string>
     <string name="text_copied_toast" msgid="5801480710472541833">"ፅሁፍ ተገልብጧል።"</string>
     <string name="leftParenDesc" msgid="8446428211982811379">"የግራ ቅንፍ"</string>
     <string name="rightParenDesc" msgid="9133691645148976523">"የቀኝ ቅንፍ"</string>
