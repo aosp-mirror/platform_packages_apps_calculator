@@ -59,7 +59,7 @@
     <string name="tanDesc" msgid="2055554933130702423">"טנגנס"</string>
     <string name="sinDesc" msgid="6563285042235077204">"סינוס"</string>
     <string name="cosDesc" msgid="4048942450207926538">"קוסינוס"</string>
-    <string name="eDesc" msgid="6709583372168924068">"המספר e"</string>
+    <string name="eDesc" msgid="6709583372168924068">"‏המספר e"</string>
     <string name="piDesc" msgid="8838151606775021517">"פאי"</string>
     <string name="equalDesc" msgid="4164435100263313101">"שווה"</string>
   <string-array name="operatorDescs">
