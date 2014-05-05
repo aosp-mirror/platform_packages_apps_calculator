@@ -117,6 +117,10 @@
         <item name="android:textSize">@dimen/btn_clear_text_size</item>
     </style>
 
-    <style name="AppTheme" parent="@android:style/Theme.Quantum" />
+    <style name="AppTheme" parent="@android:style/Theme.Quantum.NoActionBar">
+        <item name="android:colorPrimary">@color/primary</item>
+        <item name="android:colorPrimaryLight">@color/primary_light</item>
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+    </style>
 
 </resources>
