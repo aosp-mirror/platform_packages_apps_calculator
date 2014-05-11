@@ -6,9 +6,13 @@
     <dimen name="btn_function_text_size">30sp</dimen>
     <dimen name="btn_clear_text_size">30sp</dimen>
     <dimen name="small_text_size">16dp</dimen>
-    <dimen name="display_text_size">72sp</dimen>
     <dimen name="pager_shadow_width">16dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- 72 = 16 + 8N -->
+    <dimen name="display_maximum_text_size">72sp</dimen>
+    <dimen name="display_minimum_text_size">16sp</dimen>
+    <dimen name="display_step_text_size">8sp</dimen>
 
 </resources>

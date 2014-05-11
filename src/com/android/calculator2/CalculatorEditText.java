@@ -20,11 +20,13 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Paint;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.ActionMode;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -50,6 +52,12 @@ public class CalculatorEditText extends EditText {
     private static Map<String, String> sReplacementTable;
     private static String[] sOperators;
 
+    private final int mMaximumTextSize;
+    private final int mMinimumTextSize;
+    private final int mStepTextSize;
+
+    private int mWidthConstraint = -1;
+
     private String[] mMenuItemsStrings;
 
     public CalculatorEditText(Context context) {
@@ -62,6 +70,11 @@ public class CalculatorEditText extends EditText {
         setCustomSelectionActionModeCallback(new NoTextSelectionMode());
         setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         setCursorVisible(false);
+
+        final Resources res = getResources();
+        mMaximumTextSize = res.getDimensionPixelSize(R.dimen.display_maximum_text_size);
+        mMinimumTextSize = res.getDimensionPixelSize(R.dimen.display_minimum_text_size);
+        mStepTextSize = res.getDimensionPixelSize(R.dimen.display_step_text_size);
     }
 
     @Override
@@ -104,6 +117,51 @@ public class CalculatorEditText extends EditText {
     @Override
     public void onPopulateAccessibilityEvent(AccessibilityEvent event) {
         // Do nothing.
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        mWidthConstraint =
+                MeasureSpec.getSize(widthMeasureSpec) - getPaddingLeft() - getPaddingRight();
+        setVariableFontSize();
+    }
+
+    @Override
+    protected void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
+        super.onTextChanged(text, start, lengthBefore, lengthAfter);
+
+        if (TextUtils.isEmpty(text)) {
+            setTextSize(TypedValue.COMPLEX_UNIT_PX, mMaximumTextSize);
+            return;
+        }
+
+        setVariableFontSize();
+    }
+
+    private void setVariableFontSize() {
+        if (mWidthConstraint < 0) {
+            // Not measured, bail early.
+            return;
+        }
+
+        final Paint paint = new Paint();
+        final String measureText = getText().toString();
+        int lastFitTextSize = mMinimumTextSize;
+
+        while (lastFitTextSize < mMaximumTextSize) {
+            final int nextSize = lastFitTextSize + mStepTextSize;
+            paint.setTextSize(nextSize);
+            final float measuredTextWidth = paint.measureText(measureText);
+            if (measuredTextWidth > mWidthConstraint) {
+                break;
+            } else {
+                lastFitTextSize = nextSize;
+            }
+        }
+
+        setTextSize(TypedValue.COMPLEX_UNIT_PX, lastFitTextSize);
     }
 
     private String mathParse(String plainText) {
