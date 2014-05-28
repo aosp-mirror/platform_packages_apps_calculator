@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2014 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
+<resources>
+
+    <!-- Constant for Euler's number (i.e. "2.7182…"). [CHAR_LIMIT=1] -->
+    <string name="const_e">e</string>
+    <!-- Constant for pi (i.e. "3.1415…"). [CHAR_LIMIT=1] -->
+    <string name="const_pi">π</string>
+
+    <!-- Left parenthesis (e.g. "log(", "2 × (3 - 1)". [CHAR_LIMIT=1] -->
+    <string name="lparen">(</string>
+    <!-- Right parenthesis (e.g. "log(2)", "(3 - 1) × 2". [CHAR_LIMIT=1] -->
+    <string name="rparen">)</string>
+
+    <!-- Addition operator (e.g. "1 + 2"). [CHAR_LIMIT=1] -->
+    <string name="op_add">+</string>
+    <!-- Divide operator (e.g. "1 ÷ 2"). [CHAR_LIMIT=1] -->
+    <string name="op_div">÷</string>
+    <!-- Factorial operator (e.g. "2!"). [CHAR_LIMIT=1] -->
+    <string name="op_fact">!</string>
+    <!-- Multiply operator (e.g. "1 × 2"). [CHAR_LIMIT=1] -->
+    <string name="op_mul">×</string>
+    <!-- Power operator (e.g. "1 ^ 2"). [CHAR_LIMIT=1] -->
+    <string name="op_pow">^</string>
+    <!-- Square root operator (e.g. "√1"). [CHAR_LIMIT=1] -->
+    <string name="op_sqrt">√</string>
+    <!-- Subtraction operator (e.g. "1 - 2"). [CHAR_LIMIT=1] -->
+    <string name="op_sub">−</string>
+
+    <!-- Equals operator (e.g. "1 + 2 = ?"). [CHAR_LIMIT=1] -->
+    <string name="eq">=</string>
+    <!-- Result displayed when expression evaluates to infinity. [CHAR_LIMIT=1] -->
+    <string name="inf">∞</string>
+
+</resources>

@@ -1,126 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2007 The Android Open Source Project
+  Copyright (C) 2014 The Android Open Source Project
 
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
 
-          http://www.apache.org/licenses/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
 
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="button_style" parent="@android:style/Widget.Quantum.Button.Borderless">
-        <item name="android:textSize">24dp</item>
+    <style name="CalculatorTheme" parent="@android:style/Theme.Quantum.Light.NoActionBar">
+        <item name="android:navigationBarColor">@android:color/black</item>
+        <item name="android:statusBarColor">@color/calculator_accent_color</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="DisplayEditTextStyle" parent="@android:style/Widget.Quantum.Light.EditText">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:cursorVisible">false</item>
         <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:gravity">bottom|end</item>
+    </style>
+
+    <style name="DisplayShadowStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">8dip</item>
+        <item name="android:background">@drawable/display_shadow</item>
+    </style>
+
+    <style name="PadButtonStyle" parent="@android:style/Widget.Quantum.Light.Button.Borderless">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/pad_btn_background</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:gravity">center</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:minWidth">0dip</item>
+        <item name="android:minHeight">0dip</item>
         <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/pad_button_text_color</item>
+    </style>
+
+    <style name="PadLayoutStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:focusable">true</item>
-        <item name="android:onClick">onClick</item>
-    </style>
-    
-    <style name="function_pad">
-        <item name="android:background">@color/gray_40</item>
-    </style>
-
-    <style name="function_button" parent="button_style">
-        <item name="android:background">@drawable/btn_digit</item>
-        <item name="android:textColor">@color/text_light</item>
-    </style>
-
-    <!-- Function button used on sw600 devices. -->
-    <style name="function_button_sw600" parent="function_button">
-        <item name="android:layout_width">0dip</item>
-        <item name="android:layout_weight">1</item>
-    </style>
-    
-    <style name="digit_pad">
-        <item name="android:background">@color/gray_30</item>
-    </style>
-
-    <style name="digit_button" parent="button_style">
-        <item name="android:background">@drawable/btn_digit</item>
-        <item name="android:textColor">@color/text_light</item>
-    </style>
-
-    <!-- Digit button used on sw600 devices. -->
-    <style name="digit_button_sw600" parent="digit_button">
-        <item name="android:layout_width">0dip</item>
-        <item name="android:layout_weight">1</item>
-    </style>
-    
-    <style name="advanced_pad">
-        <item name="android:background">@color/primary</item>
-    </style>
-
-    <style name="advanced_button" parent="button_style">
-        <item name="android:background">@drawable/btn_advanced</item>
-        <item name="android:textColor">@color/text_light</item>
-    </style>
-
-    <!-- Advanced button used on sw600 devices. -->
-    <style name="advanced_button_s600" parent="advanced_button">
-        <item name="android:layout_width">0dip</item>
-        <item name="android:layout_weight">1</item>
-    </style>
-
-    <style name="advanced_button_small" parent="advanced_button">
-        <item name="android:textSize">30dp</item>
-    </style>
-
-    <style name="button_small_style" parent="button_style">
-        <item name="android:textSize">30dp</item>
-    </style>
-
-    <!-- Style applied to a display card. -->
-    <style name="display_style">
-        <item name="android:textSize">@dimen/display_maximum_text_size</item>
-        <item name="android:inputType">text|textNoSuggestions</item>
-        <item name="android:gravity">right|center_vertical</item>
-        <item name="android:textColor">@color/text_dark</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:scrollbars">none</item>
-        <item name="android:scrollHorizontally">true</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:paddingLeft">8dp</item>
-        <item name="android:paddingRight">8dp</item>
-        <item name="android:paddingBottom">16dp</item>
-        <item name="android:background">@drawable/card_background</item>
-        <item name="android:layout_margin">8sp</item>
-    </style>
-
-    <!-- Style applied to the display card container. -->
-    <style name="display_holder_style">
-        <item name="android:background">@color/gray_80</item>
-    </style>
-
-    <!-- Style used in sw600dp single-screen mode. -->
-    <style name="btn_row_style">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0dip</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:orientation">horizontal</item>
-    </style>
-
-    <style name="btn_clear">
-        <item name="android:background">?android:attr/selectableItemBackground</item>
-        <item name="android:textSize">@dimen/btn_clear_text_size</item>
-    </style>
-
-    <style name="AppTheme" parent="@android:style/Theme.Quantum.NoActionBar">
-        <item name="android:colorPrimary">@color/primary</item>
-        <item name="android:colorPrimaryLight">@color/primary_light</item>
-        <item name="android:colorPrimaryDark">@color/primary_dark</item>
     </style>
 
 </resources>
