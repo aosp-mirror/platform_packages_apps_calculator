@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2014 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
+<com.android.calculator2.CalculatorPadLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pad_advanced"
+    style="@style/PadLayoutStyle.Advanced"
+    android:background="@color/pad_advanced_background_color">
+
+    <Button
+        android:id="@+id/fun_sin"
+        style="@style/PadButtonStyle.Advanced"
+        android:contentDescription="@string/desc_fun_sin"
+        android:onClick="onButtonClick"
+        android:text="@string/fun_sin" />
+
+    <Button
+        android:id="@+id/fun_cos"
+        style="@style/PadButtonStyle.Advanced"
+        android:contentDescription="@string/desc_fun_cos"
+        android:onClick="onButtonClick"
+        android:text="@string/fun_cos" />
+
+    <Button
+        android:id="@+id/fun_tan"
+        style="@style/PadButtonStyle.Advanced"
+        android:contentDescription="@string/desc_fun_tan"
+        android:onClick="onButtonClick"
+        android:text="@string/fun_tan" />
+
+    <Button
+        android:id="@+id/fun_ln"
+        style="@style/PadButtonStyle.Advanced"
+        android:contentDescription="@string/desc_fun_ln"
+        android:onClick="onButtonClick"
+        android:text="@string/fun_ln" />
+
+    <Button
+        android:id="@+id/fun_log"
+        style="@style/PadButtonStyle.Advanced"
+        android:contentDescription="@string/desc_fun_log"
+        android:onClick="onButtonClick"
+        android:text="@string/fun_log" />
+
+    <Button
+        android:id="@+id/op_fact"
+        style="@style/PadButtonStyle.Advanced"
+        android:contentDescription="@string/desc_op_fact"
+        android:onClick="onButtonClick"
+        android:text="@string/op_fact" />
+
+    <Button
+        android:id="@+id/const_pi"
+        style="@style/PadButtonStyle.Advanced"
+        android:contentDescription="@string/desc_const_pi"
+        android:onClick="onButtonClick"
+        android:text="@string/const_pi" />
+
+    <Button
+        android:id="@+id/const_e"
+        style="@style/PadButtonStyle.Advanced"
+        android:contentDescription="@string/desc_const_e"
+        android:onClick="onButtonClick"
+        android:text="@string/const_e" />
+
+    <Button
+        android:id="@+id/op_pow"
+        style="@style/PadButtonStyle.Advanced"
+        android:contentDescription="@string/desc_op_pow"
+        android:onClick="onButtonClick"
+        android:text="@string/op_pow" />
+
+    <Button
+        android:id="@+id/lparen"
+        style="@style/PadButtonStyle.Advanced"
+        android:contentDescription="@string/desc_lparen"
+        android:onClick="onButtonClick"
+        android:text="@string/lparen" />
+
+    <Button
+        android:id="@+id/rparen"
+        style="@style/PadButtonStyle.Advanced"
+        android:contentDescription="@string/desc_rparen"
+        android:onClick="onButtonClick"
+        android:text="@string/rparen" />
+
+    <Button
+        android:id="@+id/op_sqrt"
+        style="@style/PadButtonStyle.Advanced"
+        android:contentDescription="@string/desc_op_sqrt"
+        android:onClick="onButtonClick"
+        android:text="@string/op_sqrt" />
+
+</com.android.calculator2.CalculatorPadLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2014 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
+<com.android.calculator2.CalculatorPadLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pad_operator"
+    style="@style/PadLayoutStyle.Operator"
+    android:background="@color/pad_operator_background_color"
+    android:columnCount="2"
+    android:rowCount="4">
+
+    <Button
+        android:id="@+id/op_div"
+        style="@style/PadButtonStyle.Operator"
+        android:contentDescription="@string/desc_op_div"
+        android:onClick="onButtonClick"
+        android:text="@string/op_div" />
+
+    <Button
+        android:id="@+id/del"
+        style="@style/PadButtonStyle.Operator.Text"
+        android:contentDescription="@string/desc_del"
+        android:onClick="onButtonClick"
+        android:text="@string/del" />
+
+    <Button
+        android:id="@+id/clr"
+        style="@style/PadButtonStyle.Operator.Text"
+        android:contentDescription="@string/desc_clr"
+        android:onClick="onButtonClick"
+        android:text="@string/clr"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/op_mul"
+        style="@style/PadButtonStyle.Operator"
+        android:contentDescription="@string/op_mul"
+        android:onClick="onButtonClick"
+        android:text="@string/op_mul" />
+
+    <Space style="@style/PadButtonStyle.Operator" />
+
+    <Button
+        android:id="@+id/op_sub"
+        style="@style/PadButtonStyle.Operator"
+        android:contentDescription="@string/desc_op_sub"
+        android:onClick="onButtonClick"
+        android:text="@string/op_sub" />
+
+    <Space style="@style/PadButtonStyle.Operator" />
+
+    <Button
+        android:id="@+id/op_add"
+        style="@style/PadButtonStyle.Operator"
+        android:contentDescription="@string/desc_op_add"
+        android:onClick="onButtonClick"
+        android:text="@string/op_add" />
+
+    <Button
+        android:id="@+id/eq"
+        style="@style/PadButtonStyle.Operator"
+        android:contentDescription="@string/desc_eq"
+        android:onClick="onButtonClick"
+        android:text="@string/eq" />
+
+</com.android.calculator2.CalculatorPadLayout>
