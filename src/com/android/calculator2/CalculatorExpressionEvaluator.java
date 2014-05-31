@@ -23,7 +23,8 @@ import org.javia.arity.SyntaxException;
 import org.javia.arity.Util;
 
 public class CalculatorExpressionEvaluator {
-    private static final int MAX_DIGITS = 14;
+    private static final int MAX_DIGITS = 12;
+    private static final int ROUNDING_DIGITS = 1;
 
     private final Symbols mSymbols;
     private final CalculatorExpressionTokenizer mTokenizer;
@@ -65,8 +66,11 @@ public class CalculatorExpressionEvaluator {
             if (Double.isNaN(result)) {
                 callback.onEvaluate(expr, null, mErrorNaN);
             } else {
+                // The arity library uses floating point arithmetic when evaluating the expression
+                // leading to precision errors in the result. The method doubleToString hides these
+                // errors; rounding the result by dropping N digits of precision.
                 callback.onEvaluate(expr, mTokenizer.getLocalizedExpression(
-                        Util.doubleToString(result, MAX_DIGITS, 0)), null);
+                        Util.doubleToString(result, MAX_DIGITS, ROUNDING_DIGITS)), null);
             }
         } catch (SyntaxException e) {
             callback.onEvaluate(expr, null, mErrorSyntax);
