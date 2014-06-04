@@ -38,7 +38,7 @@
     <string name="fun_tan" msgid="9116158377794370341">"tan"</string>
     <string name="clr" msgid="3126239559646368205">"clr"</string>
     <string name="del" msgid="6700172918709138470">"del"</string>
-    <string name="desc_const_e" msgid="7752508267661034194">"‏הקבוע e"</string>
+    <string name="desc_const_e" msgid="7752508267661034194">"מספרי אוילר"</string>
     <string name="desc_const_pi" msgid="5843835548313660468">"פאי"</string>
     <string name="desc_dec_point" msgid="6211527612960070934">"נקודה"</string>
     <string name="desc_lparen" msgid="3319203240269597504">"סוגר שמאלי"</string>
