@@ -30,6 +30,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.View.OnLongClickListener;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
@@ -216,8 +217,9 @@ public class CalculatorActivity extends Activity
         final double y_2 = Math.pow(mRevealView.getTop() - revealCenterY, 2);
         final float revealRadius = (float) Math.max(Math.sqrt(x1_2 + y_2), Math.sqrt(x2_2 + y_2));
 
-        final Animator clearAnimator = mRevealView.createRevealAnimator(
-                revealCenterX, revealCenterY, 0.0f, revealRadius);
+        final Animator clearAnimator =
+                ViewAnimationUtils.createCircularReveal(mRevealView,
+                        revealCenterX, revealCenterY, 0.0f, revealRadius);
         clearAnimator.setDuration(
                 getResources().getInteger(android.R.integer.config_longAnimTime));
         clearAnimator.addListener(new AnimatorListenerAdapter() {
