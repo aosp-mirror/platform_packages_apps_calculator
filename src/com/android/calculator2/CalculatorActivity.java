@@ -25,6 +25,7 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -67,6 +68,8 @@ public class CalculatorActivity extends Activity
     private CalculatorEditText mFormulaEditText;
     private CalculatorEditText mResultEditText;
 
+    private ViewPager mPadViewPager;
+
     private View mRevealView;
     private View mDeleteButton;
     private View mClearButton;
@@ -83,6 +86,8 @@ public class CalculatorActivity extends Activity
 
         mFormulaEditText = (CalculatorEditText) findViewById(R.id.formula);
         mResultEditText = (CalculatorEditText) findViewById(R.id.result);
+
+        mPadViewPager = (ViewPager) findViewById(R.id.pad_pager);
 
         mRevealView = findViewById(R.id.reveal);
         mDeleteButton = findViewById(R.id.del);
@@ -131,6 +136,18 @@ public class CalculatorActivity extends Activity
                 getWindow().setStatusBarColor(
                         getResources().getColor(R.color.calculator_accent_color));
             }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mPadViewPager == null || mPadViewPager.getCurrentItem() == 0) {
+            // If the user is currently looking at the first pad (or the pad is not paged),
+            // allow the system to handle the Back button.
+            super.onBackPressed();
+        } else {
+            // Otherwise, select the previous pad.
+            mPadViewPager.setCurrentItem(mPadViewPager.getCurrentItem() - 1);
         }
     }
 
