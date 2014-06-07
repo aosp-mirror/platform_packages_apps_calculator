@@ -39,7 +39,7 @@
     <string name="clr" msgid="3126239559646368205">"futa"</string>
     <string name="del" msgid="6700172918709138470">"futa"</string>
     <string name="desc_const_e" msgid="7752508267661034194">"Nambari ya Euler"</string>
-    <string name="desc_const_pi" msgid="5843835548313660468">"pai"</string>
+    <string name="desc_const_pi" msgid="5843835548313660468">"pi"</string>
     <string name="desc_dec_point" msgid="6211527612960070934">"nukta"</string>
     <string name="desc_lparen" msgid="3319203240269597504">"mabano ya kushoto"</string>
     <string name="desc_rparen" msgid="7629704943022422763">"mabano ya kulia"</string>
@@ -51,7 +51,7 @@
     <string name="desc_op_add" msgid="1174812755738083078">"jumlisha"</string>
     <string name="desc_op_div" msgid="8320455802423478031">"gawanya"</string>
     <string name="desc_op_fact" msgid="5004950609277631750">"zao mtiririko"</string>
-    <string name="desc_op_mul" msgid="978652245185868311">"mara"</string>
+    <string name="desc_op_mul" msgid="978652245185868311">"zidisha"</string>
     <string name="desc_op_pow" msgid="2620877401884059447">"mara"</string>
     <string name="desc_op_sqrt" msgid="4405610392216554239">"kipeo cha pili"</string>
     <string name="desc_op_sub" msgid="2563060630032563021">"kutoa"</string>
