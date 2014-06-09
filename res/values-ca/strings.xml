@@ -18,7 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name" msgid="8095131950334945205">"Calculadora"</string>
-    <string name="error_nan" msgid="4071578355972369426">"No és número."</string>
+    <string name="error_nan" msgid="4071578355972369426">"No és número"</string>
     <string name="error_syntax" msgid="6940043994468390738">"Error"</string>
     <string name="dec_point" msgid="6555721211126788808">","</string>
     <string name="digit_0" msgid="697966218778843272">"0"</string>
@@ -36,13 +36,13 @@
     <string name="fun_log" msgid="6856905045055937519">"log"</string>
     <string name="fun_sin" msgid="7136698561875496766">"sin"</string>
     <string name="fun_tan" msgid="9116158377794370341">"tan"</string>
-    <string name="clr" msgid="3126239559646368205">"esb"</string>
+    <string name="clr" msgid="3126239559646368205">"c"</string>
     <string name="del" msgid="6700172918709138470">"sup"</string>
     <string name="desc_const_e" msgid="7752508267661034194">"nombre d\'Euler"</string>
     <string name="desc_const_pi" msgid="5843835548313660468">"pi"</string>
     <string name="desc_dec_point" msgid="6211527612960070934">"punt"</string>
     <string name="desc_lparen" msgid="3319203240269597504">"parèntesi esquerre"</string>
-    <string name="desc_rparen" msgid="7629704943022422763">"parèntesi dret"</string>
+    <string name="desc_rparen" msgid="7629704943022422763">"parèntesi de tancament"</string>
     <string name="desc_fun_cos" msgid="3197307754450718348">"cosinus"</string>
     <string name="desc_fun_ln" msgid="4943842219071979148">"logaritme natural"</string>
     <string name="desc_fun_log" msgid="6163178034661345125">"logaritme"</string>
@@ -52,7 +52,7 @@
     <string name="desc_op_div" msgid="8320455802423478031">"divideix"</string>
     <string name="desc_op_fact" msgid="5004950609277631750">"factorial"</string>
     <string name="desc_op_mul" msgid="978652245185868311">"vegades"</string>
-    <string name="desc_op_pow" msgid="2620877401884059447">"accent circumflex"</string>
+    <string name="desc_op_pow" msgid="2620877401884059447">"potència"</string>
     <string name="desc_op_sqrt" msgid="4405610392216554239">"arrel quadrada"</string>
     <string name="desc_op_sub" msgid="2563060630032563021">"menys"</string>
     <string name="desc_clr" msgid="8357371663749541924">"esborra"</string>

@@ -18,7 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name" msgid="8095131950334945205">"Lommeregner"</string>
-    <string name="error_nan" msgid="4071578355972369426">"Er ikke et tal"</string>
+    <string name="error_nan" msgid="4071578355972369426">"Ikke et tal"</string>
     <string name="error_syntax" msgid="6940043994468390738">"Fejl"</string>
     <string name="dec_point" msgid="6555721211126788808">","</string>
     <string name="digit_0" msgid="697966218778843272">"0"</string>

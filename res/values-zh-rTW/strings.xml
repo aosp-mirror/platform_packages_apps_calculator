@@ -40,21 +40,21 @@
     <string name="del" msgid="6700172918709138470">"DEL"</string>
     <string name="desc_const_e" msgid="7752508267661034194">"尤拉數"</string>
     <string name="desc_const_pi" msgid="5843835548313660468">"圓周率"</string>
-    <string name="desc_dec_point" msgid="6211527612960070934">"小數點符號"</string>
+    <string name="desc_dec_point" msgid="6211527612960070934">"點"</string>
     <string name="desc_lparen" msgid="3319203240269597504">"左括弧"</string>
     <string name="desc_rparen" msgid="7629704943022422763">"右括弧"</string>
-    <string name="desc_fun_cos" msgid="3197307754450718348">"Cosine"</string>
+    <string name="desc_fun_cos" msgid="3197307754450718348">"餘弦"</string>
     <string name="desc_fun_ln" msgid="4943842219071979148">"自然對數"</string>
     <string name="desc_fun_log" msgid="6163178034661345125">"對數"</string>
-    <string name="desc_fun_sin" msgid="4010564022860883142">"Sine"</string>
-    <string name="desc_fun_tan" msgid="8547330421304946587">"Tangent"</string>
-    <string name="desc_op_add" msgid="1174812755738083078">"加號"</string>
-    <string name="desc_op_div" msgid="8320455802423478031">"除號"</string>
+    <string name="desc_fun_sin" msgid="4010564022860883142">"正弦"</string>
+    <string name="desc_fun_tan" msgid="8547330421304946587">"正切"</string>
+    <string name="desc_op_add" msgid="1174812755738083078">"加"</string>
+    <string name="desc_op_div" msgid="8320455802423478031">"除"</string>
     <string name="desc_op_fact" msgid="5004950609277631750">"階乘"</string>
-    <string name="desc_op_mul" msgid="978652245185868311">"乘號"</string>
+    <string name="desc_op_mul" msgid="978652245185868311">"乘"</string>
     <string name="desc_op_pow" msgid="2620877401884059447">"指數"</string>
-    <string name="desc_op_sqrt" msgid="4405610392216554239">"平方根號"</string>
-    <string name="desc_op_sub" msgid="2563060630032563021">"減號"</string>
+    <string name="desc_op_sqrt" msgid="4405610392216554239">"平方根"</string>
+    <string name="desc_op_sub" msgid="2563060630032563021">"減"</string>
     <string name="desc_clr" msgid="8357371663749541924">"清除"</string>
     <string name="desc_del" msgid="1866733601083210032">"刪除"</string>
     <string name="desc_eq" msgid="8068773095462472408">"等於"</string>
