@@ -36,7 +36,7 @@
     <string name="fun_log" msgid="6856905045055937519">"log"</string>
     <string name="fun_sin" msgid="7136698561875496766">"sin"</string>
     <string name="fun_tan" msgid="9116158377794370341">"tan"</string>
-    <string name="clr" msgid="3126239559646368205">"poč"</string>
+    <string name="clr" msgid="3126239559646368205">"izb"</string>
     <string name="del" msgid="6700172918709138470">"izb"</string>
     <string name="desc_const_e" msgid="7752508267661034194">"Eulerjevo število"</string>
     <string name="desc_const_pi" msgid="5843835548313660468">"pi"</string>
