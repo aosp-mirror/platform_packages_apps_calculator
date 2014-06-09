@@ -30,6 +30,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class CalculatorEditText extends EditText {
 
@@ -60,6 +61,7 @@ public class CalculatorEditText extends EditText {
     private final float mStepTextSize;
 
     private int mWidthConstraint = -1;
+    private OnTextSizeChangeListener mOnTextSizeChangeListener;
 
     public CalculatorEditText(Context context) {
         this(context, null);
@@ -126,6 +128,20 @@ public class CalculatorEditText extends EditText {
         setTextSize(TypedValue.COMPLEX_UNIT_PX, getVariableTextSize(text.toString()));
     }
 
+    @Override
+    public void setTextSize(int unit, float size) {
+        final float oldTextSize = getTextSize();
+        super.setTextSize(unit, size);
+
+        if (mOnTextSizeChangeListener != null && getTextSize() != oldTextSize) {
+            mOnTextSizeChangeListener.onTextSizeChanged(this, oldTextSize);
+        }
+    }
+
+    public void setOnTextSizeChangeListener(OnTextSizeChangeListener listener) {
+        mOnTextSizeChangeListener = listener;
+    }
+
     public float getVariableTextSize(String text) {
         if (mWidthConstraint < 0 || mMaximumTextSize <= mMinimumTextSize) {
             // Not measured, bail early.
@@ -166,5 +182,9 @@ public class CalculatorEditText extends EditText {
         // remove more than the available bottom padding otherwise clipping may occur.
         final FontMetricsInt fontMetrics = getPaint().getFontMetricsInt();
         return super.getCompoundPaddingBottom() - Math.min(getPaddingBottom(), fontMetrics.descent);
+    }
+
+    public interface OnTextSizeChangeListener {
+        void onTextSizeChanged(TextView textView, float oldSize);
     }
 }
