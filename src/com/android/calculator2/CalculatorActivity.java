@@ -35,9 +35,13 @@ import android.view.ViewAnimationUtils;
 import android.view.View.OnLongClickListener;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.android.calculator2.CalculatorEditText.OnTextSizeChangeListener;
+import com.android.calculator2.CalculatorExpressionEvaluator.EvaluateCallback;
 
 public class CalculatorActivity extends Activity
-        implements CalculatorExpressionEvaluator.EvaluateCallback, OnLongClickListener {
+        implements OnTextSizeChangeListener, EvaluateCallback, OnLongClickListener {
 
     public static final String CALCULATOR_ACTIVITY_CURRENT_STATE =
             CalculatorActivity.class.getSimpleName() + "_currentState";
@@ -95,6 +99,8 @@ public class CalculatorActivity extends Activity
 
         mFormulaEditText.setEditableFactory(new CalculatorExpressionBuilder.Factory(this));
         mFormulaEditText.addTextChangedListener(mFormulaTextWatcher);
+        mFormulaEditText.setOnTextSizeChangeListener(this);
+
         mDeleteButton.setOnLongClickListener(this);
     }
 
@@ -215,6 +221,32 @@ public class CalculatorActivity extends Activity
             // The current expression cannot be evaluated -> return to the input state.
             setState(CalculatorState.INPUT);
         }
+    }
+
+    @Override
+    public void onTextSizeChanged(final TextView textView, float oldSize) {
+        if (mCurrentState != CalculatorState.INPUT) {
+            // Only animate text changes that occur from user input.
+            return;
+        }
+
+        // Calculate the values needed to perform the scale and translation animations,
+        // maintaining the same apparent baseline for the displayed text.
+        final float textScale = oldSize / textView.getTextSize();
+        final float translationX = (1.0f - textScale) *
+                (textView.getWidth() / 2.0f - textView.getPaddingEnd());
+        final float translationY = (1.0f - textScale) *
+                (textView.getHeight() / 2.0f - textView.getPaddingBottom());
+
+        final AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playTogether(
+                ObjectAnimator.ofFloat(textView, View.SCALE_X, textScale, 1.0f),
+                ObjectAnimator.ofFloat(textView, View.SCALE_Y, textScale, 1.0f),
+                ObjectAnimator.ofFloat(textView, View.TRANSLATION_X, translationX, 0.0f),
+                ObjectAnimator.ofFloat(textView, View.TRANSLATION_Y, translationY, 0.0f));
+        animatorSet.setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));
+        animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
+        animatorSet.start();
     }
 
     private void onClear(View sourceView) {
