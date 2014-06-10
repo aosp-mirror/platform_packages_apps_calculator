@@ -46,13 +46,13 @@
     <string name="desc_fun_cos" msgid="3197307754450718348">"कोज्या"</string>
     <string name="desc_fun_ln" msgid="4943842219071979148">"प्राकृतिक लघुगणक"</string>
     <string name="desc_fun_log" msgid="6163178034661345125">"लघुगणक"</string>
-    <string name="desc_fun_sin" msgid="4010564022860883142">"ज्या"</string>
+    <string name="desc_fun_sin" msgid="4010564022860883142">"sine"</string>
     <string name="desc_fun_tan" msgid="8547330421304946587">"स्पर्शज्या"</string>
-    <string name="desc_op_add" msgid="1174812755738083078">"धन"</string>
+    <string name="desc_op_add" msgid="1174812755738083078">"जोड़ का चिह्न"</string>
     <string name="desc_op_div" msgid="8320455802423478031">"विभाजन"</string>
     <string name="desc_op_fact" msgid="5004950609277631750">"क्रमगुणन"</string>
     <string name="desc_op_mul" msgid="978652245185868311">"गुणा"</string>
-    <string name="desc_op_pow" msgid="2620877401884059447">"घात"</string>
+    <string name="desc_op_pow" msgid="2620877401884059447">"पावर"</string>
     <string name="desc_op_sqrt" msgid="4405610392216554239">"वर्गमूल"</string>
     <string name="desc_op_sub" msgid="2563060630032563021">"ऋण"</string>
     <string name="desc_clr" msgid="8357371663749541924">"साफ़ करें"</string>

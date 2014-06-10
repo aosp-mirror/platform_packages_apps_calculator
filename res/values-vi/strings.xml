@@ -18,7 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name" msgid="8095131950334945205">"Máy tính"</string>
-    <string name="error_nan" msgid="4071578355972369426">"Không phải là một số"</string>
+    <string name="error_nan" msgid="4071578355972369426">"Không phải số"</string>
     <string name="error_syntax" msgid="6940043994468390738">"Lỗi"</string>
     <string name="dec_point" msgid="6555721211126788808">","</string>
     <string name="digit_0" msgid="697966218778843272">"0"</string>
@@ -40,14 +40,14 @@
     <string name="del" msgid="6700172918709138470">"del"</string>
     <string name="desc_const_e" msgid="7752508267661034194">"Số Euler"</string>
     <string name="desc_const_pi" msgid="5843835548313660468">"pi"</string>
-    <string name="desc_dec_point" msgid="6211527612960070934">"dấu chấm"</string>
+    <string name="desc_dec_point" msgid="6211527612960070934">"chấm"</string>
     <string name="desc_lparen" msgid="3319203240269597504">"dấu ngoặc trái"</string>
     <string name="desc_rparen" msgid="7629704943022422763">"dấu ngoặc phải"</string>
     <string name="desc_fun_cos" msgid="3197307754450718348">"cosin"</string>
     <string name="desc_fun_ln" msgid="4943842219071979148">"logarit tự nhiên"</string>
     <string name="desc_fun_log" msgid="6163178034661345125">"logarit"</string>
     <string name="desc_fun_sin" msgid="4010564022860883142">"sin"</string>
-    <string name="desc_fun_tan" msgid="8547330421304946587">"tiếp tuyến"</string>
+    <string name="desc_fun_tan" msgid="8547330421304946587">"tang"</string>
     <string name="desc_op_add" msgid="1174812755738083078">"cộng"</string>
     <string name="desc_op_div" msgid="8320455802423478031">"chia"</string>
     <string name="desc_op_fact" msgid="5004950609277631750">"giai thừa"</string>

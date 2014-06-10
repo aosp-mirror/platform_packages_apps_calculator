@@ -31,23 +31,23 @@
     <string name="digit_7" msgid="2386463125354638611">"7"</string>
     <string name="digit_8" msgid="6298159258090202166">"8"</string>
     <string name="digit_9" msgid="1221342734731110246">"9"</string>
-    <string name="fun_cos" msgid="7312559527731358211">"i-cos"</string>
-    <string name="fun_ln" msgid="6282013842946532944">"i-In"</string>
-    <string name="fun_log" msgid="6856905045055937519">"i-log"</string>
-    <string name="fun_sin" msgid="7136698561875496766">"i-sin"</string>
-    <string name="fun_tan" msgid="9116158377794370341">"i-tan"</string>
-    <string name="clr" msgid="3126239559646368205">"i-clr"</string>
-    <string name="del" msgid="6700172918709138470">"i-del"</string>
+    <string name="fun_cos" msgid="7312559527731358211">"cos"</string>
+    <string name="fun_ln" msgid="6282013842946532944">"In"</string>
+    <string name="fun_log" msgid="6856905045055937519">"log"</string>
+    <string name="fun_sin" msgid="7136698561875496766">"sin"</string>
+    <string name="fun_tan" msgid="9116158377794370341">"tan"</string>
+    <string name="clr" msgid="3126239559646368205">"clr"</string>
+    <string name="del" msgid="6700172918709138470">"sula"</string>
     <string name="desc_const_e" msgid="7752508267661034194">"Inombolo ye-Euler"</string>
-    <string name="desc_const_pi" msgid="5843835548313660468">"i-pi"</string>
+    <string name="desc_const_pi" msgid="5843835548313660468">"pi"</string>
     <string name="desc_dec_point" msgid="6211527612960070934">"iphoyinti"</string>
     <string name="desc_lparen" msgid="3319203240269597504">"abakaki abakwesokunxele"</string>
     <string name="desc_rparen" msgid="7629704943022422763">"abakaki abakwesokudla"</string>
-    <string name="desc_fun_cos" msgid="3197307754450718348">"i-cosine"</string>
-    <string name="desc_fun_ln" msgid="4943842219071979148">"i-logarithm yemvelo"</string>
-    <string name="desc_fun_log" msgid="6163178034661345125">"i-logarithm"</string>
-    <string name="desc_fun_sin" msgid="4010564022860883142">"i-sine"</string>
-    <string name="desc_fun_tan" msgid="8547330421304946587">"i-tangent"</string>
+    <string name="desc_fun_cos" msgid="3197307754450718348">"cosine"</string>
+    <string name="desc_fun_ln" msgid="4943842219071979148">"logarithm yemvelo"</string>
+    <string name="desc_fun_log" msgid="6163178034661345125">"logarithm"</string>
+    <string name="desc_fun_sin" msgid="4010564022860883142">"sine"</string>
+    <string name="desc_fun_tan" msgid="8547330421304946587">"tangent"</string>
     <string name="desc_op_add" msgid="1174812755738083078">"hlanganisa"</string>
     <string name="desc_op_div" msgid="8320455802423478031">"hlukanisa"</string>
     <string name="desc_op_fact" msgid="5004950609277631750">"ngokwesimo"</string>
