@@ -15,7 +15,5 @@
   limitations under the License.
   -->
 
-<ripple
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:tint="@color/pad_button_tint_color"
-    android:pinned="true" />
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/pad_button_tint_color" />
