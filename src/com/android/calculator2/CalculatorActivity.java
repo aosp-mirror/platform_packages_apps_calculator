@@ -248,7 +248,7 @@ public class CalculatorActivity extends Activity
                 ObjectAnimator.ofFloat(textView, View.SCALE_Y, textScale, 1.0f),
                 ObjectAnimator.ofFloat(textView, View.TRANSLATION_X, translationX, 0.0f),
                 ObjectAnimator.ofFloat(textView, View.TRANSLATION_Y, translationY, 0.0f));
-        animatorSet.setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));
+        animatorSet.setDuration(getResources().getInteger(android.R.integer.config_mediumAnimTime));
         animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
         animatorSet.start();
     }
