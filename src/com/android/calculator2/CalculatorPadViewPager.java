@@ -51,20 +51,41 @@ public class CalculatorPadViewPager extends ViewPager {
             return position == 1 ? 0.8f : 1.0f;
         }
     };
+
+    private final OnPageChangeListener mOnPageChangeListener = new SimpleOnPageChangeListener() {
+        private void recursivelySetEnabled(View view, boolean enabled) {
+            if (view instanceof ViewGroup) {
+                final ViewGroup viewGroup = (ViewGroup) view;
+                for (int childIndex = 0; childIndex < viewGroup.getChildCount(); ++childIndex) {
+                    recursivelySetEnabled(viewGroup.getChildAt(childIndex), enabled);
+                }
+            } else {
+                view.setEnabled(enabled);
+            }
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            if (getAdapter() == mStaticPagerAdapter) {
+                for (int childIndex = 0; childIndex < getChildCount(); ++childIndex) {
+                    // Only enable subviews of the current page.
+                    recursivelySetEnabled(getChildAt(childIndex), childIndex == position);
+                }
+            }
+        }
+    };
+
     private final PageTransformer mPageTransformer = new PageTransformer() {
         @Override
         public void transformPage(View view, float position) {
-            if (position < -1.0f) {
-                view.setAlpha(0.0f);
-            } else if (position <= 0.0f) {
+            if (position < 0.0f) {
                 // Pin the left page to the left side.
                 view.setTranslationX(getWidth() * -position);
-            } else if (position <= 1.0f) {
-                // Use the default slide transition when moving to the next page.
-                view.setAlpha(1.0f);
-                view.setTranslationX(0.0f);
+                view.setAlpha(Math.max(1.0f + position, 0.0f));
             } else {
-                view.setAlpha(0.0f);
+                // Use the default slide transition when moving to the next page.
+                view.setTranslationX(0.0f);
+                view.setAlpha(1.0f);
             }
         }
     };
@@ -77,6 +98,8 @@ public class CalculatorPadViewPager extends ViewPager {
         super(context, attrs);
 
         setAdapter(mStaticPagerAdapter);
+        setBackgroundColor(getResources().getColor(android.R.color.black));
+        setOnPageChangeListener(mOnPageChangeListener);
         setPageMargin(getResources().getDimensionPixelSize(R.dimen.pad_page_margin));
         setPageTransformer(false, mPageTransformer);
     }
