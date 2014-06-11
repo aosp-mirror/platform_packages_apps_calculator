@@ -18,6 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="CalculatorTheme" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/calculator_accent_color</item>
         <item name="android:navigationBarColor">@android:color/black</item>
         <item name="android:statusBarColor">@color/calculator_accent_color</item>
         <item name="android:windowContentOverlay">@null</item>
