@@ -17,7 +17,6 @@
 package com.android.calculator2;
 
 import android.content.Context;
-import android.text.Editable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 
@@ -26,10 +25,11 @@ public class CalculatorExpressionBuilder extends SpannableStringBuilder {
     private final CalculatorExpressionTokenizer mTokenizer;
     private boolean mIsEdited;
 
-    public CalculatorExpressionBuilder(CharSequence text, CalculatorExpressionTokenizer tokenizer) {
+    public CalculatorExpressionBuilder(Context context, CharSequence text, boolean isEdited) {
         super(text);
-        mIsEdited = false;
-        mTokenizer = tokenizer;
+
+        mTokenizer = CalculatorExpressionTokenizer.getInstance(context);
+        mIsEdited = isEdited;
     }
 
     @Override
@@ -88,19 +88,5 @@ public class CalculatorExpressionBuilder extends SpannableStringBuilder {
 
         appendExpr = mTokenizer.getLocalizedExpression(appendExpr);
         return super.replace(start, end, appendExpr, 0, appendExpr.length());
-    }
-
-    public static class Factory extends Editable.Factory {
-
-        private final CalculatorExpressionTokenizer mTokenizer;
-
-        public Factory(Context context) {
-            mTokenizer = new CalculatorExpressionTokenizer(context);
-        }
-
-        @Override
-        public Editable newEditable(CharSequence source) {
-            return new CalculatorExpressionBuilder(source, mTokenizer);
-        }
     }
 }
