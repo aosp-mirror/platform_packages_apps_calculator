@@ -66,6 +66,14 @@ public class CalculatorActivity extends Activity
         }
     };
 
+    private final Editable.Factory mFormulaEditableFactory = new Editable.Factory() {
+        @Override
+        public Editable newEditable(CharSequence source) {
+            return new CalculatorExpressionBuilder(CalculatorActivity.this, source,
+                    mCurrentState == CalculatorState.INPUT);
+        }
+    };
+
     private CalculatorState mCurrentState;
     private CalculatorExpressionEvaluator mEvaluator;
 
@@ -85,8 +93,9 @@ public class CalculatorActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
 
-        mCurrentState = CalculatorState.INPUT;
-        mEvaluator = new CalculatorExpressionEvaluator(this);
+        if (savedInstanceState == null) {
+            savedInstanceState = Bundle.EMPTY;
+        }
 
         mFormulaEditText = (CalculatorEditText) findViewById(R.id.formula);
         mResultEditText = (CalculatorEditText) findViewById(R.id.result);
@@ -97,18 +106,15 @@ public class CalculatorActivity extends Activity
         mDeleteButton = findViewById(R.id.del);
         mClearButton = findViewById(R.id.clr);
 
-        mFormulaEditText.setEditableFactory(new CalculatorExpressionBuilder.Factory(this));
+        setState(CalculatorState.values()[savedInstanceState.getInt(
+                CALCULATOR_ACTIVITY_CURRENT_STATE, CalculatorState.INPUT.ordinal())]);
+        mEvaluator = new CalculatorExpressionEvaluator(this);
+
+        mFormulaEditText.setEditableFactory(mFormulaEditableFactory);
         mFormulaEditText.addTextChangedListener(mFormulaTextWatcher);
         mFormulaEditText.setOnTextSizeChangeListener(this);
 
         mDeleteButton.setOnLongClickListener(this);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        setState(CalculatorState.values()[savedInstanceState.getInt(
-                CALCULATOR_ACTIVITY_CURRENT_STATE, CalculatorState.INPUT.ordinal())]);
     }
 
     @Override

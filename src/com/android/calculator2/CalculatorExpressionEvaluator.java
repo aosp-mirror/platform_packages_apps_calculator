@@ -23,6 +23,7 @@ import org.javia.arity.SyntaxException;
 import org.javia.arity.Util;
 
 public class CalculatorExpressionEvaluator {
+
     private static final int MAX_DIGITS = 12;
     private static final int ROUNDING_DIGITS = 1;
 
@@ -34,7 +35,7 @@ public class CalculatorExpressionEvaluator {
 
     public CalculatorExpressionEvaluator(Context context) {
         mSymbols = new Symbols();
-        mTokenizer = new CalculatorExpressionTokenizer(context);
+        mTokenizer = CalculatorExpressionTokenizer.getInstance(context);
 
         mErrorNaN = context.getString(R.string.error_nan);
         mErrorSyntax = context.getString(R.string.error_syntax);

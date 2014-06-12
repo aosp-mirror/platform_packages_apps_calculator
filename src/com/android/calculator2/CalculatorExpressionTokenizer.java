@@ -23,9 +23,20 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class CalculatorExpressionTokenizer {
+
+    private static CalculatorExpressionTokenizer sSharedInstance;
+
+    public static CalculatorExpressionTokenizer getInstance(Context context) {
+        if (sSharedInstance == null) {
+            sSharedInstance = new CalculatorExpressionTokenizer(context);
+        }
+
+        return sSharedInstance;
+    }
+
     private final Map<String, String> mReplacementMap;
 
-    public CalculatorExpressionTokenizer(Context context) {
+    private CalculatorExpressionTokenizer(Context context) {
         mReplacementMap = new HashMap<>();
 
         mReplacementMap.put(".", context.getString(R.string.dec_point));
