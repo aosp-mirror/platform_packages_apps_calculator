@@ -177,9 +177,7 @@ public class CalculatorActivity extends Activity
     public void onButtonClick(View view) {
         switch (view.getId()) {
             case R.id.eq:
-                if (mCurrentState != CalculatorState.INPUT) {
-                    mFormulaEditText.getEditableText().clear();
-                } else {
+                if (mCurrentState == CalculatorState.INPUT) {
                     setState(CalculatorState.EVALUATE);
                     mEvaluator.evaluate(mFormulaEditText.getText(), this);
                 }
