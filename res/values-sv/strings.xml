@@ -56,6 +56,6 @@
     <string name="desc_op_sqrt" msgid="4405610392216554239">"kvadratrot"</string>
     <string name="desc_op_sub" msgid="2563060630032563021">"minus"</string>
     <string name="desc_clr" msgid="8357371663749541924">"rensa"</string>
-    <string name="desc_del" msgid="1866733601083210032">"radera"</string>
+    <string name="desc_del" msgid="1866733601083210032">"delete"</string>
     <string name="desc_eq" msgid="8068773095462472408">"är lika med"</string>
 </resources>
