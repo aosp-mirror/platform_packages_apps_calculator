@@ -38,13 +38,4 @@
         android:inputType="none"
         android:textColor="@color/display_result_text_color" />
 
-    <View
-        android:id="@+id/reveal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/formula"
-        android:layout_alignBottom="@id/result"
-        android:background="@color/calculator_accent_color"
-        android:visibility="gone" />
-
 </RelativeLayout>
