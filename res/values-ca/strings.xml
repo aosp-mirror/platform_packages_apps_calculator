@@ -29,7 +29,7 @@
     <string name="digit8" msgid="3134686906411558886">"8"</string>
     <string name="digit9" msgid="765379157698748031">"9"</string>
     <string name="del" msgid="6248896117422989693">"SUPRIMEIX"</string>
-    <string name="clear" msgid="8103610981407459768">"CLR"</string>
+    <string name="clear" msgid="8103610981407459768">"C"</string>
     <string name="sin" msgid="6793866152659175277">"sin"</string>
     <string name="cos" msgid="6901841853098114414">"cos"</string>
     <string name="tan" msgid="7957459816738554960">"tan"</string>
@@ -41,9 +41,9 @@
     <string name="basic" msgid="7691469861698059753">"Tauler bàsic"</string>
     <string name="advanced" msgid="7122495413742976492">"Tauler avançat"</string>
     <string name="clear_history" msgid="8458043980601165012">"Esborra l\'historial"</string>
-    <string name="text_copied_toast" msgid="5801480710472541833">"S\'ha copiat el text."</string>
-    <string name="leftParenDesc" msgid="8446428211982811379">"parèntesi esquerre"</string>
-    <string name="rightParenDesc" msgid="9133691645148976523">"parèntesi dret"</string>
+    <string name="text_copied_toast" msgid="5801480710472541833">"Text copiat"</string>
+    <string name="leftParenDesc" msgid="8446428211982811379">"parèntesi d\'obertura"</string>
+    <string name="rightParenDesc" msgid="9133691645148976523">"parèntesi de tancament"</string>
     <string name="factorialDesc" msgid="9217024218012761574">"factorial"</string>
     <string name="lnDesc" msgid="1052579286300842270">"logaritme natural"</string>
     <string name="lgDesc" msgid="6490920451513731160">"logaritme"</string>
@@ -53,7 +53,7 @@
     <string name="plusDesc" msgid="3145322700823848264">"més"</string>
     <string name="minusDesc" msgid="5033462008907390900">"menys"</string>
     <string name="dotDesc" msgid="5253752241630161722">"punt"</string>
-    <string name="powerDesc" msgid="9034898318444176910">"poder"</string>
+    <string name="powerDesc" msgid="9034898318444176910">"potència"</string>
     <string name="delDesc" msgid="8211175878012032240">"suprimeix"</string>
     <string name="clearDesc" msgid="8015748901120751476">"esborra"</string>
     <string name="tanDesc" msgid="2055554933130702423">"tangent"</string>
@@ -63,8 +63,8 @@
     <string name="piDesc" msgid="8838151606775021517">"pi"</string>
     <string name="equalDesc" msgid="4164435100263313101">"és igual a"</string>
   <string-array name="operatorDescs">
-    <item msgid="7903565108986789641">"parèntesi esquerre"</item>
-    <item msgid="1688156211934459752">"parèntesi dret"</item>
+    <item msgid="7903565108986789641">"parèntesi d\'obertura"</item>
+    <item msgid="1688156211934459752">"parèntesi de tancament"</item>
     <item msgid="6664829080840305856">"factorial"</item>
     <item msgid="2880199289575144121">"logaritme natural"</item>
     <item msgid="4398774906998694599">"logaritme"</item>

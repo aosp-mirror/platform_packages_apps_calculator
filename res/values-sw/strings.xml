@@ -29,12 +29,12 @@
     <string name="digit8" msgid="3134686906411558886">"8"</string>
     <string name="digit9" msgid="765379157698748031">"9"</string>
     <string name="del" msgid="6248896117422989693">"FUTA"</string>
-    <string name="clear" msgid="8103610981407459768">"FUT"</string>
+    <string name="clear" msgid="8103610981407459768">"FUTA"</string>
     <string name="sin" msgid="6793866152659175277">"sin"</string>
     <string name="cos" msgid="6901841853098114414">"cos"</string>
     <string name="tan" msgid="7957459816738554960">"tan"</string>
     <string name="e" msgid="1377847800971731483">"e"</string>
-    <string name="ln" msgid="6888500680285403344">"Kwenye"</string>
+    <string name="ln" msgid="6888500680285403344">"ln"</string>
     <string name="lg" msgid="873623857385418182">"log"</string>
     <string name="leftParen" msgid="4850643713953092099">"("</string>
     <string name="rightParen" msgid="3177971166159324016">")"</string>
@@ -53,13 +53,13 @@
     <string name="plusDesc" msgid="3145322700823848264">"jumlisha"</string>
     <string name="minusDesc" msgid="5033462008907390900">"kutoa"</string>
     <string name="dotDesc" msgid="5253752241630161722">"nukta"</string>
-    <string name="powerDesc" msgid="9034898318444176910">"nguvu"</string>
+    <string name="powerDesc" msgid="9034898318444176910">"kipeo"</string>
     <string name="delDesc" msgid="8211175878012032240">"futa"</string>
     <string name="clearDesc" msgid="8015748901120751476">"futa"</string>
     <string name="tanDesc" msgid="2055554933130702423">"mstari"</string>
     <string name="sinDesc" msgid="6563285042235077204">"sine"</string>
     <string name="cosDesc" msgid="4048942450207926538">"kosi"</string>
-    <string name="eDesc" msgid="6709583372168924068">"namba ya Euler"</string>
+    <string name="eDesc" msgid="6709583372168924068">"nambari ya Euler"</string>
     <string name="piDesc" msgid="8838151606775021517">"pi"</string>
     <string name="equalDesc" msgid="4164435100263313101">"sawa na"</string>
   <string-array name="operatorDescs">
@@ -73,8 +73,8 @@
     <item msgid="2646574635189709515">"imezidishwa na"</item>
     <item msgid="3487936384379753697">"jumlisha"</item>
     <item msgid="8608534484562258856">"kutoa"</item>
-    <item msgid="3456824579675198186">" mahali "</item>
-    <item msgid="4528629783180278651">"nguvu"</item>
+    <item msgid="3456824579675198186">"nukta "</item>
+    <item msgid="4528629783180278651">"kipeo"</item>
     <item msgid="4050948027333760159">"mstari"</item>
     <item msgid="8716478860618683850">"sine"</item>
     <item msgid="3203211483560707480">"kosi"</item>

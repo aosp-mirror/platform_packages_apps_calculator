@@ -41,7 +41,7 @@
     <string name="basic" msgid="7691469861698059753">"Grundlæggende panel"</string>
     <string name="advanced" msgid="7122495413742976492">"Avanceret panel"</string>
     <string name="clear_history" msgid="8458043980601165012">"Ryd historik"</string>
-    <string name="text_copied_toast" msgid="5801480710472541833">"Tekst er kopieret."</string>
+    <string name="text_copied_toast" msgid="5801480710472541833">"Tekst kopieret."</string>
     <string name="leftParenDesc" msgid="8446428211982811379">"venstre parentes"</string>
     <string name="rightParenDesc" msgid="9133691645148976523">"højre parentes"</string>
     <string name="factorialDesc" msgid="9217024218012761574">"faktoriel"</string>
