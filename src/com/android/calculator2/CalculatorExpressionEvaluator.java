@@ -25,7 +25,7 @@ import org.javia.arity.Util;
 public class CalculatorExpressionEvaluator {
 
     private static final int MAX_DIGITS = 12;
-    private static final int ROUNDING_DIGITS = 1;
+    private static final int ROUNDING_DIGITS = 2;
 
     private final Symbols mSymbols;
     private final CalculatorExpressionTokenizer mTokenizer;
