@@ -20,9 +20,8 @@
     <style name="CalculatorTheme" parent="@android:style/Theme.Material.Light.NoActionBar">
         <item name="android:colorPrimary">@color/calculator_accent_color</item>
         <item name="android:navigationBarColor">@android:color/black</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@color/calculator_accent_color</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowOverscan">true</item>
     </style>
 
     <style name="DisplayEditTextStyle" parent="@android:style/Widget.Material.Light.EditText">

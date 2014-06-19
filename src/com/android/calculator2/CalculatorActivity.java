@@ -25,6 +25,7 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.Activity;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.text.Editable;
@@ -34,7 +35,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.view.ViewAnimationUtils;
-import android.view.ViewGroup;
+import android.view.ViewGroupOverlay;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
@@ -83,7 +84,6 @@ public class CalculatorActivity extends Activity
     private CalculatorEditText mResultEditText;
 
     private ViewPager mPadViewPager;
-    private ViewGroup mContentView;
 
     private View mDeleteButton;
     private View mClearButton;
@@ -94,15 +94,12 @@ public class CalculatorActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        getWindow().getAttributes().systemUiVisibility |= View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
         setContentView(R.layout.activity_calculator);
 
         mFormulaEditText = (CalculatorEditText) findViewById(R.id.formula);
         mResultEditText = (CalculatorEditText) findViewById(R.id.result);
 
         mPadViewPager = (ViewPager) findViewById(R.id.pad_pager);
-        mContentView = (ViewGroup) findViewById(R.id.content);
 
         mDeleteButton = findViewById(R.id.del);
         mClearButton = findViewById(R.id.clr);
@@ -141,13 +138,13 @@ public class CalculatorActivity extends Activity
                 final int errorColor = getResources().getColor(R.color.calculator_error_color);
                 mFormulaEditText.setTextColor(errorColor);
                 mResultEditText.setTextColor(errorColor);
-                mContentView.setBackgroundColor(errorColor);
+                getWindow().setStatusBarColor(errorColor);
             } else {
                 mFormulaEditText.setTextColor(
                         getResources().getColor(R.color.display_formula_text_color));
                 mResultEditText.setTextColor(
                         getResources().getColor(R.color.display_result_text_color));
-                mContentView.setBackgroundColor(
+                getWindow().setStatusBarColor(
                         getResources().getColor(R.color.calculator_accent_color));
             }
         }
@@ -259,15 +256,17 @@ public class CalculatorActivity extends Activity
     }
 
     private void reveal(View sourceView, int colorRes, AnimatorListener listener) {
-        final View display = findViewById(R.id.display);
-        final ViewGroup contentView = (ViewGroup) findViewById(R.id.content);
+        final View displayView = findViewById(R.id.display);
+        final View decorView = getWindow().getDecorView();
+
+        final Rect displayRect = new Rect();
+        displayView.getGlobalVisibleRect(displayRect);
 
         // Make reveal cover the display and status bar.
         final View revealView = new View(this);
-        revealView.setTop(contentView.getTop());
-        revealView.setBottom(display.getBottom());
-        revealView.setLeft(display.getLeft());
-        revealView.setRight(display.getRight());
+        revealView.setBottom(displayRect.bottom);
+        revealView.setLeft(displayRect.left);
+        revealView.setRight(displayRect.right);
         revealView.setBackgroundColor(getResources().getColor(colorRes));
 
         final int[] clearLocation = new int[2];
@@ -294,18 +293,19 @@ public class CalculatorActivity extends Activity
         alphaAnimator.setDuration(
                 getResources().getInteger(android.R.integer.config_mediumAnimTime));
 
+        final ViewGroupOverlay groupOverlay = (ViewGroupOverlay) decorView.getOverlay();
         final AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.play(revealAnimator).before(alphaAnimator);
         animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
         animatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationStart(Animator animation) {
-                contentView.getOverlay().add(revealView);
+                groupOverlay.add(revealView);
             }
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                contentView.getOverlay().remove(revealView);
+                groupOverlay.remove(revealView);
                 mCurrentAnimator = null;
             }
         });
