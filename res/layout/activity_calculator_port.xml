@@ -15,13 +15,13 @@
   limitations under the License.
   -->
 
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <include
-        android:id="@+id/display"
         layout="@layout/display"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -29,8 +29,8 @@
     <com.android.calculator2.CalculatorPadViewPager
         android:id="@+id/pad_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/display">
+        android:layout_height="0dip"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,19 +41,8 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <View style="@style/PadPageShadow" />
-            <include layout="@layout/pad_advanced" />
-
-        </LinearLayout>
+        <include layout="@layout/pad_advanced" />
 
     </com.android.calculator2.CalculatorPadViewPager>
 
-    <View
-        style="@style/DisplayShadowStyle"
-        android:layout_below="@id/display" />
-
-</RelativeLayout>
+</LinearLayout>

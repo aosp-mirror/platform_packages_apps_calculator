@@ -48,7 +48,7 @@ public class CalculatorPadViewPager extends ViewPager {
 
         @Override
         public float getPageWidth(int position) {
-            return position == 1 ? 0.8f : 1.0f;
+            return position == 1 ? 7.0f / 9.0f : 1.0f;
         }
     };
 
