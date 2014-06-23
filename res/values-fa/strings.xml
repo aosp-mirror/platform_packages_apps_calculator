@@ -40,7 +40,7 @@
     <string name="del" msgid="6700172918709138470">"حذف"</string>
     <string name="desc_const_e" msgid="7752508267661034194">"عدد اولر"</string>
     <string name="desc_const_pi" msgid="5843835548313660468">"پی"</string>
-    <string name="desc_dec_point" msgid="6211527612960070934">"اعشار"</string>
+    <string name="desc_dec_point" msgid="6211527612960070934">"ممیز"</string>
     <string name="desc_lparen" msgid="3319203240269597504">"پرانتز چپ"</string>
     <string name="desc_rparen" msgid="7629704943022422763">"پرانتز راست"</string>
     <string name="desc_fun_cos" msgid="3197307754450718348">"کسینوس"</string>
