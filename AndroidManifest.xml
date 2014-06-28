@@ -25,7 +25,7 @@
         android:theme="@style/CalculatorTheme">
 
         <activity
-            android:name="com.android.calculator2.CalculatorActivity"
+            android:name=".Calculator"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
