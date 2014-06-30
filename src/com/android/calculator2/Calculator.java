@@ -43,11 +43,11 @@ import android.widget.TextView;
 import com.android.calculator2.CalculatorEditText.OnTextSizeChangeListener;
 import com.android.calculator2.CalculatorExpressionEvaluator.EvaluateCallback;
 
-public class CalculatorActivity extends Activity
+public class Calculator extends Activity
         implements OnTextSizeChangeListener, EvaluateCallback, OnLongClickListener {
 
     public static final String CALCULATOR_ACTIVITY_CURRENT_STATE =
-            CalculatorActivity.class.getSimpleName() + "_currentState";
+            Calculator.class.getSimpleName() + "_currentState";
 
     private enum CalculatorState {
         INPUT, EVALUATE, RESULT, ERROR
@@ -65,14 +65,14 @@ public class CalculatorActivity extends Activity
         @Override
         public void afterTextChanged(Editable editable) {
             setState(CalculatorState.INPUT);
-            mEvaluator.evaluate(editable, CalculatorActivity.this);
+            mEvaluator.evaluate(editable, Calculator.this);
         }
     };
 
     private final Editable.Factory mFormulaEditableFactory = new Editable.Factory() {
         @Override
         public Editable newEditable(CharSequence source) {
-            return new CalculatorExpressionBuilder(CalculatorActivity.this, source,
+            return new CalculatorExpressionBuilder(Calculator.this, source,
                     mCurrentState == CalculatorState.INPUT);
         }
     };
