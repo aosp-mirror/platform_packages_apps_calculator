@@ -50,7 +50,7 @@
     <string name="sqrtDesc" msgid="2247252128762219267">"ریشه دوم"</string>
     <string name="divDesc" msgid="7442623079124315427">"تقسیم"</string>
     <string name="mulDesc" msgid="9003016819648670694">"ضرب"</string>
-    <string name="plusDesc" msgid="3145322700823848264">"جمع"</string>
+    <string name="plusDesc" msgid="3145322700823848264">"به‌علاوه"</string>
     <string name="minusDesc" msgid="5033462008907390900">"منها"</string>
     <string name="dotDesc" msgid="5253752241630161722">"نقطه"</string>
     <string name="powerDesc" msgid="9034898318444176910">"توان"</string>

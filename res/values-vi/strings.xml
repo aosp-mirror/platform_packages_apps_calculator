@@ -28,14 +28,14 @@
     <string name="digit7" msgid="658125644218958447">"7"</string>
     <string name="digit8" msgid="3134686906411558886">"8"</string>
     <string name="digit9" msgid="765379157698748031">"9"</string>
-    <string name="del" msgid="6248896117422989693">"XOÁ"</string>
+    <string name="del" msgid="6248896117422989693">"XÓA"</string>
     <string name="clear" msgid="8103610981407459768">"CLR"</string>
     <string name="sin" msgid="6793866152659175277">"sin"</string>
     <string name="cos" msgid="6901841853098114414">"cos"</string>
     <string name="tan" msgid="7957459816738554960">"tan"</string>
     <string name="e" msgid="1377847800971731483">"e"</string>
     <string name="ln" msgid="6888500680285403344">"ln"</string>
-    <string name="lg" msgid="873623857385418182">"ghi"</string>
+    <string name="lg" msgid="873623857385418182">"log"</string>
     <string name="leftParen" msgid="4850643713953092099">"("</string>
     <string name="rightParen" msgid="3177971166159324016">")"</string>
     <string name="basic" msgid="7691469861698059753">"Bảng điều khiển cơ bản"</string>
@@ -52,11 +52,11 @@
     <string name="mulDesc" msgid="9003016819648670694">"nhân"</string>
     <string name="plusDesc" msgid="3145322700823848264">"cộng"</string>
     <string name="minusDesc" msgid="5033462008907390900">"trừ"</string>
-    <string name="dotDesc" msgid="5253752241630161722">"điểm"</string>
+    <string name="dotDesc" msgid="5253752241630161722">"chấm"</string>
     <string name="powerDesc" msgid="9034898318444176910">"lũy thừa"</string>
     <string name="delDesc" msgid="8211175878012032240">"xóa"</string>
     <string name="clearDesc" msgid="8015748901120751476">"xóa"</string>
-    <string name="tanDesc" msgid="2055554933130702423">"tiếp tuyến"</string>
+    <string name="tanDesc" msgid="2055554933130702423">"tang"</string>
     <string name="sinDesc" msgid="6563285042235077204">"sin"</string>
     <string name="cosDesc" msgid="4048942450207926538">"cosin"</string>
     <string name="eDesc" msgid="6709583372168924068">"Số Euler"</string>
@@ -73,9 +73,9 @@
     <item msgid="2646574635189709515">"nhân với"</item>
     <item msgid="3487936384379753697">"cộng"</item>
     <item msgid="8608534484562258856">"trừ"</item>
-    <item msgid="3456824579675198186">" điểm "</item>
+    <item msgid="3456824579675198186">"chấm"</item>
     <item msgid="4528629783180278651">"lũy thừa"</item>
-    <item msgid="4050948027333760159">"tiếp tuyến"</item>
+    <item msgid="4050948027333760159">"tang"</item>
     <item msgid="8716478860618683850">"sin"</item>
     <item msgid="3203211483560707480">"cosin"</item>
     <item msgid="8587490959348493065">"pi"</item>
