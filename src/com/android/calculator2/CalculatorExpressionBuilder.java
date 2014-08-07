@@ -25,10 +25,11 @@ public class CalculatorExpressionBuilder extends SpannableStringBuilder {
     private final CalculatorExpressionTokenizer mTokenizer;
     private boolean mIsEdited;
 
-    public CalculatorExpressionBuilder(Context context, CharSequence text, boolean isEdited) {
+    public CalculatorExpressionBuilder(
+            CharSequence text, CalculatorExpressionTokenizer tokenizer, boolean isEdited) {
         super(text);
 
-        mTokenizer = CalculatorExpressionTokenizer.getInstance(context);
+        mTokenizer = tokenizer;
         mIsEdited = isEdited;
     }
 

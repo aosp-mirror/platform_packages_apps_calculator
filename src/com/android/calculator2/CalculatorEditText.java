@@ -60,6 +60,10 @@ public class CalculatorEditText extends EditText {
     private final float mMinimumTextSize;
     private final float mStepTextSize;
 
+    // Temporary objects for use in layout methods.
+    private final Paint mTempPaint = new TextPaint();
+    private final Rect mTempRect = new Rect();
+
     private int mWidthConstraint = -1;
     private OnTextSizeChangeListener mOnTextSizeChangeListener;
 
@@ -92,17 +96,6 @@ public class CalculatorEditText extends EditText {
     }
 
     @Override
-    protected void onSelectionChanged(int selStart, int selEnd) {
-        final int textLength = getText() == null ? 0 : getText().length();
-        if (selStart != textLength || selEnd != textLength) {
-            // Pin the selection to the end of the current text.
-            setSelection(textLength);
-        }
-
-        super.onSelectionChanged(selStart, selEnd);
-    }
-
-    @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getActionMasked() == MotionEvent.ACTION_UP) {
             // Hack to prevent keyboard and insertion handle from showing.
@@ -123,8 +116,6 @@ public class CalculatorEditText extends EditText {
     @Override
     protected void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
         super.onTextChanged(text, start, lengthBefore, lengthAfter);
-
-        setSelection(text.length());
         setTextSize(TypedValue.COMPLEX_UNIT_PX, getVariableTextSize(text.toString()));
     }
 
@@ -148,12 +139,15 @@ public class CalculatorEditText extends EditText {
             return getTextSize();
         }
 
-        final Paint paint = new TextPaint(getPaint());
+        // Capture current paint state.
+        mTempPaint.set(getPaint());
+
+        // Step through increasing text sizes until the text would no longer fit.
         float lastFitTextSize = mMinimumTextSize;
         while (lastFitTextSize < mMaximumTextSize) {
             final float nextSize = Math.min(lastFitTextSize + mStepTextSize, mMaximumTextSize);
-            paint.setTextSize(nextSize);
-            if (paint.measureText(text) > mWidthConstraint) {
+            mTempPaint.setTextSize(nextSize);
+            if (mTempPaint.measureText(text) > mWidthConstraint) {
                 break;
             } else {
                 lastFitTextSize = nextSize;
@@ -167,12 +161,10 @@ public class CalculatorEditText extends EditText {
     public int getCompoundPaddingTop() {
         // Measure the top padding from the capital letter height of the text instead of the top,
         // but don't remove more than the available top padding otherwise clipping may occur.
-        final Rect capBounds = new Rect();
-        getPaint().getTextBounds("H", 0, 1, capBounds);
+        getPaint().getTextBounds("H", 0, 1, mTempRect);
 
         final FontMetricsInt fontMetrics = getPaint().getFontMetricsInt();
-        final int paddingOffset = -(fontMetrics.ascent + capBounds.height());
-
+        final int paddingOffset = -(fontMetrics.ascent + mTempRect.height());
         return super.getCompoundPaddingTop() - Math.min(getPaddingTop(), paddingOffset);
     }
 

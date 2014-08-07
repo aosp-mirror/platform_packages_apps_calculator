@@ -16,8 +16,6 @@
 
 package com.android.calculator2;
 
-import android.content.Context;
-
 import org.javia.arity.Symbols;
 import org.javia.arity.SyntaxException;
 import org.javia.arity.Util;
@@ -30,15 +28,9 @@ public class CalculatorExpressionEvaluator {
     private final Symbols mSymbols;
     private final CalculatorExpressionTokenizer mTokenizer;
 
-    private final String mErrorNaN;
-    private final String mErrorSyntax;
-
-    public CalculatorExpressionEvaluator(Context context) {
+    public CalculatorExpressionEvaluator(CalculatorExpressionTokenizer tokenizer) {
         mSymbols = new Symbols();
-        mTokenizer = CalculatorExpressionTokenizer.getInstance(context);
-
-        mErrorNaN = context.getString(R.string.error_nan);
-        mErrorSyntax = context.getString(R.string.error_syntax);
+        mTokenizer = tokenizer;
     }
 
     public void evaluate(CharSequence expr, EvaluateCallback callback) {
@@ -54,8 +46,8 @@ public class CalculatorExpressionEvaluator {
         }
 
         try {
-            if (expr == null || expr.length() == 0 || Double.valueOf(expr) != null) {
-                callback.onEvaluate(expr, null, null);
+            if (expr.length() == 0 || Double.valueOf(expr) != null) {
+                callback.onEvaluate(expr, null, Calculator.INVALID_RES_ID);
                 return;
             }
         } catch (NumberFormatException e) {
@@ -65,20 +57,21 @@ public class CalculatorExpressionEvaluator {
         try {
             double result = mSymbols.eval(expr);
             if (Double.isNaN(result)) {
-                callback.onEvaluate(expr, null, mErrorNaN);
+                callback.onEvaluate(expr, null, R.string.error_nan);
             } else {
                 // The arity library uses floating point arithmetic when evaluating the expression
                 // leading to precision errors in the result. The method doubleToString hides these
                 // errors; rounding the result by dropping N digits of precision.
-                callback.onEvaluate(expr, mTokenizer.getLocalizedExpression(
-                        Util.doubleToString(result, MAX_DIGITS, ROUNDING_DIGITS)), null);
+                final String resultString = mTokenizer.getLocalizedExpression(
+                        Util.doubleToString(result, MAX_DIGITS, ROUNDING_DIGITS));
+                callback.onEvaluate(expr, resultString, Calculator.INVALID_RES_ID);
             }
         } catch (SyntaxException e) {
-            callback.onEvaluate(expr, null, mErrorSyntax);
+            callback.onEvaluate(expr, null, R.string.error_syntax);
         }
     }
 
     public interface EvaluateCallback {
-        public void onEvaluate(String expr, String result, String error);
+        public void onEvaluate(String expr, String result, int errorResourceId);
     }
 }

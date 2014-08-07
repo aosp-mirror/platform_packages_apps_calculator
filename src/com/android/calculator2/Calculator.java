@@ -31,7 +31,6 @@ import android.support.v4.view.ViewPager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.view.ViewAnimationUtils;
@@ -46,8 +45,16 @@ import com.android.calculator2.CalculatorExpressionEvaluator.EvaluateCallback;
 public class Calculator extends Activity
         implements OnTextSizeChangeListener, EvaluateCallback, OnLongClickListener {
 
-    public static final String CALCULATOR_ACTIVITY_CURRENT_STATE =
-            Calculator.class.getSimpleName() + "_currentState";
+    private static final String NAME = Calculator.class.getName();
+
+    // instance state keys
+    private static final String KEY_CURRENT_STATE = NAME + "_currentState";
+    private static final String KEY_CURRENT_EXPRESSION = NAME + "_currentExpression";
+
+    /**
+     * Constant for an invalid resource id.
+     */
+    public static final int INVALID_RES_ID = -1;
 
     private enum CalculatorState {
         INPUT, EVALUATE, RESULT, ERROR
@@ -72,19 +79,19 @@ public class Calculator extends Activity
     private final Editable.Factory mFormulaEditableFactory = new Editable.Factory() {
         @Override
         public Editable newEditable(CharSequence source) {
-            return new CalculatorExpressionBuilder(Calculator.this, source,
-                    mCurrentState == CalculatorState.INPUT);
+            final boolean isEdited = mCurrentState == CalculatorState.INPUT
+                    || mCurrentState == CalculatorState.ERROR;
+            return new CalculatorExpressionBuilder(source, mTokenizer, isEdited);
         }
     };
 
     private CalculatorState mCurrentState;
+    private CalculatorExpressionTokenizer mTokenizer;
     private CalculatorExpressionEvaluator mEvaluator;
 
     private CalculatorEditText mFormulaEditText;
     private CalculatorEditText mResultEditText;
-
     private ViewPager mPadViewPager;
-
     private View mDeleteButton;
     private View mClearButton;
 
@@ -98,28 +105,32 @@ public class Calculator extends Activity
 
         mFormulaEditText = (CalculatorEditText) findViewById(R.id.formula);
         mResultEditText = (CalculatorEditText) findViewById(R.id.result);
-
         mPadViewPager = (ViewPager) findViewById(R.id.pad_pager);
-
         mDeleteButton = findViewById(R.id.del);
         mClearButton = findViewById(R.id.clr);
 
+        mTokenizer = new CalculatorExpressionTokenizer(this);
+        mEvaluator = new CalculatorExpressionEvaluator(mTokenizer);
+
         savedInstanceState = savedInstanceState == null ? Bundle.EMPTY : savedInstanceState;
-        setState(CalculatorState.values()[savedInstanceState.getInt(
-                CALCULATOR_ACTIVITY_CURRENT_STATE, CalculatorState.INPUT.ordinal())]);
-        mEvaluator = new CalculatorExpressionEvaluator(this);
+        setState(CalculatorState.values()[
+                savedInstanceState.getInt(KEY_CURRENT_STATE, CalculatorState.INPUT.ordinal())]);
+        mFormulaEditText.setText(mTokenizer.getLocalizedExpression(
+                savedInstanceState.getString(KEY_CURRENT_EXPRESSION, "")));
+        mEvaluator.evaluate(mFormulaEditText.getText(), this);
 
         mFormulaEditText.setEditableFactory(mFormulaEditableFactory);
         mFormulaEditText.addTextChangedListener(mFormulaTextWatcher);
         mFormulaEditText.setOnTextSizeChangeListener(this);
-
         mDeleteButton.setOnLongClickListener(this);
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(CALCULATOR_ACTIVITY_CURRENT_STATE, mCurrentState.ordinal());
+        outState.putInt(KEY_CURRENT_STATE, mCurrentState.ordinal());
+        outState.putString(KEY_CURRENT_EXPRESSION,
+                mTokenizer.getNormalizedExpression(mFormulaEditText.getText().toString()));
     }
 
     private void setState(CalculatorState state) {
@@ -184,8 +195,12 @@ public class Calculator extends Activity
                 }
                 break;
             case R.id.del:
-                mFormulaEditText.dispatchKeyEvent(
-                        new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
+                // Delete works like backspace; remove the last character from the expression.
+                final Editable formulaText = mFormulaEditText.getEditableText();
+                final int formulaLength = formulaText.length();
+                if (formulaLength > 0) {
+                    formulaText.delete(formulaLength - 1, formulaLength);
+                }
                 break;
             case R.id.clr:
                 onClear();
@@ -195,7 +210,7 @@ public class Calculator extends Activity
             case R.id.fun_log:
             case R.id.fun_sin:
             case R.id.fun_tan:
-                // add left paren after functions
+                // Add left parenthesis after functions.
                 mFormulaEditText.append(((Button) view).getText() + "(");
                 break;
             default:
@@ -216,11 +231,11 @@ public class Calculator extends Activity
     }
 
     @Override
-    public void onEvaluate(String expr, String result, String error) {
+    public void onEvaluate(String expr, String result, int errorResourceId) {
         if (mCurrentState == CalculatorState.INPUT) {
             mResultEditText.setText(result);
-        } else if (!TextUtils.isEmpty(error)) {
-            onError(error);
+        } else if (errorResourceId != INVALID_RES_ID) {
+            onError(errorResourceId);
         } else if (!TextUtils.isEmpty(result)) {
             onResult(result);
         } else if (mCurrentState == CalculatorState.EVALUATE) {
@@ -327,12 +342,18 @@ public class Calculator extends Activity
         });
     }
 
-    private void onError(final String error) {
+    private void onError(final int errorResourceId) {
+        if (mCurrentState != CalculatorState.EVALUATE) {
+            // Only animate error on evaluate.
+            mResultEditText.setText(errorResourceId);
+            return;
+        }
+
         reveal(mCurrentButton, R.color.calculator_error_color, new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 setState(CalculatorState.ERROR);
-                mResultEditText.setText(error);
+                mResultEditText.setText(errorResourceId);
             }
         });
     }
