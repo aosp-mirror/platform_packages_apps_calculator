@@ -85,8 +85,8 @@
         <item name="android:layout_weight">96</item>
         <item name="android:paddingTop">8dip</item>
         <item name="android:paddingBottom">24dip</item>
-        <item name="android:paddingStart">8dip</item>
-        <item name="android:paddingEnd">24dip</item>
+        <item name="android:paddingStart">4dip</item>
+        <item name="android:paddingEnd">28dip</item>
     </style>
 
 </resources>
