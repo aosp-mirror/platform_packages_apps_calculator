@@ -48,6 +48,9 @@
     <color name="pad_button_advanced_text_color">#85000000</color>
 
     <!-- Ripple color when a button is pressed in a pad. -->
-    <color name="pad_button_ripple_color">#80FFFFFF</color>
+    <color name="pad_button_ripple_color">#33FFFFFF</color>
+
+    <!-- Ripple color when a button is pressed in a pad. -->
+    <color name="pad_button_advanced_ripple_color">#1a000000</color>
 
 </resources>
