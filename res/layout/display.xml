@@ -38,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/formula"
         android:inputType="none"
+        android:focusable="false"
         android:textColor="@color/display_result_text_color" />
 
 </RelativeLayout>

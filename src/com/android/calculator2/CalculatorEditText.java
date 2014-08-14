@@ -90,7 +90,10 @@ public class CalculatorEditText extends EditText {
         a.recycle();
 
         setCustomSelectionActionModeCallback(mNoSelectionActionModeCallback);
-        setMovementMethod(ScrollingMovementMethod.getInstance());
+
+        if (isFocusable()) {
+            setMovementMethod(ScrollingMovementMethod.getInstance());
+        }
         setTextSize(TypedValue.COMPLEX_UNIT_PX, mMaximumTextSize);
         setMinHeight(getLineHeight() + getCompoundPaddingBottom() + getCompoundPaddingTop());
     }
