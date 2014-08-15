@@ -31,7 +31,9 @@ import android.support.v4.view.ViewPager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnKeyListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroupOverlay;
@@ -41,6 +43,8 @@ import android.widget.TextView;
 
 import com.android.calculator2.CalculatorEditText.OnTextSizeChangeListener;
 import com.android.calculator2.CalculatorExpressionEvaluator.EvaluateCallback;
+
+import java.lang.Override;
 
 public class Calculator extends Activity
         implements OnTextSizeChangeListener, EvaluateCallback, OnLongClickListener {
@@ -76,6 +80,26 @@ public class Calculator extends Activity
         }
     };
 
+    private final OnKeyListener mFormulaOnKeyListener = new OnKeyListener() {
+        @Override
+        public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
+            switch (keyCode) {
+                case KeyEvent.KEYCODE_NUMPAD_ENTER:
+                case KeyEvent.KEYCODE_ENTER:
+                    if (keyEvent.getAction() == KeyEvent.ACTION_UP) {
+                        mCurrentButton = mEqualButton;
+                        onEquals();
+                    }
+                    // ignore all other actions
+                    return true;
+                case KeyEvent.KEYCODE_DEL:
+                    onDelete();
+                    return true;
+            }
+            return false;
+        }
+    };
+
     private final Editable.Factory mFormulaEditableFactory = new Editable.Factory() {
         @Override
         public Editable newEditable(CharSequence source) {
@@ -93,6 +117,7 @@ public class Calculator extends Activity
     private CalculatorEditText mResultEditText;
     private ViewPager mPadViewPager;
     private View mDeleteButton;
+    private View mEqualButton;
     private View mClearButton;
 
     private View mCurrentButton;
@@ -109,6 +134,11 @@ public class Calculator extends Activity
         mDeleteButton = findViewById(R.id.del);
         mClearButton = findViewById(R.id.clr);
 
+        mEqualButton = findViewById(R.id.pad_numeric).findViewById(R.id.eq);
+        if (mEqualButton == null || mEqualButton.getVisibility() != View.VISIBLE) {
+            mEqualButton = findViewById(R.id.pad_operator).findViewById(R.id.eq);
+        }
+
         mTokenizer = new CalculatorExpressionTokenizer(this);
         mEvaluator = new CalculatorExpressionEvaluator(mTokenizer);
 
@@ -121,6 +151,7 @@ public class Calculator extends Activity
 
         mFormulaEditText.setEditableFactory(mFormulaEditableFactory);
         mFormulaEditText.addTextChangedListener(mFormulaTextWatcher);
+        mFormulaEditText.setOnKeyListener(mFormulaOnKeyListener);
         mFormulaEditText.setOnTextSizeChangeListener(this);
         mDeleteButton.setOnLongClickListener(this);
     }
@@ -189,18 +220,10 @@ public class Calculator extends Activity
 
         switch (view.getId()) {
             case R.id.eq:
-                if (mCurrentState == CalculatorState.INPUT) {
-                    setState(CalculatorState.EVALUATE);
-                    mEvaluator.evaluate(mFormulaEditText.getText(), this);
-                }
+                onEquals();
                 break;
             case R.id.del:
-                // Delete works like backspace; remove the last character from the expression.
-                final Editable formulaText = mFormulaEditText.getEditableText();
-                final int formulaLength = formulaText.length();
-                if (formulaLength > 0) {
-                    formulaText.delete(formulaLength - 1, formulaLength);
-                }
+                onDelete();
                 break;
             case R.id.clr:
                 onClear();
@@ -242,6 +265,8 @@ public class Calculator extends Activity
             // The current expression cannot be evaluated -> return to the input state.
             setState(CalculatorState.INPUT);
         }
+
+        mFormulaEditText.requestFocus();
     }
 
     @Override
@@ -268,6 +293,22 @@ public class Calculator extends Activity
         animatorSet.setDuration(getResources().getInteger(android.R.integer.config_mediumAnimTime));
         animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
         animatorSet.start();
+    }
+
+    private void onEquals() {
+        if (mCurrentState == CalculatorState.INPUT) {
+            setState(CalculatorState.EVALUATE);
+            mEvaluator.evaluate(mFormulaEditText.getText(), this);
+        }
+    }
+
+    private void onDelete() {
+        // Delete works like backspace; remove the last character from the expression.
+        final Editable formulaText = mFormulaEditText.getEditableText();
+        final int formulaLength = formulaText.length();
+        if (formulaLength > 0) {
+            formulaText.delete(formulaLength - 1, formulaLength);
+        }
     }
 
     private void reveal(View sourceView, int colorRes, AnimatorListener listener) {
