@@ -27,6 +27,7 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -43,8 +44,6 @@ import android.widget.TextView;
 
 import com.android.calculator2.CalculatorEditText.OnTextSizeChangeListener;
 import com.android.calculator2.CalculatorExpressionEvaluator.EvaluateCallback;
-
-import java.lang.Override;
 
 public class Calculator extends Activity
         implements OnTextSizeChangeListener, EvaluateCallback, OnLongClickListener {
@@ -157,8 +156,14 @@ public class Calculator extends Activity
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        // If there's an animation in progress, cancel it first to ensure our state is up-to-date.
+        if (mCurrentAnimator != null) {
+            mCurrentAnimator.cancel();
+        }
+
         super.onSaveInstanceState(outState);
+
         outState.putInt(KEY_CURRENT_STATE, mCurrentState.ordinal());
         outState.putString(KEY_CURRENT_EXPRESSION,
                 mTokenizer.getNormalizedExpression(mFormulaEditText.getText().toString()));
