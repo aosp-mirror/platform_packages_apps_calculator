@@ -21,6 +21,7 @@ import android.content.res.TypedArray;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetricsInt;
 import android.graphics.Rect;
+import android.os.Parcelable;
 import android.text.method.ScrollingMovementMethod;
 import android.text.TextPaint;
 import android.util.AttributeSet;
@@ -34,7 +35,8 @@ import android.widget.TextView;
 
 public class CalculatorEditText extends EditText {
 
-    private final ActionMode.Callback mNoSelectionActionModeCallback = new ActionMode.Callback() {
+    private final static ActionMode.Callback NO_SELECTION_ACTION_MODE_CALLBACK =
+            new ActionMode.Callback() {
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             return false;
@@ -89,8 +91,7 @@ public class CalculatorEditText extends EditText {
 
         a.recycle();
 
-        setCustomSelectionActionModeCallback(mNoSelectionActionModeCallback);
-
+        setCustomSelectionActionModeCallback(NO_SELECTION_ACTION_MODE_CALLBACK);
         if (isFocusable()) {
             setMovementMethod(ScrollingMovementMethod.getInstance());
         }
@@ -117,8 +118,23 @@ public class CalculatorEditText extends EditText {
     }
 
     @Override
+    public Parcelable onSaveInstanceState() {
+        super.onSaveInstanceState();
+
+        // EditText will freeze any text with a selection regardless of getFreezesText() ->
+        // return null to prevent any state from being preserved at the instance level.
+        return null;
+    }
+
+    @Override
     protected void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
         super.onTextChanged(text, start, lengthBefore, lengthAfter);
+
+        final int textLength = text.length();
+        if (getSelectionStart() != textLength || getSelectionEnd() != textLength) {
+            // Pin the selection to the end of the current text.
+            setSelection(textLength);
+        }
         setTextSize(TypedValue.COMPLEX_UNIT_PX, getVariableTextSize(text.toString()));
     }
 
