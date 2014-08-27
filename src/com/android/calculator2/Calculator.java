@@ -91,9 +91,6 @@ public class Calculator extends Activity
                     }
                     // ignore all other actions
                     return true;
-                case KeyEvent.KEYCODE_DEL:
-                    onDelete();
-                    return true;
             }
             return false;
         }
