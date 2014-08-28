@@ -109,6 +109,7 @@ public class Calculator extends Activity
     private CalculatorExpressionTokenizer mTokenizer;
     private CalculatorExpressionEvaluator mEvaluator;
 
+    private View mDisplayView;
     private CalculatorEditText mFormulaEditText;
     private CalculatorEditText mResultEditText;
     private ViewPager mPadViewPager;
@@ -124,6 +125,7 @@ public class Calculator extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
 
+        mDisplayView = findViewById(R.id.display);
         mFormulaEditText = (CalculatorEditText) findViewById(R.id.formula);
         mResultEditText = (CalculatorEditText) findViewById(R.id.result);
         mPadViewPager = (ViewPager) findViewById(R.id.pad_pager);
@@ -314,11 +316,11 @@ public class Calculator extends Activity
     }
 
     private void reveal(View sourceView, int colorRes, AnimatorListener listener) {
-        final View displayView = findViewById(R.id.display);
-        final View decorView = getWindow().getDecorView();
+        final ViewGroupOverlay groupOverlay =
+                (ViewGroupOverlay) getWindow().getDecorView().getOverlay();
 
         final Rect displayRect = new Rect();
-        displayView.getGlobalVisibleRect(displayRect);
+        mDisplayView.getGlobalVisibleRect(displayRect);
 
         // Make reveal cover the display and status bar.
         final View revealView = new View(this);
@@ -326,6 +328,7 @@ public class Calculator extends Activity
         revealView.setLeft(displayRect.left);
         revealView.setRight(displayRect.right);
         revealView.setBackgroundColor(getResources().getColor(colorRes));
+        groupOverlay.add(revealView);
 
         final int[] clearLocation = new int[2];
         sourceView.getLocationInWindow(clearLocation);
@@ -351,16 +354,10 @@ public class Calculator extends Activity
         alphaAnimator.setDuration(
                 getResources().getInteger(android.R.integer.config_mediumAnimTime));
 
-        final ViewGroupOverlay groupOverlay = (ViewGroupOverlay) decorView.getOverlay();
         final AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.play(revealAnimator).before(alphaAnimator);
         animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
         animatorSet.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationStart(Animator animation) {
-                groupOverlay.add(revealView);
-            }
-
             @Override
             public void onAnimationEnd(Animator animator) {
                 groupOverlay.remove(revealView);
