@@ -19,13 +19,11 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="DisplayEditTextStyle.Formula">
-        <item name="android:paddingTop">72dip</item>
+        <item name="android:paddingTop">46dip</item>
         <item name="android:paddingBottom">26dip</item>
         <item name="android:paddingStart">44dip</item>
         <item name="android:paddingEnd">44dip</item>
-        <item name="minTextSize">48sp</item>
-        <item name="maxTextSize">80sp</item>
-        <item name="stepTextSize">8sp</item>
+        <item name="android:textSize">48sp</item>
     </style>
 
     <style name="DisplayEditTextStyle.Result">
