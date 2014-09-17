@@ -27,10 +27,10 @@
     <color name="display_background_color">#FFF</color>
 
     <!-- Text color for the formula in the calculator display. -->
-    <color name="display_formula_text_color">#AAA</color>
+    <color name="display_formula_text_color">#8A000000</color>
 
     <!-- Text color for the result in the calculator display. -->
-    <color name="display_result_text_color">#CCC</color>
+    <color name="display_result_text_color">#6C000000</color>
 
     <!-- Background color for the numeric pad. -->
     <color name="pad_numeric_background_color">#434343</color>
@@ -45,12 +45,12 @@
     <color name="pad_button_text_color">#FFF</color>
 
     <!-- Text color for a button in the advanced pad. -->
-    <color name="pad_button_advanced_text_color">#85000000</color>
+    <color name="pad_button_advanced_text_color">#91000000</color>
 
     <!-- Ripple color when a button is pressed in a pad. -->
     <color name="pad_button_ripple_color">#33FFFFFF</color>
 
     <!-- Ripple color when a button is pressed in a pad. -->
-    <color name="pad_button_advanced_ripple_color">#1a000000</color>
+    <color name="pad_button_advanced_ripple_color">#1A000000</color>
 
 </resources>
