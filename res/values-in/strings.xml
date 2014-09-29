@@ -17,7 +17,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name" msgid="8095131950334945205">"Calculator"</string>
+    <string name="app_name" msgid="8095131950334945205">"Kalkulator"</string>
     <string name="error_nan" msgid="4071578355972369426">"Bukan angka"</string>
     <string name="error_syntax" msgid="6940043994468390738">"Kesalahan"</string>
     <string name="dec_point" msgid="6555721211126788808">"."</string>
