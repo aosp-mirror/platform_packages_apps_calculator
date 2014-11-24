@@ -21,16 +21,16 @@
     <string name="error_nan" msgid="4071578355972369426">"ليس رقمًا"</string>
     <string name="error_syntax" msgid="6940043994468390738">"خطأ"</string>
     <string name="dec_point" msgid="6555721211126788808">"."</string>
-    <string name="digit_0" msgid="697966218778843272">"٠"</string>
-    <string name="digit_1" msgid="9009337429640544205">"١"</string>
-    <string name="digit_2" msgid="7722707864768133877">"٢"</string>
-    <string name="digit_3" msgid="5813321444694024561">"٣"</string>
-    <string name="digit_4" msgid="4768173444612236144">"٤"</string>
-    <string name="digit_5" msgid="2015349411036328271">"٥"</string>
-    <string name="digit_6" msgid="7350999202882497047">"٦"</string>
-    <string name="digit_7" msgid="2386463125354638611">"٧"</string>
-    <string name="digit_8" msgid="6298159258090202166">"٨"</string>
-    <string name="digit_9" msgid="1221342734731110246">"٩"</string>
+    <string name="digit_0" msgid="697966218778843272">"0"</string>
+    <string name="digit_1" msgid="9009337429640544205">"1"</string>
+    <string name="digit_2" msgid="7722707864768133877">"2"</string>
+    <string name="digit_3" msgid="5813321444694024561">"3"</string>
+    <string name="digit_4" msgid="4768173444612236144">"4"</string>
+    <string name="digit_5" msgid="2015349411036328271">"5"</string>
+    <string name="digit_6" msgid="7350999202882497047">"6"</string>
+    <string name="digit_7" msgid="2386463125354638611">"7"</string>
+    <string name="digit_8" msgid="6298159258090202166">"8"</string>
+    <string name="digit_9" msgid="1221342734731110246">"9"</string>
     <string name="fun_cos" msgid="7312559527731358211">"cos"</string>
     <string name="fun_ln" msgid="6282013842946532944">"ln"</string>
     <string name="fun_log" msgid="6856905045055937519">"log"</string>
