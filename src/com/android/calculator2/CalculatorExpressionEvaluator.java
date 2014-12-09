@@ -22,8 +22,16 @@ import org.javia.arity.Util;
 
 public class CalculatorExpressionEvaluator {
 
+    /**
+     * The maximum number of significant digits to display.
+     */
     private static final int MAX_DIGITS = 12;
-    private static final int ROUNDING_DIGITS = 2;
+
+    /**
+     * A {@link Double} has at least 17 significant digits, we show the first {@link #MAX_DIGITS}
+     * and use the remaining digits as guard digits to hide floating point precision errors.
+     */
+    private static final int ROUNDING_DIGITS = Math.max(17 - MAX_DIGITS, 0);
 
     private final Symbols mSymbols;
     private final CalculatorExpressionTokenizer mTokenizer;
