@@ -18,7 +18,11 @@ package com.android.calculator2;
 
 import android.content.Context;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -29,18 +33,22 @@ public class CalculatorExpressionTokenizer {
     public CalculatorExpressionTokenizer(Context context) {
         mReplacementMap = new HashMap<>();
 
-        mReplacementMap.put(".", context.getString(R.string.dec_point));
+        Locale locale = context.getResources().getConfiguration().locale;
+        if (!context.getResources().getBoolean(R.bool.use_localized_digits)) {
+            locale = new Locale.Builder()
+                .setLocale(locale)
+                .setUnicodeLocaleKeyword("nu", "latn")
+                .build();
+        }
 
-        mReplacementMap.put("0", context.getString(R.string.digit_0));
-        mReplacementMap.put("1", context.getString(R.string.digit_1));
-        mReplacementMap.put("2", context.getString(R.string.digit_2));
-        mReplacementMap.put("3", context.getString(R.string.digit_3));
-        mReplacementMap.put("4", context.getString(R.string.digit_4));
-        mReplacementMap.put("5", context.getString(R.string.digit_5));
-        mReplacementMap.put("6", context.getString(R.string.digit_6));
-        mReplacementMap.put("7", context.getString(R.string.digit_7));
-        mReplacementMap.put("8", context.getString(R.string.digit_8));
-        mReplacementMap.put("9", context.getString(R.string.digit_9));
+        final DecimalFormatSymbols symbols = new DecimalFormatSymbols(locale);
+        final char zeroDigit = symbols.getZeroDigit();
+
+        mReplacementMap.put(".", String.valueOf(symbols.getDecimalSeparator()));
+
+        for (int i = 0; i <= 9; ++i) {
+            mReplacementMap.put(Integer.toString(i), String.valueOf((char) (i + zeroDigit)));
+        }
 
         mReplacementMap.put("/", context.getString(R.string.op_div));
         mReplacementMap.put("*", context.getString(R.string.op_mul));
