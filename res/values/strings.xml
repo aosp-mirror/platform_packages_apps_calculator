@@ -25,30 +25,6 @@
     <!-- Error displayed when expression contains a syntax error. [CHAR_LIMIT=14] -->
     <string name="error_syntax">Error</string>
 
-    <!-- Decimal separator (e.g. "1.23"). [CHAR_LIMIT=1] -->
-    <string name="dec_point">.</string>
-
-    <!-- Decimal representation of zero (e.g. "0", "10", "1.0", "1e0"). [CHAR_LIMIT=1] -->
-    <string name="digit_0">0</string>
-    <!-- Decimal representation of one (e.g. "1", "11", "1.1", "1e1"). [CHAR_LIMIT=1] -->
-    <string name="digit_1">1</string>
-    <!-- Decimal representation of two (e.g. "2", "22", "2.2", "2e2"). [CHAR_LIMIT=1] -->
-    <string name="digit_2">2</string>
-    <!-- Decimal representation of three (e.g. "3", "33", "3.3", "3e3"). [CHAR_LIMIT=1] -->
-    <string name="digit_3">3</string>
-    <!-- Decimal representation of four (e.g. "4", "44", "4.4", "4e4"). [CHAR_LIMIT=1] -->
-    <string name="digit_4">4</string>
-    <!-- Decimal representation of five (e.g. "5", "55", "5.5", "5e5"). [CHAR_LIMIT=1] -->
-    <string name="digit_5">5</string>
-    <!-- Decimal representation of six (e.g. "6", "66", "6.6", "6e6"). [CHAR_LIMIT=1] -->
-    <string name="digit_6">6</string>
-    <!-- Decimal representation of seven (e.g. "7", "77", "7.7", "7e7"). [CHAR_LIMIT=1] -->
-    <string name="digit_7">7</string>
-    <!-- Decimal representation of eight (e.g. "8", "88", "8.8", "8e8"). [CHAR_LIMIT=1] -->
-    <string name="digit_8">8</string>
-    <!-- Decimal representation of eight (e.g. "9", "99", "9.9", "9e9"). [CHAR_LIMIT=1] -->
-    <string name="digit_9">9</string>
-
     <!-- Abbrev. name of cosine function (e.g. "cos(π)". [CHAR_LIMIT=3] -->
     <string name="fun_cos">cos</string>
     <!-- Natural logarithm function (e.g. "ln(2)"). [CHAR_LIMIT=3] -->
