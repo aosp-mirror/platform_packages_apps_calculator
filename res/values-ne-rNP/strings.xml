@@ -20,17 +20,6 @@
     <string name="app_name" msgid="8095131950334945205">"क्यालकुलेटर"</string>
     <string name="error_nan" msgid="4071578355972369426">"संख्या होइन"</string>
     <string name="error_syntax" msgid="6940043994468390738">"त्रुटि"</string>
-    <string name="dec_point" msgid="6555721211126788808">"।"</string>
-    <string name="digit_0" msgid="697966218778843272">"०"</string>
-    <string name="digit_1" msgid="9009337429640544205">"१"</string>
-    <string name="digit_2" msgid="7722707864768133877">"२"</string>
-    <string name="digit_3" msgid="5813321444694024561">"३"</string>
-    <string name="digit_4" msgid="4768173444612236144">"४"</string>
-    <string name="digit_5" msgid="2015349411036328271">"५"</string>
-    <string name="digit_6" msgid="7350999202882497047">"६"</string>
-    <string name="digit_7" msgid="2386463125354638611">"७"</string>
-    <string name="digit_8" msgid="6298159258090202166">"८"</string>
-    <string name="digit_9" msgid="1221342734731110246">"९"</string>
     <string name="fun_cos" msgid="7312559527731358211">"cos"</string>
     <string name="fun_ln" msgid="6282013842946532944">"ln"</string>
     <string name="fun_log" msgid="6856905045055937519">"log"</string>
