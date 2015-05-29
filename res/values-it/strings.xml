@@ -18,7 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name" msgid="8095131950334945205">"Calcolatrice"</string>
-    <string name="error_nan" msgid="4071578355972369426">"Non un numero"</string>
+    <string name="error_nan" msgid="4071578355972369426">"Non è un numero"</string>
     <string name="error_syntax" msgid="6940043994468390738">"Errore"</string>
     <string name="fun_cos" msgid="7312559527731358211">"cos"</string>
     <string name="fun_ln" msgid="6282013842946532944">"ln"</string>
