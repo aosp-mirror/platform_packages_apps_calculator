@@ -26,7 +26,7 @@
     <string name="fun_sin" msgid="7136698561875496766">"sen"</string>
     <string name="fun_tan" msgid="9116158377794370341">"tan"</string>
     <string name="clr" msgid="3126239559646368205">"be"</string>
-    <string name="del" msgid="6700172918709138470">"del"</string>
+    <string name="del" msgid="6700172918709138470">"CE"</string>
     <string name="desc_const_e" msgid="7752508267661034194">"número de Euler"</string>
     <string name="desc_const_pi" msgid="5843835548313660468">"pi"</string>
     <string name="desc_dec_point" msgid="6211527612960070934">"punto"</string>
