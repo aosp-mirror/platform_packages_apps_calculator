@@ -18,7 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name" msgid="8095131950334945205">"Calculadora"</string>
-    <string name="error_nan" msgid="4071578355972369426">"No es número."</string>
+    <string name="error_nan" msgid="4071578355972369426">"No es un número."</string>
     <string name="error_syntax" msgid="6940043994468390738">"Error"</string>
     <string name="fun_cos" msgid="7312559527731358211">"cos"</string>
     <string name="fun_ln" msgid="6282013842946532944">"ln"</string>
@@ -26,7 +26,7 @@
     <string name="fun_sin" msgid="7136698561875496766">"sen"</string>
     <string name="fun_tan" msgid="9116158377794370341">"tan"</string>
     <string name="clr" msgid="3126239559646368205">"be"</string>
-    <string name="del" msgid="6700172918709138470">"del"</string>
+    <string name="del" msgid="6700172918709138470">"CE"</string>
     <string name="desc_const_e" msgid="7752508267661034194">"número de Euler"</string>
     <string name="desc_const_pi" msgid="5843835548313660468">"pi"</string>
     <string name="desc_dec_point" msgid="6211527612960070934">"punto"</string>
