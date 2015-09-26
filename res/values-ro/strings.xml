@@ -44,7 +44,7 @@
     <string name="desc_op_pow" msgid="2620877401884059447">"putere"</string>
     <string name="desc_op_sqrt" msgid="4405610392216554239">"rădăcină pătrată"</string>
     <string name="desc_op_sub" msgid="2563060630032563021">"minus"</string>
-    <string name="desc_clr" msgid="8357371663749541924">"goliţi"</string>
+    <string name="desc_clr" msgid="8357371663749541924">"goliți"</string>
     <string name="desc_del" msgid="1866733601083210032">"ștergeți"</string>
     <string name="desc_eq" msgid="8068773095462472408">"este egal cu"</string>
 </resources>
